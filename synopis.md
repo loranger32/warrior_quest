@@ -118,7 +118,7 @@ Il s'agit de l'attaque de base. Si tous les joueurs sont capables d'une telle at
 - *le nain (Grootha)* est un bon combattant
 - *le magicien (Gandalf)* et *l'elfe (Toudoo)* sont de piètres combattants. Ne les faites combattre que si vous n'avez pas d'autre choix.
 
-Chaque attaque inflige un nombre de points de dégâts déterminé comme suit: points de force + lancé de dé + bonus de l'arme
+Chaque attaque inflige un nombre de points de dégâts déterminé comme suit: points de force + lancé de dé (2 * D8) + bonus de l'arme
 
 
 ### Attaque magique

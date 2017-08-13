@@ -28,7 +28,7 @@ class Character
   end
 
   def damage_points
-    8
+    strength + throw_die_of_8_times(2) + weapon.attack_bonus
   end
 
   private

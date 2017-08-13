@@ -169,11 +169,38 @@ describe 'A Character' do
 
     it 'reduce hp points of the defender' do
       expect(@defender.hp).to eq(100)
-      expect(@attacker.strength).to eq(8)
       @attacker.attack(@defender)
-      expect(@defender.hp).to eq(92)
+      expect(@defender.hp).to be_between(76, 90)
+    end
+  end
+
+  context 'can inflict distinct damage points' do
+
+    before do
+    @attacker = Character.new(name: 'attacker', weapon: :sword)
+    @defender = Character.new(name: 'defender')
     end
 
+    it 'with a sword' do
+      expect(@attacker.damage_points)
+      .to be_between((8 + 2 + 15), (8 + 16 + 15))
+    end 
+
+  end
+
+  context 'when attacking with a sword' do
+    before do
+      @attacker = Character.new(name: 'attacker', weapon: :sword)
+      @defender = Character.new(name: 'defender')
+    end
+
+      it 'inflict sword damages' do
+        @attacker.attack(@defender)
+        expect(@defender.hp)
+        .to be_between(
+          (8 + @attacker.throw_die_of_8_times(2) + 15 ),
+          (@defender.hp + 2))
+      end
 
   end
 end
