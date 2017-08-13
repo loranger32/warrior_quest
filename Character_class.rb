@@ -23,7 +23,7 @@ class Character
   end
 
   def attack(other_player)
-    other_player.hp -= strength
+    other_player.hp -= strength #should be the result of an attack
   end
 
   private

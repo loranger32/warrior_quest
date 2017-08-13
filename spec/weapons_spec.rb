@@ -72,7 +72,7 @@ describe 'A weapon' do
     end
   end
 
-  context 'can be a sword'do
+  context 'can be a sword' do
 
     before do
       @sword = Sword.new
@@ -93,5 +93,30 @@ describe 'A weapon' do
     it 'and have a default durability' do
       expect(@sword.durability).to eq(50)
     end
+
+    it 'can be damaged' do
+      @sword.impair_by(10)
+      expect(@sword.durability).to eq(40)
+    end
+
+    it 'can be repaired' do
+      @sword.durability = 40
+      @sword.repair_by(10)
+      expect(@sword.durability).to eq(50)
+    end
+
+    it 'cannot suffer damages if durability is lesser or equal to 0' do
+      @sword.durability = 5
+      @sword.impair_by(10)
+      expect(@sword.durability).to eq(0)
+    end
+
+    it 'cannot be repaired to more than its maximum durability points' do
+      @sword.durability = 45
+      @sword.repair_by(10)
+      expect(@sword.durability).to eq(50)
+    end
   end
+
+
 end
