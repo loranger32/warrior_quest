@@ -1,0 +1,2 @@
+class CannotHaveZeroRollsError < StandardError
+end

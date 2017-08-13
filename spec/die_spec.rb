@@ -15,6 +15,14 @@ describe 'A die' do
     it 'can roll' do
       expect(@die.roll).to be_between(1, 6).inclusive
     end
+
+    it 'can be rolled a number of times' do
+      expect(@die.roll_times(3)).to be_between(3, 18).inclusive
+    end
+
+    it 'throws an error if player tries to throw zero times' do
+      expect { @die.roll_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
   end
 
   context 'when initialized with 4 as argument' do
@@ -29,6 +37,10 @@ describe 'A die' do
 
     it 'can roll' do
       expect(@die_4.roll).to be_between(1, 4).inclusive
+    end
+
+    it 'can be rolled a number of times' do
+      expect(@die_4.roll_times(3)).to be_between(3, 12).inclusive
     end
   end
 
@@ -45,6 +57,10 @@ describe 'A die' do
     it 'can roll' do
       expect(@die_8.roll).to be_between(1, 8).inclusive
     end
+
+    it 'can be rolled a number of times' do
+      expect(@die_8.roll_times(3)).to be_between(3, 24).inclusive
+    end
   end
 
   context 'when initialized with 10 as argument' do
@@ -59,6 +75,10 @@ describe 'A die' do
 
     it 'can roll' do
       expect(@die_10.roll).to be_between(1, 10).inclusive
+    end
+
+    it 'can be rolled a number of times' do
+      expect(@die_10.roll_times(3)).to be_between(3, 30).inclusive
     end
   end
 
@@ -75,6 +95,10 @@ describe 'A die' do
     it 'can roll' do
       expect(@die_12.roll).to be_between(1, 12).inclusive
     end
+
+    it 'can be rolled a number of times' do
+      expect(@die_12.roll_times(3)).to be_between(3, 36).inclusive
+    end
   end
 
   context 'when initialized with 20 as argument' do
@@ -89,6 +113,10 @@ describe 'A die' do
 
     it 'can roll' do
       expect(@die_20.roll).to be_between(1, 20).inclusive
+    end
+
+    it 'can be rolled a number of times' do
+      expect(@die_20.roll_times(3)).to be_between(3, 60).inclusive
     end
   end
 
@@ -105,5 +133,11 @@ describe 'A die' do
     it 'can roll' do
       expect(@die_100.roll).to be_between(1, 100).inclusive
     end
+
+    it 'can be rolled a number of times' do
+      expect(@die_100.roll_times(3)).to be_between(3, 300).inclusive
+    end
   end
+
+
 end

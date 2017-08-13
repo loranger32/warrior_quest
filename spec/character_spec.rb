@@ -1,4 +1,5 @@
-require_relative '../Character_class.rb'
+require_relative '../Character_class'
+require_relative '../Die_class'
 
 describe 'A Character' do
 
