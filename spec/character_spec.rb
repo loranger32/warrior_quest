@@ -1,5 +1,5 @@
-require_relative '../Character_class'
-require_relative '../Die_class'
+require_relative '../character_class'
+require_relative '../die_class'
 
 describe 'A Character' do
 

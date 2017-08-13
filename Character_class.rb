@@ -1,6 +1,10 @@
+require_relative 'rollable_module'
+
 class Character
   attr_accessor :hp, :spirit, :agility, :strength
   attr_reader :name
+
+  include Rollable
 
   @@number_of_pnj = 0
 
@@ -11,7 +15,7 @@ class Character
     @spirit   = args[:spirit]   || default_spirit
     @agility  = args[:agility]  || default_agility
 
-    post_initialize(options={})
+    post_initialize({})
   end
 
   def to_s
@@ -45,7 +49,7 @@ class Character
     8
   end
 
-  def post_initialize(options={})
+  def post_initialize(_options)
     nil
   end
 end

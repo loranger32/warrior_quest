@@ -1,4 +1,4 @@
-require_relative '../Die_class'
+require_relative '../die_class'
 
 describe 'A die' do
   
