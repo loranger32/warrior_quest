@@ -84,4 +84,20 @@ describe 'A Character' do
       expect { puts @character4 }.to output("Pnj_4\n").to_stdout
     end
   end
+
+  context 'when attacking' do
+    before do
+      @attacker = Character.new(name: 'attacker')
+      @defender = Character.new(name: 'defender')
+    end
+
+    it 'reduce hp points of the defender' do
+      expect(@defender.hp).to eq(100)
+      expect(@attacker.strength).to eq(8)
+      @attacker.attack(@defender)
+      expect(@defender.hp).to eq(92)
+    end
+
+
+  end
 end

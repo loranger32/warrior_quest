@@ -18,6 +18,10 @@ class Character
     @name.capitalize
   end
 
+  def attack(other_player)
+    other_player.hp -= strength
+  end
+
   private
 
   def serialized_pnj_name
