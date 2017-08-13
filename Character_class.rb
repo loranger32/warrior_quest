@@ -1,9 +1,11 @@
 class Character
-  attr_accessor :hp, :strength, :spirit, :agility
+  attr_accessor :hp, :spirit, :agility, :strength
   attr_reader :name
 
+  @@number_of_pnj = 0
+
   def initialize(args={})
-    @name     = args[:name]
+    @name     = args[:name]     || serialized_pnj_name
     @hp       = args[:hp]       || default_hp
     @strength = args[:strength] || default_strength
     @spirit   = args[:spirit]   || default_spirit
@@ -12,12 +14,16 @@ class Character
     post_initialize(options={})
   end
 
-  def say_hello
-    puts "Hello!"
+  def to_s
+    @name.capitalize
   end
 
-
   private
+
+  def serialized_pnj_name
+    @@number_of_pnj += 1
+    @name = "pnj_#{@@number_of_pnj}"
+  end
 
   def default_hp
     100
@@ -38,5 +44,4 @@ class Character
   def post_initialize(options={})
     nil
   end
-
 end
