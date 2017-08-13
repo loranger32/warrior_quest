@@ -47,6 +47,26 @@ class Weapon
   end
 end
 
+class BareHands < Weapon
+  def set_default_name
+    self.name = "Mains nues"
+  end
+
+  def set_default_attack_bonus
+    self.attack_bonus = 0
+  end
+
+  def set_default_defense_bonus
+    self.defense_bonus = 0
+  end
+
+  def set_default_durability
+    self.durability = 200
+  end
+
+
+end
+
 class Sword < Weapon
   def set_default_name
     self.name = "Epée"
@@ -61,6 +81,6 @@ class Sword < Weapon
   end
 
   def set_default_durability
-    50
+    self.durability = 50
   end
 end

@@ -1,4 +1,5 @@
 require_relative '../character_class'
+require_relative '../weapons_class'
 require_relative '../die_class'
 
 describe 'A Character' do
@@ -29,6 +30,10 @@ describe 'A Character' do
       it "has default agility points" do
         expect(@character.agility).to eq(8)
       end
+
+      it "has no weapon" do
+        expect(@character.weapon).to be_kind_of(BareHands)
+      end
   end
 
   context 'when initialized with arguments' do
@@ -36,7 +41,7 @@ describe 'A Character' do
     before do
       $stdout = StringIO.new
       @character = Character.new(name: "laurent", hp: 120, strength: 12, 
-                                 spirit: 12, agility: 12)
+                                 spirit: 12, agility: 12, weapon: :sword)
     end
 
       it "has a name" do
@@ -57,6 +62,10 @@ describe 'A Character' do
 
       it "has agility points" do
         expect(@character.agility).to eq(12)
+      end
+
+      it 'has a weapon' do
+        expect(@character.weapon).to be_instance_of(Sword)
       end
 
       it "print its name capitalized when printed" do
@@ -152,7 +161,7 @@ describe 'A Character' do
     end
   end
 
-  context 'when attacking' do
+  context 'when attacking with bare hands' do
     before do
       @attacker = Character.new(name: 'attacker')
       @defender = Character.new(name: 'defender')

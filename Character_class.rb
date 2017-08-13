@@ -1,7 +1,8 @@
 require_relative 'rollable_module'
+require_relative 'weapons_class'
 
 class Character
-  attr_accessor :hp, :spirit, :agility, :strength
+  attr_accessor :hp, :spirit, :agility, :strength, :weapon
   attr_reader :name
 
   include Rollable
@@ -9,12 +10,12 @@ class Character
   @@number_of_pnj = 0
 
   def initialize(args={})
-    @name     = args[:name]     || serialized_pnj_name
-    @hp       = args[:hp]       || default_hp
-    @strength = args[:strength] || default_strength
-    @spirit   = args[:spirit]   || default_spirit
-    @agility  = args[:agility]  || default_agility
-
+    @name     = args[:name]                    || serialized_pnj_name
+    @hp       = args[:hp]                      || default_hp
+    @strength = args[:strength]                || default_strength
+    @spirit   = args[:spirit]                  || default_spirit
+    @agility  = args[:agility]                 || default_agility
+    @weapon   = set_weapon(args[:weapon])      || default_weapon
     post_initialize({})
   end
 
@@ -23,7 +24,11 @@ class Character
   end
 
   def attack(other_player)
-    other_player.hp -= strength #should be the result of an attack
+    other_player.hp -= damage_points
+  end
+
+  def damage_points
+    8
   end
 
   private
@@ -47,6 +52,17 @@ class Character
 
   def default_agility
     8
+  end
+
+  def set_weapon(weapon)
+    case weapon
+    when :bare_hands  then BareHands.new
+    when :sword       then Sword.new
+    end
+  end
+
+  def default_weapon
+    BareHands.new
   end
 
   def post_initialize(_options)

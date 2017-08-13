@@ -1,21 +1,7 @@
+require_relative '../character_class'
 require_relative '../weapons_class'
 
 describe 'A weapon' do
-
-  # context 'when not specified' do
-    
-  #   before do
-  #     @weapon = Weapon.new()
-  #   end
-
-  #   it 'throws errors when trying to call method on it' do
-  #     expect {@weapon.name}.to raise_error(WeaponMustBeSubclassedError)
-  #     expect {@weapon.attack_bonus}.to raise_error(WeaponMustBeSubclassedError)
-  #     expect {@weapon.defense_bonus}.to raise_error(WeaponMustBeSubclassedError)
-  #     expect {@weapon.durability}.to raise_error(WeaponMustBeSubclassedError)
-  #   end
-
-  # end
 
   context 'when attributes are given' do
 
@@ -59,7 +45,7 @@ describe 'A weapon' do
       expect(@weapon.durability).to eq(50)
     end
 
-    it 'cannot suffer damages if durability is lesser or equal to 0' do
+    it 'cannot suffer mor damages than 0' do
       @weapon.durability = 5
       @weapon.impair_by(10)
       expect(@weapon.durability).to eq(0)
@@ -69,6 +55,51 @@ describe 'A weapon' do
       @weapon.durability = 45
       @weapon.repair_by(10)
       expect(@weapon.durability).to eq(50)
+    end
+  end
+
+  context 'can be bare hands' do
+
+    before do
+      @bare_hands = BareHands.new
+    end
+
+    it 'and have a name' do
+      expect(@bare_hands.name).to eq('Mains nues')
+    end
+
+    it 'and have a default attack bonus' do
+      expect(@bare_hands.attack_bonus).to eq(0)
+    end
+
+    it 'and have a default defense bonus' do
+      expect(@bare_hands.defense_bonus).to eq(0)
+    end
+
+    it 'and have a default durability' do
+      expect(@bare_hands.durability).to eq(200)
+    end
+
+    it 'can be damaged' do
+      @bare_hands.impair_by(10)
+      expect(@bare_hands.durability).to eq(190)
+    end
+
+    it 'can be repaired' do
+      @bare_hands.durability = 40
+      @bare_hands.repair_by(10)
+      expect(@bare_hands.durability).to eq(50)
+    end
+
+    it 'cannot suffer damages if durability is lesser or equal to 0' do
+      @bare_hands.durability = 5
+      @bare_hands.impair_by(10)
+      expect(@bare_hands.durability).to eq(0)
+    end
+
+    it 'cannot be repaired to more than its maximum durability points' do
+      @bare_hands.repair_by(10)
+      expect(@bare_hands.durability).to eq(200)
     end
   end
 
