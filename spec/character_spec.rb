@@ -86,6 +86,72 @@ describe 'A Character' do
     end
   end
 
+  context 'when rolling dies' do
+    
+    before do
+      @character = Character.new
+      @die_4 = Die.new(4)
+      @die_6 = Die.new
+      @die_8 = Die.new(8)
+      @die_10 = Die.new(10)
+      @die_12 = Die.new(12)
+      @die_20 = Die.new(20)
+      @die_100 = Die.new(100)
+    end
+
+    it 'can roll multiple times a die of 4' do
+      expect(@character.throw_die_of_4_times(3)).to be_between(3, 12).inclusive
+    end
+
+    it 'can roll multiple times a die of 6' do
+      expect(@character.throw_die_of_6_times(3)).to be_between(3, 18).inclusive
+    end
+
+    it 'can roll multiple times a die of 8' do
+      expect(@character.throw_die_of_8_times(3)).to be_between(3, 24).inclusive
+    end
+
+    it 'can roll multiple times a die of 12' do
+      expect(@character.throw_die_of_12_times(3)).to be_between(3, 36).inclusive
+    end
+
+    it 'can roll multiple times a die of 20' do
+      expect(@character.throw_die_of_20_times(3)).to be_between(3, 60).inclusive
+    end
+
+    it 'can roll multiple times a die of 100' do
+      expect(@character.throw_die_of_100_times(3)).to be_between(3, 300).inclusive
+    end
+
+    it 'throws an error when trying to roll dies of 4 zero times' do
+      expect { @character.throw_die_of_4_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+
+    it 'throws an error when trying to roll dies of 6 zero times' do
+      expect { @character.throw_die_of_6_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+    
+    it 'throws an error when trying to roll dies of 8 zero times' do
+      expect { @character.throw_die_of_8_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+    
+    it 'throws an error when trying to roll dies of 10 zero times' do
+      expect { @character.throw_die_of_10_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+    
+    it 'throws an error when trying to roll dies of 12 zero times' do
+      expect { @character.throw_die_of_12_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+    
+    it 'throws an error when trying to roll dies of 20 zero times' do
+      expect { @character.throw_die_of_20_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+    
+    it 'throws an error when trying to roll dies of 100 zero times' do
+      expect { @character.throw_die_of_100_times(0) }.to raise_error(CannotHaveZeroRollsError)
+    end
+  end
+
   context 'when attacking' do
     before do
       @attacker = Character.new(name: 'attacker')

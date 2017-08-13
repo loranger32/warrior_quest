@@ -9,7 +9,7 @@ describe 'A die' do
     end
 
     it 'has 6 faces' do
-      expect(@die.faces).to eq(6) 
+      expect(@die.faces).to eq(6)
     end
 
     it 'can roll' do
