@@ -84,3 +84,75 @@ class Sword < Weapon
     self.durability = 50
   end
 end
+
+class Axe < Weapon
+  def set_default_name
+    self.name = "Hache à deux mains"
+  end
+
+  def set_default_attack_bonus
+    self.attack_bonus = 30
+  end
+
+  def set_default_defense_bonus
+    self.defense_bonus = 10
+  end
+
+  def set_default_durability
+    self.durability = 80
+  end
+end
+
+class Staff < Weapon
+  def set_default_name
+    self.name = "Baton"
+  end
+
+  def set_default_attack_bonus
+    self.attack_bonus = 5
+  end
+
+  def set_default_defense_bonus
+    self.defense_bonus = 5
+  end
+
+  def set_default_durability
+    self.durability = 30
+  end
+end
+
+class Spear < Weapon
+  def set_default_name
+    self.name = "Lance"
+  end
+
+  def set_default_attack_bonus
+    self.attack_bonus = 20
+  end
+
+  def set_default_defense_bonus
+    self.defense_bonus = 20
+  end
+
+  def set_default_durability
+    self.durability = 100
+  end
+end
+
+class ShortSword < Weapon
+  def set_default_name
+    self.name = "Dague"
+  end
+
+  def set_default_attack_bonus
+    self.attack_bonus = 10
+  end
+
+  def set_default_defense_bonus
+    self.defense_bonus = 5
+  end
+
+  def set_default_durability
+    self.durability = 50
+  end
+end
