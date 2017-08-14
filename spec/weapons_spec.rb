@@ -25,6 +25,14 @@ describe 'A weapon' do
     it 'has durability points' do
       expect(@weapon.durability).to eq(50)
     end
+
+    it 'has a max durability points attribute' do
+      expect(@weapon.max_durability).to eq(50)
+    end
+
+    it 'cannot change its max durability attribute' do
+      expect { @weapon.max_durability = 20 }.to raise_error(NoMethodError)
+    end
   end
 
   context 'in action' do
