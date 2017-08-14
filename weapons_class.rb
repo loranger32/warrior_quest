@@ -1,12 +1,13 @@
 class Weapon
   attr_accessor :name, :attack_bonus, :defense_bonus, :durability
+  attr_reader :max_durability
 
   def initialize(options = {})
     @name           = options[:name]          || set_default_name
     @attack_bonus   = options[:attack_bonus]  || set_default_attack_bonus
     @defense_bonus  = options[:defense_bonus] || set_default_defense_bonus
     @durability     = options[:durability]    || set_default_durability
-    @max_durability = @durability.dup.freeze
+    @max_durability = @durability
     post_initialize(options)
   end
 

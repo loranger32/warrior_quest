@@ -16,6 +16,7 @@ class Character
     @spirit   = args[:spirit]                  || default_spirit
     @agility  = args[:agility]                 || default_agility
     @weapon   = set_weapon(args[:weapon])      || default_weapon
+    
     post_initialize({})
   end
 
@@ -58,6 +59,10 @@ class Character
     case weapon
     when :bare_hands  then BareHands.new
     when :sword       then Sword.new
+    when :staff       then Staff.new
+    when :axe         then Axe.new
+    when :spear       then Spear.new
+    when :short_sword then ShortSword.new
     end
   end
 
