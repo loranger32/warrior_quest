@@ -27,7 +27,7 @@ describe 'A weapon' do
     end
 
     it 'has a max durability points attribute' do
-      expect(@weapon.max_durability).to eq(50)
+      expect(@weapon.max_durability).to eq(@weapon.durability)
     end
 
     it 'cannot change its max durability attribute' do
@@ -53,7 +53,7 @@ describe 'A weapon' do
       expect(@weapon.durability).to eq(50)
     end
 
-    it 'cannot suffer mor damages than 0' do
+    it 'cannot suffer more damages than 0' do
       @weapon.durability = 5
       @weapon.impair_by(10)
       expect(@weapon.durability).to eq(0)

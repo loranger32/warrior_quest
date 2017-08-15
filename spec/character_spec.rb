@@ -34,6 +34,10 @@ describe 'A Character' do
       it "has no weapon" do
         expect(@character.weapon).to be_kind_of(BareHands)
       end
+
+      it "has a max_hp attribute equal to hp attribute" do
+        expect(@character.max_hp).to eq(@character.hp)
+      end
   end
 
   context 'when initialized with arguments' do
@@ -70,6 +74,10 @@ describe 'A Character' do
 
       it "print its name capitalized when printed" do
         expect { puts @character }.to output("Laurent\n").to_stdout
+      end
+
+      it "has a max_hp attribute equal to hp attribute" do
+        expect(@character.max_hp).to eq(@character.hp)
       end
   end
 
