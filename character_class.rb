@@ -3,7 +3,7 @@ require_relative 'weapons_class'
 
 class Character
   attr_accessor :hp, :spirit, :agility, :strength, :weapon
-  attr_reader :name
+  attr_reader :name, :max_hp
 
   include Rollable
 
@@ -16,6 +16,7 @@ class Character
     @spirit   = args[:spirit]                  || default_spirit
     @agility  = args[:agility]                 || default_agility
     @weapon   = set_weapon(args[:weapon])      || default_weapon
+    @max_hp   = @hp
     
     post_initialize({})
   end
@@ -30,6 +31,20 @@ class Character
 
   def damage_points
     strength + throw_die_of_8_times(2) + weapon.attack_bonus
+  end
+
+  def show_stats
+    stats = <<-STRING
+***********************************
+Statistiques de #{self}:
+  - points de vie:  #{hp}
+  - force:          #{strength}
+  - esprit:         #{spirit}
+  - habileté:       #{agility}
+  - arme:           #{weapon.name}
+***********************************
+    STRING
+    puts stats
   end
 
   private

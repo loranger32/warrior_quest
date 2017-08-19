@@ -32,7 +32,7 @@ class Weapon
   end
 
   def impair_by(damages_to_weapon)
-    if self.durability - damages_to_weapon <= 0
+    if durability - damages_to_weapon <= 0
       self.durability = 0
     else
       self.durability -= damages_to_weapon
@@ -47,6 +47,7 @@ class Weapon
     end
   end
 end
+
 
 class BareHands < Weapon
   def set_default_name
@@ -64,43 +65,51 @@ class BareHands < Weapon
   def set_default_durability
     self.durability = 200
   end
-
-
 end
 
 class Sword < Weapon
+  DEFAULTS = { name: "Epée", 
+               attack_bonus: 15,
+               defense_bonus: 10,
+               durability: 50 }
+
   def set_default_name
-    self.name = "Epée"
+    self.name = DEFAULTS[:name]
   end
 
   def set_default_attack_bonus
-    self.attack_bonus = 15
+    self.attack_bonus = DEFAULTS[:attack_bonus]
   end
 
   def set_default_defense_bonus
-    self.defense_bonus = 5
+    self.defense_bonus = DEFAULTS[:defense_bonus]
   end
 
   def set_default_durability
-    self.durability = 50
+    self.durability = DEFAULTS[:durability]
   end
 end
 
 class Axe < Weapon
+  DEFAULTS = { name: "Hache à deux mains", 
+               attack_bonus: 30,
+               defense_bonus: 10,
+               durability: 80 }
+
   def set_default_name
-    self.name = "Hache à deux mains"
+    self.name = DEFAULTS[:name]
   end
 
   def set_default_attack_bonus
-    self.attack_bonus = 30
+    self.attack_bonus = DEFAULTS[:attack_bonus]
   end
 
   def set_default_defense_bonus
-    self.defense_bonus = 10
+    self.defense_bonus = DEFAULTS[:defense_bonus]
   end
 
   def set_default_durability
-    self.durability = 80
+    self.durability = DEFAULTS[:durability]
   end
 end
 

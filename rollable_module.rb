@@ -37,3 +37,4 @@ module Rollable
     BAG_OF_DIES[:die_of_100].roll_times(number_of_rolls)
   end
 end
+

@@ -9,7 +9,7 @@ class Game
   include Rollable
 
   def initialize
-    @player    = Character.new
+    @player    = Character.new(name: 'laurent')
     @teamates  = {}
     @spaces    = []
   end
@@ -18,3 +18,6 @@ class Game
     puts 'Game orchestration engine not defined yet'
   end
 end
+
+
+Game.new.player.show_stats
