@@ -1,3 +1,4 @@
+# Abstract Class - not designed for instantiation
 class Weapon
   attr_accessor :name, :attack_bonus, :defense_bonus, :durability
   attr_reader :max_durability
@@ -60,22 +61,6 @@ class Sword < Weapon
                attack_bonus: 15,
                defense_bonus: 10,
                durability: 50 }
-
-  # def set_default_name
-  #   self.name = DEFAULTS[:name]
-  # end
-
-  # def set_default_attack_bonus
-  #   self.attack_bonus = DEFAULTS[:attack_bonus]
-  # end
-
-  # def set_default_defense_bonus
-  #   self.defense_bonus = DEFAULTS[:defense_bonus]
-  # end
-
-  # def set_default_durability
-  #   self.durability = DEFAULTS[:durability]
-  # end
 end
 
 class Axe < Weapon
@@ -83,22 +68,6 @@ class Axe < Weapon
                attack_bonus: 30,
                defense_bonus: 10,
                durability: 80 }
-
-  # def set_default_name
-  #   self.name = DEFAULTS[:name]
-  # end
-
-  # def set_default_attack_bonus
-  #   self.attack_bonus = DEFAULTS[:attack_bonus]
-  # end
-
-  # def set_default_defense_bonus
-  #   self.defense_bonus = DEFAULTS[:defense_bonus]
-  # end
-
-  # def set_default_durability
-  #   self.durability = DEFAULTS[:durability]
-  # end
 end
 
 class Staff < Weapon
@@ -106,22 +75,6 @@ class Staff < Weapon
                attack_bonus: 5,
                defense_bonus: 5,
                durability: 30 }
-
-  # def set_default_name
-  #   self.name = "Baton"
-  # end
-
-  # def set_default_attack_bonus
-  #   self.attack_bonus = 5
-  # end
-
-  # def set_default_defense_bonus
-  #   self.defense_bonus = 5
-  # end
-
-  # def set_default_durability
-  #   self.durability = 30
-  # end
 end
 
 class Spear < Weapon
@@ -130,21 +83,7 @@ class Spear < Weapon
                attack_bonus: 20,
                defense_bonus: 20,
                durability: 100 }
-  # def set_default_name
-  #   self.name = "Lance"
-  # end
 
-  # def set_default_attack_bonus
-  #   self.attack_bonus = 20
-  # end
-
-  # def set_default_defense_bonus
-  #   self.defense_bonus = 20
-  # end
-
-  # def set_default_durability
-  #   self.durability = 100
-  # end
 end
 
 class ShortSword < Weapon
@@ -152,19 +91,4 @@ class ShortSword < Weapon
                attack_bonus: 10,
                defense_bonus: 5,
                durability: 50 }
-  # def set_default_name
-  #   self.name = "Dague"
-  # end
-
-  # def set_default_attack_bonus
-  #   self.attack_bonus = 10
-  # end
-
-  # def set_default_defense_bonus
-  #   self.defense_bonus = 5
-  # end
-
-  # def set_default_durability
-  #   self.durability = 50
-  # end
 end

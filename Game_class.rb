@@ -20,4 +20,6 @@ class Game
 end
 
 
-Game.new.player.show_stats
+game = Game.new
+game.player.show_stats
+

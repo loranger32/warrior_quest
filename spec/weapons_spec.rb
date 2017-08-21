@@ -10,42 +10,42 @@ RSpec.describe "A object of the Weapon Class" do
                             durability: 20)
     end
 
-    it 'respond to' do
+    it 'respond to :set_default_name' do
       expect(@weapon).to respond_to(:set_default_name)
     end
 
-    it 'respond to' do
+    it 'respond to :set_default_attack_bonus' do
       expect(@weapon).to respond_to(:set_default_attack_bonus)
     end
 
-    it 'respond to' do
+    it 'respond to :set_default_defense_bonus' do
       expect(@weapon).to respond_to(:set_default_defense_bonus)
     end
 
-    it 'respond to' do
+    it 'respond to :set_default_durability' do
       expect(@weapon).to respond_to(:set_default_durability)
     end
 
-    it 'respond to' do
+    it 'respond to :name' do
       expect(@weapon).to respond_to(:name)
     end
 
-    it 'respond to' do
+    it 'respond to :attack_bonus' do
       expect(@weapon).to respond_to(:attack_bonus)
     end
 
-    it 'respond to' do
+    it 'respond to :defense_bonus' do
       expect(@weapon).to respond_to(:defense_bonus)
     end
 
-    it 'respond to' do
+    it 'respond to :durability' do
       expect(@weapon).to respond_to(:durability)
     end
 
-    it 'respond to' do
+    it 'respond to :impair_by' do
       expect(@weapon).to respond_to(:impair_by)
     end
-    it 'respond to' do
+    it 'respond to :repair_by' do
       expect(@weapon).to respond_to(:repair_by)
     end
   end
