@@ -16,19 +16,19 @@ class Weapon
   end
 
   def set_default_name
-    nil
+    self.name = self.class::DEFAULTS[:name]
   end
 
   def set_default_attack_bonus
-    nil
+    self.attack_bonus = self.class::DEFAULTS[:attack_bonus]
   end
 
   def set_default_defense_bonus
-    nil
+    self.defense_bonus = self.class::DEFAULTS[:defense_bonus]
   end
 
   def set_default_durability
-    nil
+    self.durability = self.class::DEFAULTS[:durability]
   end
 
   def impair_by(damages_to_weapon)
@@ -48,23 +48,11 @@ class Weapon
   end
 end
 
-
 class BareHands < Weapon
-  def set_default_name
-    self.name = "Mains nues"
-  end
-
-  def set_default_attack_bonus
-    self.attack_bonus = 0
-  end
-
-  def set_default_defense_bonus
-    self.defense_bonus = 0
-  end
-
-  def set_default_durability
-    self.durability = 200
-  end
+  DEFAULTS = { name: "Mains nues", 
+               attack_bonus: 0,
+               defense_bonus: 0,
+               durability: 50 }
 end
 
 class Sword < Weapon
@@ -73,21 +61,21 @@ class Sword < Weapon
                defense_bonus: 10,
                durability: 50 }
 
-  def set_default_name
-    self.name = DEFAULTS[:name]
-  end
+  # def set_default_name
+  #   self.name = DEFAULTS[:name]
+  # end
 
-  def set_default_attack_bonus
-    self.attack_bonus = DEFAULTS[:attack_bonus]
-  end
+  # def set_default_attack_bonus
+  #   self.attack_bonus = DEFAULTS[:attack_bonus]
+  # end
 
-  def set_default_defense_bonus
-    self.defense_bonus = DEFAULTS[:defense_bonus]
-  end
+  # def set_default_defense_bonus
+  #   self.defense_bonus = DEFAULTS[:defense_bonus]
+  # end
 
-  def set_default_durability
-    self.durability = DEFAULTS[:durability]
-  end
+  # def set_default_durability
+  #   self.durability = DEFAULTS[:durability]
+  # end
 end
 
 class Axe < Weapon
@@ -96,73 +84,87 @@ class Axe < Weapon
                defense_bonus: 10,
                durability: 80 }
 
-  def set_default_name
-    self.name = DEFAULTS[:name]
-  end
+  # def set_default_name
+  #   self.name = DEFAULTS[:name]
+  # end
 
-  def set_default_attack_bonus
-    self.attack_bonus = DEFAULTS[:attack_bonus]
-  end
+  # def set_default_attack_bonus
+  #   self.attack_bonus = DEFAULTS[:attack_bonus]
+  # end
 
-  def set_default_defense_bonus
-    self.defense_bonus = DEFAULTS[:defense_bonus]
-  end
+  # def set_default_defense_bonus
+  #   self.defense_bonus = DEFAULTS[:defense_bonus]
+  # end
 
-  def set_default_durability
-    self.durability = DEFAULTS[:durability]
-  end
+  # def set_default_durability
+  #   self.durability = DEFAULTS[:durability]
+  # end
 end
 
 class Staff < Weapon
-  def set_default_name
-    self.name = "Baton"
-  end
+  DEFAULTS = { name: "Baton", 
+               attack_bonus: 5,
+               defense_bonus: 5,
+               durability: 30 }
 
-  def set_default_attack_bonus
-    self.attack_bonus = 5
-  end
+  # def set_default_name
+  #   self.name = "Baton"
+  # end
 
-  def set_default_defense_bonus
-    self.defense_bonus = 5
-  end
+  # def set_default_attack_bonus
+  #   self.attack_bonus = 5
+  # end
 
-  def set_default_durability
-    self.durability = 30
-  end
+  # def set_default_defense_bonus
+  #   self.defense_bonus = 5
+  # end
+
+  # def set_default_durability
+  #   self.durability = 30
+  # end
 end
 
 class Spear < Weapon
-  def set_default_name
-    self.name = "Lance"
-  end
 
-  def set_default_attack_bonus
-    self.attack_bonus = 20
-  end
+  DEFAULTS = { name: "Lance", 
+               attack_bonus: 20,
+               defense_bonus: 20,
+               durability: 100 }
+  # def set_default_name
+  #   self.name = "Lance"
+  # end
 
-  def set_default_defense_bonus
-    self.defense_bonus = 20
-  end
+  # def set_default_attack_bonus
+  #   self.attack_bonus = 20
+  # end
 
-  def set_default_durability
-    self.durability = 100
-  end
+  # def set_default_defense_bonus
+  #   self.defense_bonus = 20
+  # end
+
+  # def set_default_durability
+  #   self.durability = 100
+  # end
 end
 
 class ShortSword < Weapon
-  def set_default_name
-    self.name = "Dague"
-  end
+  DEFAULTS = { name: "Dague", 
+               attack_bonus: 10,
+               defense_bonus: 5,
+               durability: 50 }
+  # def set_default_name
+  #   self.name = "Dague"
+  # end
 
-  def set_default_attack_bonus
-    self.attack_bonus = 10
-  end
+  # def set_default_attack_bonus
+  #   self.attack_bonus = 10
+  # end
 
-  def set_default_defense_bonus
-    self.defense_bonus = 5
-  end
+  # def set_default_defense_bonus
+  #   self.defense_bonus = 5
+  # end
 
-  def set_default_durability
-    self.durability = 50
-  end
+  # def set_default_durability
+  #   self.durability = 50
+  # end
 end

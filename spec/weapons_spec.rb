@@ -1,15 +1,63 @@
 require_relative '../character_class'
 require_relative '../weapons_class'
 
-RSpec.shared_examples "weapons" do |weapon_class|
-
-  
+RSpec.describe "A object of the Weapon Class" do
   context 'when attributes are given' do
-    before do
-    @weapon = weapon_class.new(name: 'arme', attack_bonus: 15, defense_bonus: 5,
-      durability: 50)
+    before do 
+      @weapon = Weapon.new(name: "une arme", 
+                            attack_bonus: 10,
+                            defense_bonus: 10,
+                            durability: 20)
     end
 
+    it 'respond to' do
+      expect(@weapon).to respond_to(:set_default_name)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:set_default_attack_bonus)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:set_default_defense_bonus)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:set_default_durability)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:name)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:attack_bonus)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:defense_bonus)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:durability)
+    end
+
+    it 'respond to' do
+      expect(@weapon).to respond_to(:impair_by)
+    end
+    it 'respond to' do
+      expect(@weapon).to respond_to(:repair_by)
+    end
+  end
+end
+
+RSpec.shared_examples "weapons" do |weapon_class|
+
+  context 'when attributes are given' do
+    before do
+      @weapon = weapon_class.new(name: 'arme', attack_bonus: 15, defense_bonus: 5,
+        durability: 50)
+    end
 
     it 'has a name' do
       expect(@weapon.name).to eq('arme')
@@ -90,10 +138,6 @@ RSpec.shared_examples "weapons" do |weapon_class|
       expect(@weapon.durability).to eq(@weapon_class::DEFAULTS[:durability])
     end
   end
-end
-
-describe 'A weapon' do
-  include_examples "weapons", Weapon
 end
 
 describe 'Bare hands' do
