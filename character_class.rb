@@ -18,7 +18,7 @@ class Character
     @weapon   = set_weapon(args[:weapon])      || default_weapon
     @max_hp   = @hp
     
-    post_initialize({})
+    post_initialize(args)
   end
 
   def to_s
