@@ -1,4 +1,4 @@
-require_relative '../die_class'
+require_relative '../lib/die_class'
 
 RSpec.shared_examples "dies" do |number_of_faces|
   before do

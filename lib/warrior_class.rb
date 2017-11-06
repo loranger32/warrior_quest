@@ -4,7 +4,7 @@ class Warrior < Character
   attr_accessor :mana
 
   def post_initialize(args= {})
-    @mana = args[:mana]
+    @mana = args[:mana] || default_mana
   end
 
   def show_stats
@@ -22,7 +22,13 @@ Statistiques de #{self} (guérrier):
     puts stats
   end
 
-  def leader_call
-    
+  def look_around(space)
+    space.description
+  end
+
+  private
+
+  def default_mana
+    25
   end
 end

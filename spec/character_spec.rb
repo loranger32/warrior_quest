@@ -1,6 +1,6 @@
-require_relative '../character_class'
-require_relative '../weapons_class'
-require_relative '../die_class'
+require_relative '../lib/character_class'
+require_relative '../lib/weapons_class'
+require_relative '../lib/die_class'
 
 describe 'A Character' do
 

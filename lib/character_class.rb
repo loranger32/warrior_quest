@@ -10,12 +10,12 @@ class Character
   @@number_of_pnj = 0
 
   def initialize(args={})
-    @name     = args[:name]                    || serialized_pnj_name
-    @hp       = args[:hp]                      || default_hp
-    @strength = args[:strength]                || default_strength
-    @spirit   = args[:spirit]                  || default_spirit
-    @agility  = args[:agility]                 || default_agility
-    @weapon   = set_weapon(args[:weapon])      || default_weapon
+    @name     = args[:name]               || serialized_pnj_name
+    @hp       = args[:hp]                 || default_hp
+    @strength = args[:strength]           || default_strength
+    @spirit   = args[:spirit]             || default_spirit
+    @agility  = args[:agility]            || default_agility
+    @weapon   = set_weapon(args[:weapon]) || default_weapon
     @max_hp   = @hp
     
     post_initialize(args)

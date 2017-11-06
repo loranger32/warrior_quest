@@ -1,5 +1,5 @@
-require_relative '../character_class'
-require_relative '../weapons_class'
+require_relative '../lib/character_class'
+require_relative '../lib/weapons_class'
 
 RSpec.describe "A object of the Weapon Class" do
   context 'when attributes are given' do
