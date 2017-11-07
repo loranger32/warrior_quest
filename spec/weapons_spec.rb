@@ -55,8 +55,8 @@ RSpec.shared_examples "weapons" do |weapon_class|
 
   context 'when attributes are given' do
     before do
-      @weapon = weapon_class.new(name: 'arme', attack_bonus: 15, defense_bonus: 5,
-        durability: 50)
+      @weapon = weapon_class.new(name: 'arme', attack_bonus: 15,
+        defense_bonus: 5, durability: 50)
     end
 
     it 'has a name' do

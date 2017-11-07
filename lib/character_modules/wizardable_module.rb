@@ -19,7 +19,7 @@ module Wizardable
     last_inflicted_damage = 
       fire_ball_damage_points - other_char.fire_ball_defense_points
     if last_inflicted_damage > 0 
-      other_char.reduce_hp(last_inflicted_damage)
+      other_char.reduce_hp_by(last_inflicted_damage)
       self.last_inflicted_damage = last_inflicted_damage
     else
       self.last_inflicted_damage = 0

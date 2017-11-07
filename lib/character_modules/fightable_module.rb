@@ -19,7 +19,7 @@ module Fightable
   def attack(other_char)
     last_inflicted_damage = damage_points - other_char.defense_points
     if last_inflicted_damage > 0 
-      other_char.reduce_hp(last_inflicted_damage)
+      other_char.reduce_hp_by(last_inflicted_damage)
       self.last_inflicted_damage = last_inflicted_damage
     else
       self.last_inflicted_damage = 0

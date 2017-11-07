@@ -2,13 +2,14 @@ require_relative '../item_modules/rollable_module'
 require_relative '../item_classes/weapons_class'
 require_relative '../character_modules/fightable_module'
 
+# Abstract class - not meant to be instantiated
 class Character
+  include Rollable
+  include Fightable
+
   attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
     :last_inflicted_damage
   attr_reader :max_hp, :type
-
-  include Rollable
-  include Fightable
 
   @@number_of_pnj = 0
 
@@ -27,7 +28,7 @@ class Character
     post_initialize(args)
   end
 
-  def reduce_hp(damages_to_character)
+  def reduce_hp_by(damages_to_character)
     if hp - damages_to_character <= 0
       self.hp = 0
     else
@@ -70,6 +71,17 @@ Statistiques de #{self} (#{type}):
     puts stats
   end
 
+  def set_weapon(weapon)
+    case weapon
+    when :bare_hands  then BareHands.new
+    when :sword       then Sword.new
+    when :staff       then Staff.new
+    when :axe         then Axe.new
+    when :spear       then Spear.new
+    when :short_sword then ShortSword.new
+    end
+  end
+
   private
 
   def set_type
@@ -82,38 +94,27 @@ Statistiques de #{self} (#{type}):
   end
 
   def default_hp
-    100
+    self.hp = self.class::DEFAULTS[:hp]
   end
 
   def default_strength
-    8
+    self.strength = self.class::DEFAULTS[:strength]
   end
 
   def default_spirit
-    8
+    self.spirit = self.class::DEFAULTS[:spirit]
   end
 
   def default_agility
-    8
+    self.agility = self.class::DEFAULTS[:agility]
   end
 
   def default_mana
-    'pas de mana'
-  end
-
-  def set_weapon(weapon)
-    case weapon
-    when :bare_hands  then BareHands.new
-    when :sword       then Sword.new
-    when :staff       then Staff.new
-    when :axe         then Axe.new
-    when :spear       then Spear.new
-    when :short_sword then ShortSword.new
-    end
+    self.mana = self.class::DEFAULTS[:mana]
   end
 
   def default_weapon
-    BareHands.new
+    self.weapon = set_weapon(self.class::DEFAULTS[:weapon])
   end
 
   def post_initialize(_options)

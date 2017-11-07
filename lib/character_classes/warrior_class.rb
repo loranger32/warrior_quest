@@ -1,8 +1,14 @@
 require_relative 'character_class'
+require_relative '../character_modules/healable_module'
 
 class Warrior < Character
+  include Healable
+
+  DEFAULTS = {hp: 120, strength: 12, spirit: 10, agility: 10, mana: 25,
+              weapon: :sword}
+
   def self.create_hero
-    self.new(name: 'Bargdun', hp: 160, strength: 16, spirit: 12, agility: 10,
+    self.new(name: 'Leo', hp: 160, strength: 16, spirit: 12, agility: 10,
               weapon: :sword, mana: 35)
   end
 
@@ -25,9 +31,5 @@ class Warrior < Character
 
   def set_type
     "Guérrier"
-  end
-
-  def default_mana
-    25
   end
 end
