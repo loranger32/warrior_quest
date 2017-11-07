@@ -1,17 +1,20 @@
 require 'gutils'
 require 'colorize'
 
-require_relative 'character_class'
-require_relative 'warrior_class'
-require_relative 'dwarf_class'
-require_relative 'errors_class'
-require_relative 'die_class'
-require_relative 'rollable_module'
-require_relative 'space_class'
-require_relative 'item_class'
-require_relative 'textable_module'
-require_relative 'displayable_module'
-require_relative 'fightable_module'
+require_relative 'character_classes/character_class'
+require_relative 'character_classes/warrior_class'
+require_relative 'character_classes/dwarf_class'
+require_relative 'character_classes/elve_class'
+require_relative 'character_classes/wizard_class'
+require_relative 'system_classes/errors_class'
+require_relative 'item_classes/die_class'
+require_relative 'item_modules/rollable_module'
+require_relative 'item_classes/space_class'
+require_relative 'item_classes/item_class'
+require_relative 'text_modules/textable_module'
+require_relative 'text_modules/displayable_module'
+require_relative 'character_modules/fightable_module'
+require_relative 'character_modules/healable_module'
 
 class Game
   include Rollable
@@ -81,6 +84,8 @@ class Game
   def set_teamates
     team = []
     team << Dwarf.create_passipti
+    team << Elve.create_toudou
+    team << Wizard.create_hocus_pocus
     team
   end
 end

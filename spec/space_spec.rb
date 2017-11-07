@@ -1,4 +1,4 @@
-require_relative '../lib/space_class.rb'
+require_relative '../lib/item_classes/space_class.rb'
 
 RSpec.describe 'Space'do
   before do

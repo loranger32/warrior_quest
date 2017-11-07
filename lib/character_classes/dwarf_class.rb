@@ -1,37 +1,21 @@
 require_relative 'character_class'
-require_relative 'repairable_module'
+require_relative '../item_modules/repairable_module'
 
 class Dwarf < Character
   include Repairable
 
   def self.create_passipti
-    self.new(name: 'Passipti', hp: 140, strength: 13, spirit: 7, agility: 16)
-  end
-
-  def show_stats
-    stats = <<-STRING
-***********************************
-Statistiques de #{self} (Nain):
-  - points de vie:  #{hp}
-  - force:          #{strength}
-  - esprit:         #{spirit}
-  - habileté:       #{agility}
-  - mana:           #{mana}
-  - arme:           #{weapon.name}
-***********************************
-    STRING
-    puts stats
+    self.new(name: 'Passipti', hp: 140, strength: 13, spirit: 7, agility: 15)
   end
 
   def pepare_solid_defense
-    self.agility *= 3
+    self.agility *= 2
   end
 
   private
 
-  def serialized_pnj_name
-    @@number_of_pnj += 1
-    @name = "pnj_#{@@number_of_pnj}"
+  def set_type
+    "Nain"
   end
 
   def default_hp
@@ -47,7 +31,11 @@ Statistiques de #{self} (Nain):
   end
 
   def default_agility
-    14
+    13
+  end
+
+  def default_mana
+    "no mana"
   end
 
   def set_weapon(weapon)

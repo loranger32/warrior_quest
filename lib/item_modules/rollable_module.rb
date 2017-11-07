@@ -1,4 +1,4 @@
-require_relative 'die_class'
+require_relative '../item_classes/die_class'
 
 module Rollable
   BAG_OF_DIES = { die_of_4: Die.new(4),

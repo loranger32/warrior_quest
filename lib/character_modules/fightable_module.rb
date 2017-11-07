@@ -1,5 +1,6 @@
 module Fightable
   def self.describe_combat_between(char_1, char_2)
+    puts "L'ATTAQUE DEBUTE: "
     puts "#{char_1.name} attaque #{char_2.name} avec son #{char_1.weapon.name}."
     char_1.attack(char_2)
     if char_1.last_inflicted_damage > 0
@@ -15,10 +16,10 @@ module Fightable
     puts ''
   end
 
-  def attack(other_character)
-    if damage_points > other_character.defense_points
-      self.last_inflicted_damage = damage_points - other_character.defense_points
-      other_character.reduce_hp(last_inflicted_damage)
+  def attack(other_char)
+    last_inflicted_damage = damage_points - other_char.defense_points
+    if last_inflicted_damage > 0 
+      other_char.reduce_hp(last_inflicted_damage)
     else
       self.last_inflicted_damage = 0
     end

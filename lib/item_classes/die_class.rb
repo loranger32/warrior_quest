@@ -1,4 +1,4 @@
-require_relative 'errors_class'
+require_relative '../system_classes/errors_class'
 
 class Die
   attr_reader :faces

@@ -1,30 +1,9 @@
 require_relative 'character_class'
 
 class Warrior < Character
-  attr_accessor :mana
-
   def self.create_hero
     self.new(name: 'Bargdun', hp: 160, strength: 16, spirit: 12, agility: 10,
               weapon: :sword, mana: 35)
-  end
-  
-  def post_initialize(args= {})
-    @mana = args[:mana] || default_mana
-  end
-
-  def show_stats
-    stats = <<-STRING
-***********************************
-Statistiques de #{self} (guérrier):
-  - points de vie:  #{hp}
-  - force:          #{strength}
-  - esprit:         #{spirit}
-  - habileté:       #{agility}
-  - mana:           #{mana}
-  - arme:           #{weapon.name}
-***********************************
-    STRING
-    puts stats
   end
 
   def look_around(space)
@@ -43,6 +22,10 @@ Statistiques de #{self} (guérrier):
   end
 
   private
+
+  def set_type
+    "Guérrier"
+  end
 
   def default_mana
     25

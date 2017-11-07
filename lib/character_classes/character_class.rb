@@ -1,11 +1,11 @@
-require_relative 'rollable_module'
-require_relative 'weapons_class'
-require_relative 'fightable_module'
+require_relative '../item_modules/rollable_module'
+require_relative '../item_classes/weapons_class'
+require_relative '../character_modules/fightable_module'
 
 class Character
-  attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name,
+  attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
     :last_inflicted_damage
-  attr_reader :max_hp
+  attr_reader :max_hp, :type
 
   include Rollable
   include Fightable
@@ -13,11 +13,13 @@ class Character
   @@number_of_pnj = 0
 
   def initialize(args={})
+    @type     = set_type
     @name     = args[:name]               || serialized_pnj_name
     @hp       = args[:hp]                 || default_hp
     @strength = args[:strength]           || default_strength
     @spirit   = args[:spirit]             || default_spirit
     @agility  = args[:agility]            || default_agility
+    @mana     = args[:mana]               || default_mana
     @weapon   = set_weapon(args[:weapon]) || default_weapon
     @last_inflicted_damage = 0
     @max_hp   = @hp
@@ -48,11 +50,12 @@ class Character
   def show_stats
     stats = <<-STRING
 ***********************************
-Statistiques de #{self}:
+Statistiques de #{self} (#{type}):
   - points de vie:  #{hp}
   - force:          #{strength}
   - esprit:         #{spirit}
   - habileté:       #{agility}
+  - mana:           #{mana}
   - arme:           #{weapon.name}
 ***********************************
     STRING
@@ -60,6 +63,10 @@ Statistiques de #{self}:
   end
 
   private
+
+  def set_type
+    "PNJ"
+  end
 
   def serialized_pnj_name
     @@number_of_pnj += 1
@@ -80,6 +87,10 @@ Statistiques de #{self}:
 
   def default_agility
     8
+  end
+
+  def default_mana
+    'pas de mana'
   end
 
   def set_weapon(weapon)

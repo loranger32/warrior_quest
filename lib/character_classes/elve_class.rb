@@ -1,5 +1,5 @@
 require_relative 'character_class'
-require_relative 'healable_module'
+require_relative '../character_modules/healable_module'
 
 class Elve < Character
   include Healable
@@ -8,26 +8,10 @@ class Elve < Character
     self.new(name: 'Toudou', hp: 110, strength: 11, spirit: 14, agility: 14)
   end
 
-  def show_stats
-    stats = <<-STRING
-***********************************
-Statistiques de #{self} (Elfe):
-  - points de vie:  #{hp}
-  - force:          #{strength}
-  - esprit:         #{spirit}
-  - habileté:       #{agility}
-  - mana:           #{mana}
-  - arme:           #{weapon.name}
-***********************************
-    STRING
-    puts stats
-  end
-
   private
 
-  def serialized_pnj_name
-    @@number_of_pnj += 1
-    @name = "pnj_#{@@number_of_pnj}"
+  def set_type
+    "Elfe"
   end
 
   def default_hp
@@ -46,6 +30,10 @@ Statistiques de #{self} (Elfe):
     14
   end
 
+  def default_mana
+    25
+  end
+
   def set_weapon(weapon)
     case weapon
     when :bare_hands  then BareHands.new
@@ -58,6 +46,6 @@ Statistiques de #{self} (Elfe):
   end
 
   def default_weapon
-    Spear.new
+    ShortSword.new
   end
 end

@@ -1,4 +1,4 @@
-require_relative '../lib/warrior_class'
+require_relative '../lib/character_classes/warrior_class'
 
 RSpec.describe "A warrior" do
 
