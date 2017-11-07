@@ -1,11 +1,14 @@
 require_relative 'rollable_module'
 require_relative 'weapons_class'
+require_relative 'fightable_module'
 
 class Character
-  attr_accessor :hp, :spirit, :agility, :strength, :weapon
-  attr_reader :name, :max_hp
+  attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name,
+    :last_inflicted_damage
+  attr_reader :max_hp
 
   include Rollable
+  include Fightable
 
   @@number_of_pnj = 0
 
@@ -16,21 +19,30 @@ class Character
     @spirit   = args[:spirit]             || default_spirit
     @agility  = args[:agility]            || default_agility
     @weapon   = set_weapon(args[:weapon]) || default_weapon
+    @last_inflicted_damage = 0
     @max_hp   = @hp
     
     post_initialize(args)
   end
 
+  def reduce_hp(damages_to_character)
+    if hp - damages_to_character <= 0
+      self.hp = 0
+    else
+      self.hp -= damages_to_character
+    end
+  end
+
+  def restore_hp_by(hp_to_character)
+    if self.hp + hp_to_character <= @max_hp
+      self.hp += hp_to_character
+    else
+      self.hp = @max_hp
+    end
+  end
+
   def to_s
     @name.capitalize
-  end
-
-  def attack(other_player)
-    other_player.hp -= damage_points
-  end
-
-  def damage_points
-    strength + throw_die_of_8_times(2) + weapon.attack_bonus
   end
 
   def show_stats
