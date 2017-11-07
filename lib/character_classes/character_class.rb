@@ -43,6 +43,14 @@ class Character
     end
   end
 
+  def defense_points
+    agility + throw_die_of_4_times(1) + weapon.defense_bonus
+  end
+
+  def fire_ball_defense_points
+    agility + throw_die_of_4_times(1)
+  end
+
   def to_s
     @name.capitalize
   end

@@ -3,6 +3,7 @@ require_relative '../character_modules/wizardable_module'
 
 class Wizard < Character
   include Wizardable
+  include Fightable
 
   def self.create_hocus_pocus
     self.new(name: 'Hocuspocus', hp: 80, strength: 6, spirit: 16, agility: 8,

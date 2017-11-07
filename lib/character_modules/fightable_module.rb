@@ -20,6 +20,7 @@ module Fightable
     last_inflicted_damage = damage_points - other_char.defense_points
     if last_inflicted_damage > 0 
       other_char.reduce_hp(last_inflicted_damage)
+      self.last_inflicted_damage = last_inflicted_damage
     else
       self.last_inflicted_damage = 0
     end
@@ -27,9 +28,5 @@ module Fightable
 
   def damage_points
     strength + throw_die_of_8_times(2) + weapon.attack_bonus
-  end
-
-  def defense_points
-    agility + throw_die_of_4_times(1) + weapon.defense_bonus
   end
 end
