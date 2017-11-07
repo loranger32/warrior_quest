@@ -1,15 +1,14 @@
 require 'rake/testtask'
 require 'find'
 
-# desc 'Run tests'
-# Rake::TestTask.new(:test) do |t|
-#   t.libs << 'lib'
-#   t.libs << 'test'
-#   t.test_files = FileList['spec/**/*_spec.rb']
-# end
+desc 'Run tests'
+task :test do
+  sh 'cd /Users/laurentg/Desktop/Projets/Games/warrior_quest/spec'
+  sh 'rspec .'
+end
 
-# desc 'Run tests'
-# task :default => :test
+desc 'Run tests'
+task :default => :test
 
 desc 'Display inventory of all files'
 task :inventory do
