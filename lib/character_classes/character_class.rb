@@ -9,7 +9,7 @@ class Character
 
   attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
                 :last_inflicted_damage
-  attr_reader :max_hp, :type
+  attr_reader   :max_hp, :type
 
   @number_of_pnj = 0
 
@@ -17,6 +17,8 @@ class Character
     attr_accessor :number_of_pnj
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength, Metrics/PerceivedComplexity
   def initialize(args = {})
     @type     = set_type
     @name     = args[:name]                  || serialized_pnj_name
@@ -31,6 +33,8 @@ class Character
 
     post_initialize(args)
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity,
+  # rubocop:enable Metrics/MethodLength, Metrics/PerceivedComplexity
 
   def reduce_hp_by(damages_to_character)
     if hp - damages_to_character <= 0
@@ -60,6 +64,7 @@ class Character
     @name.capitalize
   end
 
+  # rubocop:disable Metrics/MethodLength
   def show_stats
     stats = <<-STRING
 ***********************************
@@ -74,7 +79,9 @@ Statistiques de #{self} (#{type}):
 STRING
     puts stats
   end
+  # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def assign_weapon(weapon)
     case weapon
     when :bare_hands  then BareHands.new
@@ -85,6 +92,7 @@ STRING
     when :short_sword then ShortSword.new
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 

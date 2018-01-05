@@ -48,9 +48,9 @@ module Textable
     def self.ask_player_what_to_do
       <<-ASK
   Que souhaitez-vous faire:
-    - commencer une nouvelle partie ?
-    - réaliser un combat d'entraînement ?
-    - reprendre une partie sauvegardée ?
+    - commencer une nouvelle partie ? ('n')
+    - réaliser un combat d'entraînement ? ('e')
+    - reprendre une partie sauvegardée ? ('l')
       ASK
     end
   end

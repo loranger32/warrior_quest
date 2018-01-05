@@ -10,8 +10,10 @@ require_relative '../item_classes/space_class'
 require_relative '../item_classes/item_class'
 require_relative '../text_modules/textable_module'
 require_relative '../text_modules/displayable_module'
+require_relative '../text_modules/validable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
+
 
 # Main class of the game - sets up all the basic elements of the game
 class Game
@@ -19,17 +21,18 @@ class Game
   include Textable
   include Displayable
 
-  attr_accessor :player, :teamates, :spaces, :current_space
+  attr_accessor :player, :teamates, :game_spaces, :current_space
 
   def initialize
     @player        = Warrior.create_hero
     @teamates      = set_teamates
-    @spaces        = set_spaces
-    @current_space = @spaces[0]
+    @game_spaces   = Space.spaces
+    @current_space = @game_spaces[0]
   end
 
   def play
-    puts 'Game orchestration engine not defined yet'
+    ask_player_name
+    launch_intro
   end
 
   def ask_player_name
@@ -58,22 +61,12 @@ class Game
     print_message(Textable::Introduction.ask_player_what_to_do)
   end
 
-  private
+  def get_player_choice_of_game
+    choice = gets.chomp
 
-  def set_spaces
-    spaces = []
-    spaces << Space.new(name: 'Salle du trône',
-                        description: 'Une magnifique salle,\
- dans laquelle se trouve concentrée toute la richesse de la région. Ceux qui \
- ont un avis qui compte se trouvent dans cette pièce. Parlez sagement !',
-                        group: 'Château')
-    spaces << Space.new(name: 'Salle d\'armes',
-                        description: 'Une véritable salle aux\
- trésors pour ceux qui goûtent le maniement des armes. Vous y trouverez tout ce\
- dont vous pouvez rêver pour pourfendre, transpercer, assommer ou trancher vos\
- adversaires !', group: 'Château')
-    spaces
   end
+
+  private
 
   def set_teamates
     team = []
