@@ -1,10 +1,10 @@
-ruby '2.4.1'
+ruby '2.5.0'
 
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'rubocop', '0.46.0'
-gem 'pry', '~> 0.11.2'
+gem 'rubocop', '~> 0.52.1'
+gem 'pry', '~> 0.11.3'
 gem 'colorize', '~> 0.8.1'
 gem 'gutils', '~> 0.0.2'
 gem 'rspec', '~> 3.6.0'
