@@ -11,7 +11,11 @@ class Character
                 :last_inflicted_damage
   attr_reader :max_hp, :type
 
-  @@number_of_pnj = 0
+  @number_of_pnj = 0
+
+  class << self
+    attr_accessor :number_of_pnj
+  end
 
   def initialize(args = {})
     @type     = set_type
@@ -89,8 +93,8 @@ STRING
   end
 
   def serialized_pnj_name
-    @@number_of_pnj += 1
-    @name = "pnj_#{@@number_of_pnj}"
+    Character.number_of_pnj += 1
+    @name = "pnj_#{@number_of_pnj}"
   end
 
   def default_hp
