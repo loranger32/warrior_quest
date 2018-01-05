@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'gutils'
 require 'colorize'
+require_relative 'game_class/game_class'
 
 require_relative 'character_classes/character_class'
 require_relative 'character_classes/warrior_class'
