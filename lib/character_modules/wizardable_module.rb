@@ -1,19 +1,25 @@
 # Module used to cast spells - to be included in relevant characters class
 module Wizardable
   def self.describe_combat_between(char1, char2)
+    describe_and_perform_spell_casting(char1, char2)
+    display_attack_result(char1, char2)
+  end
+
+  def self.describe_and_perform_spell_casting(char1, char2)
     puts 'L\'ATTAQUE DEBUTE: '
     puts "#{char1.name} lance une boule de feu sur #{char2.name}."
     char1.cast_fire_ball_on(char2)
+  end
+
+  def self.display_attack_result(char1, char2)
     if char1.last_inflicted_damage > 0
       puts "Il lui inflige #{char1.last_inflicted_damage} points de vie de\
- dégats."
+ dégats.\n"
     else
-      puts 'La boule de feu passe à côté et ne lui inflige aucun dégât.'
+      puts 'La boule de feu passe à côté et ne lui inflige aucun dégât.\n'
     end
-    puts ''
     puts 'RESULTAT:'
-    puts "#{char2.name} a #{char2.hp} points de vie"
-    puts ''
+    puts "#{char2.name} a #{char2.hp} points de vie.\n"
   end
 
   def cast_fire_ball_on(other_char)

@@ -3,7 +3,7 @@ module Textable
   # Introduction texts
   module Introduction
     def self.welcome
-      <<-WEL
+      <<-WEL.strip_heredoc
   Bienvenue dans le jeu 'la quête du guérrier'.
   Un jeu d'aventure et d'exploration.
       WEL
@@ -14,7 +14,7 @@ module Textable
     end
 
     def self.greet_and_explain(name)
-      <<-EXPL
+      <<-EXPL.strip_heredoc
   Vous êtes un valeureux guérrier nommé #{name}!!
 
   Vous êtes au royaume du bon Roi Arthur. Jusqu'il y a peu, le royaume était
@@ -46,7 +46,7 @@ module Textable
     end
 
     def self.ask_player_what_to_do
-      <<-ASK
+      <<-ASK.strip_heredoc
   Que souhaitez-vous faire:
     - commencer une nouvelle partie ? ('n')
     - réaliser un combat d'entraînement ? ('e')

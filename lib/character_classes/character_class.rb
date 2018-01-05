@@ -66,17 +66,17 @@ class Character
 
   # rubocop:disable Metrics/MethodLength
   def show_stats
-    stats = <<-STRING
-***********************************
-Statistiques de #{self} (#{type}):
-  - points de vie:  #{hp}
-  - force:          #{strength}
-  - esprit:         #{spirit}
-  - habileté:       #{agility}
-  - mana:           #{mana}
-  - arme:           #{weapon.name}
-***********************************
-STRING
+    stats = <<-STRING.strip_heredoc
+      ***********************************
+      Statistiques de #{self} (#{type}):
+        - points de vie:  #{hp}
+        - force:          #{strength}
+        - esprit:         #{spirit}
+        - habileté:       #{agility}
+        - mana:           #{mana}
+        - arme:           #{weapon.name}
+      ***********************************
+      STRING
     puts stats
   end
   # rubocop:enable Metrics/MethodLength

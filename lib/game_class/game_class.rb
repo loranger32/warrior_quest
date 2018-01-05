@@ -14,7 +14,6 @@ require_relative '../text_modules/validable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
 
-
 # Main class of the game - sets up all the basic elements of the game
 class Game
   include Rollable
@@ -55,16 +54,12 @@ class Game
     clear_screen
     print_message(Textable::Introduction.welcome)
     sleep(2)
-
     ask_player_name
     print_message(Textable::Introduction.greet_and_explain(player.name))
     print_message(Textable::Introduction.ask_player_what_to_do)
   end
 
-  def get_player_choice_of_game
-    choice = gets.chomp
-
-  end
+  def retrieve_player_choice_of_game; end
 
   private
 
