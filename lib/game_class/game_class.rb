@@ -50,14 +50,10 @@ class Game
   def launch_intro
     clear_screen
     print_message(Textable::Introduction.welcome)
+    sleep(2)
+    
     ask_player_name
-    
-    sleep(2)
-
     print_message(Textable::Introduction.greet_and_explain(player.name))
-    
-    sleep(2)
-
     print_message(Textable::Introduction.ask_player_what_to_do)
   end
 
