@@ -1,24 +1,25 @@
+# Module for classic fights with weapons - to be included in character class
 module Fightable
-  def self.describe_combat_between(char_1, char_2)
-    puts "L'ATTAQUE DEBUTE: "
-    puts "#{char_1.name} attaque #{char_2.name} avec son #{char_1.weapon.name}."
-    char_1.attack(char_2)
-    if char_1.last_inflicted_damage > 0
-      puts "Il lui inflige #{char_1.last_inflicted_damage} points de vie de\
+  def self.describe_combat_between(char1, char2)
+    puts 'L\'ATTAQUE DEBUTE: '
+    puts "#{char1.name} attaque #{char2.name} avec son #{char1.weapon.name}."
+    char1.attack(char2)
+    if char1.last_inflicted_damage > 0
+      puts "Il lui inflige #{char1.last_inflicted_damage} points de vie de\
  dégats."
     else
-      puts "Son attaque manque son coup, il ne lui inflige aucun point de\
- dégat."
+      puts 'Son attaque manque son coup, il ne lui inflige aucun point de\
+ dégat.'
     end
     puts ''
-    puts "RESULTAT:"
-    puts "#{char_2.name} a #{char_2.hp} points de vie"
+    puts 'RESULTAT:'
+    puts "#{char2.name} a #{char2.hp} points de vie"
     puts ''
   end
 
   def attack(other_char)
     last_inflicted_damage = damage_points - other_char.defense_points
-    if last_inflicted_damage > 0 
+    if last_inflicted_damage > 0
       other_char.reduce_hp_by(last_inflicted_damage)
       self.last_inflicted_damage = last_inflicted_damage
     else

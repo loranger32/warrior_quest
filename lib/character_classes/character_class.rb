@@ -8,23 +8,23 @@ class Character
   include Fightable
 
   attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
-    :last_inflicted_damage
+                :last_inflicted_damage
   attr_reader :max_hp, :type
 
   @@number_of_pnj = 0
 
-  def initialize(args={})
+  def initialize(args = {})
     @type     = set_type
-    @name     = args[:name]               || serialized_pnj_name
-    @hp       = args[:hp]                 || default_hp
-    @strength = args[:strength]           || default_strength
-    @spirit   = args[:spirit]             || default_spirit
-    @agility  = args[:agility]            || default_agility
-    @mana     = args[:mana]               || default_mana
-    @weapon   = set_weapon(args[:weapon]) || default_weapon
-    @last_inflicted_damage = 0
+    @name     = args[:name]                  || serialized_pnj_name
+    @hp       = args[:hp]                    || default_hp
+    @strength = args[:strength]              || default_strength
+    @spirit   = args[:spirit]                || default_spirit
+    @agility  = args[:agility]               || default_agility
+    @mana     = args[:mana]                  || default_mana
+    @weapon   = assign_weapon(args[:weapon]) || default_weapon
     @max_hp   = @hp
-    
+    @last_inflicted_damage = 0
+
     post_initialize(args)
   end
 
@@ -67,11 +67,11 @@ Statistiques de #{self} (#{type}):
   - mana:           #{mana}
   - arme:           #{weapon.name}
 ***********************************
-    STRING
+STRING
     puts stats
   end
 
-  def set_weapon(weapon)
+  def assign_weapon(weapon)
     case weapon
     when :bare_hands  then BareHands.new
     when :sword       then Sword.new
@@ -85,7 +85,7 @@ Statistiques de #{self} (#{type}):
   private
 
   def set_type
-    "PNJ"
+    'PNJ'
   end
 
   def serialized_pnj_name
@@ -114,7 +114,7 @@ Statistiques de #{self} (#{type}):
   end
 
   def default_weapon
-    self.weapon = set_weapon(self.class::DEFAULTS[:weapon])
+    self.weapon = assign_weapon(self.class::DEFAULTS[:weapon])
   end
 
   def post_initialize(_options)

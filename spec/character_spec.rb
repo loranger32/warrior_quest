@@ -78,8 +78,8 @@ RSpec.shared_examples "A Character object" do |character_class|
         expect(@character).to respond_to(:fire_ball_defense_points)
       end
 
-      it ":set_weapon" do
-        expect(@character).to respond_to(:set_weapon)
+      it ":assign_weapon" do
+        expect(@character).to respond_to(:assign_weapon)
       end
   end
 
@@ -153,7 +153,7 @@ RSpec.shared_examples "A Character object" do |character_class|
       it "has default weapon" do
         expect(@character.weapon)
           .to be_kind_of(
-            @character.set_weapon(@character_class::DEFAULTS[:weapon]).class)
+            @character.assign_weapon(@character_class::DEFAULTS[:weapon]).class)
       end
 
       it "has a max_hp attribute equal to hp attribute" do

@@ -1,5 +1,6 @@
 require_relative '../system_classes/errors_class'
 
+# Class for dies of all sorts
 class Die
   attr_reader :faces
 

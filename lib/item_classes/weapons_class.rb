@@ -49,46 +49,50 @@ class Weapon
   end
 end
 
+# Concrete class
 class BareHands < Weapon
-  DEFAULTS = { name: "Mains nues", 
+  DEFAULTS = { name: 'Mains nues',
                attack_bonus: 0,
                defense_bonus: 0,
-               durability: 50 }
+               durability: 50 }.freeze
 end
 
+# Concrete class
 class Sword < Weapon
-  DEFAULTS = { name: "Epée", 
+  DEFAULTS = { name: 'Epée',
                attack_bonus: 15,
                defense_bonus: 10,
-               durability: 50 }
+               durability: 50 }.freeze
 end
 
+# Concrete class
 class Axe < Weapon
-  DEFAULTS = { name: "Hache à deux mains", 
+  DEFAULTS = { name: 'Hache à deux mains',
                attack_bonus: 30,
                defense_bonus: 10,
-               durability: 80 }
+               durability: 80 }.freeze
 end
 
+# Concrete class
 class Staff < Weapon
-  DEFAULTS = { name: "Baton", 
+  DEFAULTS = { name: 'Baton',
                attack_bonus: 5,
                defense_bonus: 5,
-               durability: 30 }
+               durability: 30 }.freeze
 end
 
+# Concrete class
 class Spear < Weapon
-
-  DEFAULTS = { name: "Lance", 
+  DEFAULTS = { name: 'Lance',
                attack_bonus: 20,
                defense_bonus: 20,
-               durability: 100 }
-
+               durability: 100 }.freeze
 end
 
+# Concrete class
 class ShortSword < Weapon
-  DEFAULTS = { name: "Dague", 
+  DEFAULTS = { name: 'Dague',
                attack_bonus: 10,
                defense_bonus: 5,
-               durability: 50 }
+               durability: 50 }.freeze
 end

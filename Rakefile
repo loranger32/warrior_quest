@@ -20,5 +20,5 @@ end
 
 desc 'Run rubocop'
 task :rub do
-  sh 'rubocop'
+  sh 'rubocop /Users/laurentg/Desktop/Projets/Games/warrior_quest/lib'
 end

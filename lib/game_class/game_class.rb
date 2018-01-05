@@ -13,11 +13,12 @@ require_relative '../text_modules/displayable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
 
+# Main class of the game - sets up all the basic elements of the game
 class Game
   include Rollable
   include Textable
   include Displayable
-  
+
   attr_accessor :player, :teamates, :spaces, :current_space
 
   def initialize
@@ -35,8 +36,8 @@ class Game
     prompt(Textable::Introduction.ask_name)
     player_name = gets.chomp
     while player_name.empty?
-      prompt "Nom invalide, il ne peut pas être vide"
-      prompt "Nouvel essai:"
+      prompt 'Nom invalide, il ne peut pas être vide'
+      prompt 'Nouvel essai:'
       player_name = gets.chomp
     end
     player.name = player_name
@@ -51,7 +52,7 @@ class Game
     clear_screen
     print_message(Textable::Introduction.welcome)
     sleep(2)
-    
+
     ask_player_name
     print_message(Textable::Introduction.greet_and_explain(player.name))
     print_message(Textable::Introduction.ask_player_what_to_do)
@@ -61,16 +62,16 @@ class Game
 
   def set_spaces
     spaces = []
-    spaces << throne_room = Space.new(name: "Salle du trône",
-                                      description: "Une magnifique salle,\
+    spaces << Space.new(name: 'Salle du trône',
+                        description: 'Une magnifique salle,\
  dans laquelle se trouve concentrée toute la richesse de la région. Ceux qui \
- ont un avis qui compte se trouvent dans cette pièce. Parlez sagement !",
-                                      group: 'Château')
-    spaces << weaponery   = Space.new(name: "Salle d'armes",
-                                      description: "une véritable salle aux\
+ ont un avis qui compte se trouvent dans cette pièce. Parlez sagement !',
+                        group: 'Château')
+    spaces << Space.new(name: 'Salle d\'armes',
+                        description: 'Une véritable salle aux\
  trésors pour ceux qui goûtent le maniement des armes. Vous y trouverez tout ce\
  dont vous pouvez rêver pour pourfendre, transpercer, assommer ou trancher vos\
- adversaires !",                      group: 'Château')
+ adversaires !', group: 'Château')
     spaces
   end
 

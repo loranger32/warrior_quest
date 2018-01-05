@@ -1,5 +1,7 @@
 require_relative '../item_classes/die_class'
 
+# Module to allow players and characters to roll dies - to be included in
+# relevant characters class
 module Rollable
   BAG_OF_DIES = { die_of_4: Die.new(4),
                   die_of_6: Die.new,
@@ -37,4 +39,3 @@ module Rollable
     BAG_OF_DIES[:die_of_100].roll_times(number_of_rolls)
   end
 end
-
