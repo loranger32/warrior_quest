@@ -6,7 +6,8 @@ module Validable
   def self.obtain_a_valid_name
     choice = gets.chomp
     until valid_name?(choice)
-      Displayable.prompt 'Nom invalide, nouvel essai:'
+      Displayable.print_error_message('Nom invalide !')
+      Displayable.prompt(Textable::Introduction.ask_name)
       choice = gets.chomp
     end
     choice
@@ -36,6 +37,16 @@ module Validable
 
   def self.has_no_new_line?(choice)
     !choice.match?(/\n/)
+  end
+
+  def self.obtain_a_valid_game_choice
+    choice = gets.chomp
+    until valid_game_choice?(choice)
+      Displayable.print_error_message("Choix non valide.")
+      Displayable.prompt(Textable::Introduction.ask_player_what_to_do)
+      choice = gets.chomp
+    end
+    choice
   end
 
   def self.valid_game_choice?(choice)
