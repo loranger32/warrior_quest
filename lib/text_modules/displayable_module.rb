@@ -2,9 +2,14 @@
 # In order to get its methods available in other modules, I've duplicated all
 # instance methods in module methods - maybe not the more convenient way to do.
 module Displayable
-  # print is for simply displaying text
+  # print_message is for simply displaying text
   def self.print_message(message)
-    puts.message.blue
+    puts message.blue
+  end
+
+  # print_error_message is for displaying error messages
+  def self.print_error_message(message)
+    puts message.yellow
   end
 
   # prompt is for retrieving user input
@@ -18,6 +23,10 @@ module Displayable
 
   def print_message(message)
     puts message.blue
+  end
+
+  def print_error_message(message)
+    puts message.yellow
   end
 
   def prompt(message)
