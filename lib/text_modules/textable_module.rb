@@ -4,7 +4,7 @@ module Textable
   module Introduction
     def self.welcome
       <<-WEL.strip_heredoc
-  Bienvenue dans le jeu 'la quête du guérrier'.
+  Bienvenue dans le jeu 'la quête du Chevalier'.
   Un jeu d'aventure et d'exploration.
       WEL
     end

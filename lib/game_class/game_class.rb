@@ -37,6 +37,7 @@ class Game
 
   def launch_intro
     clear_screen
+    titleize("La quête du Chevalier")
     print_message(Textable::Introduction.welcome)
     sleep(2)
     ask_player_name

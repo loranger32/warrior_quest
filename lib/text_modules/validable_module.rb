@@ -42,7 +42,7 @@ module Validable
   def self.obtain_a_valid_game_choice
     choice = gets.chomp
     until valid_game_choice?(choice)
-      Displayable.print_error_message("Choix non valide.")
+      Displayable.print_error_message("Choix invalide !")
       Displayable.prompt(Textable::Introduction.ask_player_what_to_do)
       choice = gets.chomp
     end
