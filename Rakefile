@@ -3,7 +3,8 @@ require 'find'
 
 desc 'Run tests'
 task :test do
-  sh 'cd /Users/laurentg/Desktop/Projets/Games/warrior_quest/spec'
+  path = File.expand_path('spec')
+  sh "cd #{path}"
   sh 'rspec .'
 end
 
@@ -20,5 +21,6 @@ end
 
 desc 'Run rubocop'
 task :rub do
-  sh 'rubocop /Users/laurentg/Desktop/Projets/Games/warrior_quest/lib'
+  path = File.expand_path('lib')
+  sh "rubocop #{path}"
 end
