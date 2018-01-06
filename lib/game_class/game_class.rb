@@ -32,6 +32,7 @@ class Game
 
   def play
     launch_intro
+    game_choice = retrieve_player_choice_of_game
   end
 
   def launch_intro
@@ -41,7 +42,6 @@ class Game
     ask_player_name
     clear_screen
     print_message(Textable::Introduction.greet_and_explain(player.name))
-    print_message(Textable::Introduction.ask_player_what_to_do)
   end
 
   def ask_player_name
@@ -55,7 +55,10 @@ class Game
     puts "Vous et votre équipe allez à #{other_space}"
   end
 
-  def retrieve_player_choice_of_game; end
+  def retrieve_player_choice_of_game
+    prompt(Textable::Introduction.ask_player_what_to_do)
+    Validable.obtain_a_valid_game_choice
+  end
 
   private
 
