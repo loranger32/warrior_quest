@@ -30,19 +30,12 @@ class Game
   end
 
   def play
-    ask_player_name
     launch_intro
   end
 
   def ask_player_name
     prompt(Textable::Introduction.ask_name)
-    player_name = gets.chomp
-    while player_name.empty?
-      prompt 'Nom invalide, il ne peut pas être vide'
-      prompt 'Nouvel essai:'
-      player_name = gets.chomp
-    end
-    player.name = player_name
+    player.name = Validable.obtain_a_valid_name
   end
 
   def go_to(other_space)

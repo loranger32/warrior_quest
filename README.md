@@ -44,6 +44,12 @@ Contributions and beginners are welcome !
 - Push to the branch (`git push origin my-new-feature`)
 - Create a new pull request
 
+
+# Code of Conduct
+
+Please refer to the CODE_OF_CONDUCT.md file.
+
+
 # Author
 
 Laurent Guinotte
