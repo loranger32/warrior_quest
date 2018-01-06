@@ -6,7 +6,7 @@ module Validable
   def self.obtain_a_valid_name
     choice = gets.chomp
     until valid_name?(choice)
-      prompt 'Nom invalide, nouvel essai:'
+      Displayable.prompt 'Nom invalide, nouvel essai:'
       choice = gets.chomp
     end
     choice

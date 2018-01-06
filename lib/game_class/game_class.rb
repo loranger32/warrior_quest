@@ -34,8 +34,19 @@ class Game
     launch_intro
   end
 
+  def launch_intro
+    clear_screen
+    print_message(Textable::Introduction.welcome)
+    sleep(2)
+    ask_player_name
+    clear_screen
+    print_message(Textable::Introduction.greet_and_explain(player.name))
+    print_message(Textable::Introduction.ask_player_what_to_do)
+  end
+
   def ask_player_name
     prompt(Textable::Introduction.ask_name)
+    show_or_skip_help
     player.name = Validable.obtain_a_valid_name
   end
 
@@ -44,18 +55,18 @@ class Game
     puts "Vous et votre équipe allez à #{other_space}"
   end
 
-  def launch_intro
-    clear_screen
-    print_message(Textable::Introduction.welcome)
-    sleep(2)
-    ask_player_name
-    print_message(Textable::Introduction.greet_and_explain(player.name))
-    print_message(Textable::Introduction.ask_player_what_to_do)
-  end
-
   def retrieve_player_choice_of_game; end
 
   private
+
+  def show_or_skip_help
+    choice = gets.chomp.downcase
+    if choice == 'h'
+      print_message(Textable::Introduction.name_rules)
+    else
+      prompt("Ok, choisissez votre nom:")
+    end
+  end
 
   def set_teamates
     team = []

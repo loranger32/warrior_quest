@@ -10,7 +10,22 @@ module Textable
     end
 
     def self.ask_name
-      'Quel est votre nom ?'
+      "Quel est votre nom ? ('enter' pour choisir le nom, 'h' pour les\
+ consignes):"
+    end
+
+    def self.name_rules
+      <<-NAME_RULES.strip_heredoc
+  Le nom que vous choisirez doit respecter les règles suivantes:
+  - le nom ne peut être vide ou composé uniquement d'espaces ou tabulations ;
+  - pas de chiffres (les chiffres romains sont autorisés) ;
+  - pas plus d'un espace à la suite (donc pas de tabulation) ;
+  - pas de retour à la ligne ;
+  - le nom peut contenir indifférement des letters minuscules ou majuscules ;
+  - pas d'espace vide à la fin du nom ;
+
+  Ok, choisissez votre nom maintenant:
+      NAME_RULES
     end
 
     def self.greet_and_explain(name)
