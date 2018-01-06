@@ -1,6 +1,6 @@
 require_relative '../lib/item_classes/space_class.rb'
 
-RSpec.describe 'Space'do
+RSpec.describe 'Space' do
   before do
     @descrption = "Une très longue\
  description, qui dure si longtemps qu'on en finit par oublier à quoi\
