@@ -6,7 +6,7 @@ module Validable
   def self.obtain_a_valid_name
     choice = gets.chomp
     until valid_name?(choice)
-      puts 'Nom invalide, nouvel essai:'
+      prompt 'Nom invalide, nouvel essai:'
       choice = gets.chomp
     end
     choice
@@ -38,9 +38,7 @@ module Validable
     !choice.match?(/\n/)
   end
 
-  def self.valid_game_choice?
-    
+  def self.valid_game_choice?(choice)
+    VALID_GAME_CHOICES.include?(choice.downcase)
   end
 end
-
-p Validable.obtain_a_valid_name

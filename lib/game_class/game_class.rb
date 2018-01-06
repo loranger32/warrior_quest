@@ -19,6 +19,7 @@ class Game
   include Rollable
   include Textable
   include Displayable
+  include Validable
 
   attr_accessor :player, :teamates, :game_spaces, :current_space
 
