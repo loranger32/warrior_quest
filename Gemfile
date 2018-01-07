@@ -2,7 +2,7 @@ ruby '2.5.0'
 
 source 'https://rubygems.org'
 
-gem 'rake'
+gem 'rake', '~> 12.3.0'
 gem 'rubocop', '~> 0.52.1'
 gem 'pry', '~> 0.11.3'
 gem 'colorize', '~> 0.8.1'
