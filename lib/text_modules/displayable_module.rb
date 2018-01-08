@@ -2,7 +2,7 @@
 # In order to get its methods available in other modules, I've duplicated all
 # instance methods in module methods - maybe not the more convenient way to do.
 module Displayable
-  SCREEN_WIDTH_13_INCHES = 115
+  SCREEN_WIDTH_13_INCHES = 125
   # titelize prints nicely formatted titles
   def self.titleize(title)
     title_size = title.size
