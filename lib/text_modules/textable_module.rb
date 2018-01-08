@@ -10,8 +10,11 @@ module Textable
     end
 
     def self.ask_name
-      "Quel est votre nom ? ('enter' pour choisir le nom, 'h' pour les\
- consignes):"
+      <<-ASK_NAME.strip_heredoc
+      Vous devez d'abord choisir un nom pour votre Chevalier. Quelques règles
+      simples sont à respecter pour le choix du nom. Voulez-vous les voir ?\
+ ('o' / 'n')
+      ASK_NAME
     end
 
     def self.name_rules
@@ -24,7 +27,6 @@ module Textable
   - le nom peut contenir indifférement des letters minuscules ou majuscules ;
   - pas d'espace vide à la fin du nom ;
 
-  Ok, choisissez votre nom maintenant:
       NAME_RULES
     end
 
