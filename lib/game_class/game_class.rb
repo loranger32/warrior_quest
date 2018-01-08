@@ -33,6 +33,11 @@ class Game
   def play
     launch_intro
     game_choice = retrieve_player_choice_of_game
+    case game_choice
+    when 'n' then launch_game
+    when 'e' then launch_training
+    when 'l' then restore_game
+    end
   end
 
   def launch_intro
