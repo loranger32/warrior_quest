@@ -43,6 +43,8 @@ module Validable
     choice = gets.chomp
     until valid_game_choice?(choice)
       Displayable.print_error_message("Choix invalide !")
+      Displayable.print_error_message("Les choix possibles sont:")
+      Displayable.print_error_message(VALID_GAME_CHOICES.join(', ') + '.')
       Displayable.prompt(Textable::Introduction.ask_player_what_to_do)
       choice = gets.chomp
     end
