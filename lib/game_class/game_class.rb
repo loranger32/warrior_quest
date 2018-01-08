@@ -46,7 +46,7 @@ class Game
     clear_screen
     titleize("La quête du Chevalier")
     print_message(Textable::Introduction.welcome)
-    sleep(2)
+    #sleep(2)
     ask_player_name
     clear_screen
     print_message(Textable::Introduction.greet_and_explain(player.name))
