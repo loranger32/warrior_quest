@@ -1,7 +1,9 @@
 module Textable
   module TrainingText
-    def self.present_training
-      <<-TRAINING_PRESENTATION.strip_heredoc
+    module_function
+
+    def present_training
+      <<~TRAINING_PRESENTATION
 
       Bienvenue dans le mode d'entraînement.
 
@@ -14,13 +16,21 @@ module Textable
       TRAINING_PRESENTATION
     end
 
-    def self.ask_single_or_multiplayer_training
-      <<-TRAINING_TYPE.strip_heredoc
+    def ask_single_or_multiplayer_training
+      <<~TRAINING_TYPE
       Quel type d'entrainement souhaitez vous:
       - solo ('s')
       - en équipe ('m')
 
       TRAINING_TYPE
+    end
+
+    def present_solo_training
+      <<~PRESENT_SOLO_TRAINING
+      Vous entrez dans la salle d'entrainement. Deux écuyers sont là pour vous\
+ servir d'adversaire de combat. Allez-y doucement avec eux, ce sont des\
+ étudiants !!!
+      PRESENT_SOLO_TRAINING
     end
   end
 end

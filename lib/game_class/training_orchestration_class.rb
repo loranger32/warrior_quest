@@ -1,13 +1,12 @@
 class Training
   def play
     clear_screen
-    titleize "Welcome to training !"
+    titleize "Bienvenue à l'entrainement !"
     present_training
-    #show_bad_guys
     training_type = ask_for_single_or_multiplayer_fight
     case training_type
-    when :multi  then multiplayer_fight
-    when :single then single_player_fight
+    when 's' then single_player_fight
+    when 'm' then multiplayer_fight
     end
   end
 
@@ -20,13 +19,23 @@ class Training
     print_message("Votre équipe est composée de:")
     teamates.each do |teamate| 
       print "- ".blue
-      print_message teamate.to_s
+      print_message(teamate.to_s)
+    end
+    puts
+  end
+
+  def show_squires
+    print_message("Vos adversaires d'entrainement sont:")
+    squires.each do |squire| 
+      print "- ".blue
+      print_message(squire.to_s)
     end
     puts
   end
 
   def ask_for_single_or_multiplayer_fight
     prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
+    Validable.obtain_a_valid_input_from_list(['s', 'm'])
   end
 
   def multiplayer_fight
@@ -34,6 +43,10 @@ class Training
   end
 
   def single_player_fight
-    
+    set_two_squires
+    clear_screen
+    titleize('Entrainement solo')
+    print_message(Textable::TrainingText.present_solo_training)
+    show_bad_guys
   end
 end

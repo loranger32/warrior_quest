@@ -8,7 +8,7 @@ require_relative '../item_classes/die_class'
 require_relative '../item_modules/rollable_module'
 require_relative '../item_classes/space_class'
 require_relative '../item_classes/item_class'
-require_relative '../text_modules/textable_module'
+require_relative '../text_modules/textable_introduction_module'
 require_relative '../text_modules/textable_training_module'
 require_relative '../text_modules/displayable_module'
 require_relative '../text_modules/validable_module'
@@ -45,11 +45,12 @@ class Game
 
   def launch_intro
     clear_screen
-    titleize("La quête du Chevalier")
+    titleize(Textable::Introduction::GAME_TITLE)
     print_message(Textable::Introduction.welcome)
     #sleep(2)
     ask_player_name
     clear_screen
+    titleize(Textable::Introduction::GAME_TITLE)
     print_message(Textable::Introduction.greet_and_explain(player.name))
   end
 
@@ -59,7 +60,8 @@ class Game
   end
 
   def ask_player_name
-    prompt(Textable::Introduction.ask_name)
+    print_message(Textable::Introduction.ask_name)
+    prompt('Voulez-vous les voir ? (\'o\', \'n\')')
     show_or_skip_help
     player.name = Validable.obtain_a_valid_name
   end
