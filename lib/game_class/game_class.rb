@@ -78,11 +78,10 @@ class Game
 
   def show_or_skip_help
     choice = gets.chomp.downcase
-    if choice == 'h'
+    if choice == 'o'
       print_message(Textable::Introduction.name_rules)
-    else
-      prompt("Ok, choisissez votre nom:")
     end
+    prompt("Ok, choisissez votre nom:")
   end
 
   def set_teamates
