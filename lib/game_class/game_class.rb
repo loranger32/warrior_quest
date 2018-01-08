@@ -13,6 +13,8 @@ require_relative '../text_modules/displayable_module'
 require_relative '../text_modules/validable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
+require_relative 'game_training_class'
+require_relative 'training_orchestration_class'
 
 # Main class of the game - sets up all the basic elements of the game
 class Game
@@ -48,6 +50,11 @@ class Game
     ask_player_name
     clear_screen
     print_message(Textable::Introduction.greet_and_explain(player.name))
+  end
+
+  def launch_training
+    training = Training.new
+    training.play
   end
 
   def ask_player_name
