@@ -1,6 +1,25 @@
 require_relative '../lib/game_class/game_class'
 
 RSpec.describe 'Validable' do
+  context "in its generic form" do
+    it "raises an exception if valid choices list is not an array" do
+      expect { Validable.valid_choice?('n', 'n', 'b', 's') }
+        .to raise_error(ArgumentError)
+    end
+
+    it "spots invalid choices" do
+      expect(Validable.valid_choice?('n', ['a', 'b', 'c'])).to be false
+    end
+
+    it "spots valid choices" do
+      expect(Validable.valid_choice?('n', ['a', 'b', 'c', 'n'])).to be true
+    end
+
+    it "spots valid choices even if uppercased" do
+      expect(Validable.valid_choice?('N', ['a', 'b', 'c', 'n'])).to be true
+    end
+  end
+
   context "spots invalid name input and" do
     it "rejects empty names" do
       expect(Validable.valid_name?('   ')).to be false
