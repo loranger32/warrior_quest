@@ -6,7 +6,7 @@ module Validable
 
   def self.obtain_a_valid_input_from_list(valid_choices_list)
     choice = gets.chomp
-    until valid_game_choice?(choice, valid_choices_list)
+    until valid_choice?(choice, valid_choices_list)
       Displayable.print_error_message("Choix invalide !")
       Displayable.print_error_message("Les choix possibles sont:")
       Displayable.print_error_message(valid_choices_list.join(', ') + '.')
@@ -16,8 +16,12 @@ module Validable
     choice
   end
 
-  def self.valid_choice?(choice, valid_choice_list)
-    valid_choices_list?.include?(choice.downcase)
+  def self.valid_choice?(choice, valid_choices_list)
+    unless valid_choices_list.is_a?(Array)
+      raise ArgumentError, "Valid_choices_list must be an Array,\
+ was a #{valid_choices_list.class}"
+    end
+    valid_choices_list.include?(choice.downcase)
   end
 
 # ========== Name validation ===========
