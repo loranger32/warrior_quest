@@ -7,8 +7,8 @@ module Textable
 
       Bienvenue dans le mode d'entraînement.
 
-      Vous allez pouvoir vous entraîner aux combats, comme ils peuvent se
-      dérouler dans le jeu.
+      Vous allez pouvoir vous entraîner aux combats, comme ils peuvent se\
+ dérouler dans le jeu.
 
       Deux options sont disponibles: le combat solo ou le combat en équipe.
 

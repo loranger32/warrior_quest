@@ -19,20 +19,12 @@ class Training
 
   def show_team
     print_message("Votre équipe est composée de:")
-    teamates.each do |teamate| 
-      print "- ".blue
-      print_message(teamate.to_s)
-    end
-    puts
+    teamates.each { |teamate| puts "- #{teamate}".blue }
   end
 
   def show_squires
     print_message("Vos adversaires d'entrainement sont:")
-    squires.each do |squire| 
-      print "- ".blue
-      print_message(squire.to_s)
-    end
-    puts
+    squires.each { |squire| puts "- #{squire}".blue }
   end
 
   def show_squires_stats
@@ -57,6 +49,7 @@ class Training
     print_message(Textable::TrainingText.begin_solo_training)
     while player_is_not_stunt && squires_are_not_stunt
       player_turn
+      wait_until_ready_to_go_on
       squires_turn
     end
     print_message("L'entrainement est terminé, un joueur est assomé.")
@@ -86,7 +79,10 @@ class Training
   end
 
   def squires_turn
-    squires.each { |squire| Fightable.describe_combat_between(squire, player) }
+    squires.each_with_index do |squire, index| 
+      Fightable.describe_combat_between(squire, player)
+      wait_until_ready_to_go_on unless index >= squires.size - 1
+    end
     print_message("Fin du tour des écuyers, à vous !")
   end
 

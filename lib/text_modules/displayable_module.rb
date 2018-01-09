@@ -15,17 +15,17 @@ module Displayable
 
   # print_message is for simply displaying text
   def self.print_message(message)
-    puts message.blue
+    puts "\n#{message.blue}"
   end
 
   # print_error_message is for displaying error messages
   def self.print_error_message(message)
-    puts message.yellow
+    puts "\n#{message.yellow}"
   end
 
   # prompt is for retrieving user input
   def self.prompt(message)
-    puts "=> #{message}".green
+    puts "\n=> #{message}".green
   end
 
   def self.clear_screen
@@ -43,15 +43,15 @@ module Displayable
   end
 
   def print_message(message)
-    puts message.blue
+    puts "\n#{message.blue}"
   end
 
   def print_error_message(message)
-    puts message.yellow
+    puts "\n#{message.yellow}"
   end
 
   def prompt(message)
-    puts "=> #{message}".green
+    puts "\n=> #{message}".green
   end
 
   def clear_screen
