@@ -32,6 +32,11 @@ module Displayable
     (system 'clear') || (system 'cls')
   end
 
+  def self.clear_screen_with_title(title)
+    clear_screen
+    titleize(title)
+  end
+
   def titleize(title)
     title_size = title.size
     line = ("*" * (title_size + 10)).red.center(SCREEN_WIDTH_13_INCHES)
@@ -56,5 +61,10 @@ module Displayable
 
   def clear_screen
     (system 'clear') || (system 'cls')
+  end
+
+  def clear_screen_with_title(title)
+    clear_screen
+    titleize(title)
   end
 end
