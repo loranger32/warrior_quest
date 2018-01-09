@@ -33,13 +33,21 @@ class Training
     puts
   end
 
+  def show_squires_stats
+    print_message("Leurs statistiques sont:")
+    squires.each { |squire| print_message(squire.stats_display) }
+  end
+
   def ask_for_single_or_multiplayer_fight
     prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
     Validable.obtain_a_valid_input_from_list(['s', 'm'])
   end
 
   def multiplayer_fight
-    
+    set_four_squires
+    clear_screen
+    titleize('Entrainement en équipe')
+    show_squires
   end
 
   def single_player_fight
@@ -47,6 +55,14 @@ class Training
     clear_screen
     titleize('Entrainement solo')
     print_message(Textable::TrainingText.present_solo_training)
-    show_bad_guys
+    show_squires
+    show_squires_stats
+    wait_until_ready_to_start_training_fight
   end
+
+  def wait_until_ready_to_start_training_fight
+    
+  end
+
+
 end
