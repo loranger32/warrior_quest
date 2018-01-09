@@ -56,15 +56,10 @@ class Training
     launch_single_player_training_intro
     print_message(Textable::TrainingText.begin_solo_training)
     while player_is_not_stunt && squires_are_not_stunt
-      prompt(Textable::TrainingText.ask_for_training_action_with(squires))
-      choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
-      case choice
-      when '1' then Fightable.describe_combat_between(player, squires.first)
-      when '2' then Fightable.describe_combat_between(player, squires.last)
-      when 'h' then Healable.describe_self_healing(player)
-      end
-      break
+      player_turn
+      squires_turn
     end
+    print_message("L'entrainement est terminé, un joueur est assomé.")
   end
 
   def launch_single_player_training_intro
@@ -75,6 +70,24 @@ class Training
     show_squires
     show_squires_stats
     wait_until_ready_to_go_on
+    clear_screen
+    titleize('Entrainement solo')
+  end
+
+  def player_turn
+    prompt(Textable::TrainingText.ask_for_training_action_with(squires))
+    choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
+    case choice
+    when '1' then Fightable.describe_combat_between(player, squires.first)
+    when '2' then Fightable.describe_combat_between(player, squires.last)
+    when 'h' then Healable.describe_self_healing(player)
+    end
+    print_message("Fin du tour, aux écuyers de jouer !")
+  end
+
+  def squires_turn
+    squires.each { |squire| Fightable.describe_combat_between(squire, player) }
+    print_message("Fin du tour des écuyers, à vous !")
   end
 
   def wait_until_ready_to_go_on
