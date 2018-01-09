@@ -2,7 +2,7 @@
 module Validable
   VALID_GAME_CHOICES = %w(n e l).freeze
 
-# ========== Generic validation mechanism ==========
+# ========== Generic input validation mechanism ==========
 
   def self.obtain_a_valid_input_from_list(valid_choices_list)
     choice = gets.chomp
@@ -30,7 +30,7 @@ module Validable
     choice = gets.chomp
     until valid_name?(choice)
       Displayable.print_error_message('Nom invalide !')
-      Displayable.prompt(Textable::Introduction.ask_name)
+      Displayable.prompt("Essayez à nouveau:")
       choice = gets.chomp
     end
     choice
