@@ -2,8 +2,7 @@ class Training
   SINGLE_TRAINING_ACTIONS = %w(1 2 h).freeze
 
   def play
-    clear_screen
-    titleize "Bienvenue à l'entrainement !"
+    clear_screen_with_title(TRAINING_TITLE)
     present_training
     training_type = ask_for_single_or_multiplayer_fight
     case training_type
@@ -39,8 +38,7 @@ class Training
 
   def multiplayer_fight
     set_four_squires
-    clear_screen
-    titleize('Entrainement en équipe')
+    clear_screen_with_title(MULTI_TRAINING_TITLE)
     show_squires
   end
 
@@ -57,17 +55,16 @@ class Training
 
   def launch_single_player_training_intro
     set_two_squires
-    clear_screen
-    titleize('Entrainement solo')
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
     print_message(Textable::TrainingText.present_solo_training)
     show_squires
     show_squires_stats
     wait_until_ready_to_go_on
-    clear_screen
-    titleize('Entrainement solo')
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
   end
 
   def player_turn
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
     prompt(Textable::TrainingText.ask_for_training_action_with(squires))
     choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
     case choice
@@ -79,9 +76,9 @@ class Training
   end
 
   def squires_turn
-    squires.each_with_index do |squire, index| 
+    squires.each do |squire| 
       Fightable.describe_combat_between(squire, player)
-      wait_until_ready_to_go_on unless index >= squires.size - 1
+      wait_until_ready_to_go_on
     end
     print_message("Fin du tour des écuyers, à vous !")
   end
@@ -98,6 +95,4 @@ class Training
   def squires_are_not_stunt
     squires.none? { |squire| squire.stunt? }
   end
-
-
 end

@@ -4,6 +4,10 @@ class Training
   include Displayable
   include Validable
 
+  TRAINING_TITLE = 'Entrainement'.freeze
+  SOLO_TRAINING_TITLE = 'Entrainement Solo'.freeze
+  MULTI_TRAINING_TITLE = 'Entrainement en Equipe'.freeze
+
   attr_reader :player, :teamates, :squires
 
   def initialize(player)
