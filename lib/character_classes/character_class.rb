@@ -52,6 +52,10 @@ class Character
     end
   end
 
+  def stunt?
+    hp < 10
+  end
+
   def defense_points
     agility + throw_die_of_4_times(1) + weapon.defense_bonus
   end
