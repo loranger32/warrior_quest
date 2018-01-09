@@ -51,17 +51,36 @@ class Training
   end
 
   def single_player_fight
+    launch_single_player_training_intro
+    print_message(Textable::TrainingText.begin_solo_training)
+    while player_is_not_stunt && squires_are_not_stunt
+      prompt(Textable::TrainingText.ask_for_training_action_with(squires))
+      break
+    end
+    puts "Fini!"
+  end
+
+  def launch_single_player_training_intro
     set_two_squires
     clear_screen
     titleize('Entrainement solo')
     print_message(Textable::TrainingText.present_solo_training)
     show_squires
     show_squires_stats
-    wait_until_ready_to_start_training_fight
+    wait_until_ready_to_go_on
   end
 
-  def wait_until_ready_to_start_training_fight
-    
+  def wait_until_ready_to_go_on
+    prompt("Prêts ? (appuer sur une touche pour continuer)")
+    gets.chomp
+  end
+
+  def player_is_not_stunt
+    !player.stunt?
+  end
+
+  def squires_are_not_stunt
+    squires.none? { |squire| squire.stunt? }
   end
 
 

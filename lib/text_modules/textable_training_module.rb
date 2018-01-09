@@ -32,5 +32,20 @@ module Textable
  étudiants !!!
       PRESENT_SOLO_TRAINING
     end
+
+    def begin_solo_training
+      <<~BEGIN_SOLO_TRAINING
+      Bien ! Les écuyers sont en place pour le combat.
+      BEGIN_SOLO_TRAINING
+    end
+
+    def ask_for_training_action_with(squires)
+      <<~ASK_FOR_TRAINING_ACTION
+      Que souhaitez-vous faire ?
+      - attaquer #{squires.first} (#{squires.first.hp} points de vie) - tapez '1'
+      - attaquer #{squires.last} (#{squires.last.hp} points de vie) - tapez '2'
+      - vous soigner - tapez 'h'
+      ASK_FOR_TRAINING_ACTION
+    end
   end
 end
