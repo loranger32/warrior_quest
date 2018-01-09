@@ -38,8 +38,8 @@ class Game
     launch_intro
     game_choice = retrieve_player_choice_of_game
     case game_choice
-    when 'n' then launch_game
-    when 'e' then launch_training
+    when 'n' then launch_game(player)
+    when 'e' then launch_training(player)
     when 'l' then restore_game
     end
   end
@@ -55,8 +55,8 @@ class Game
     print_message(Textable::Introduction.greet_and_explain(player.name))
   end
 
-  def launch_training
-    training = Training.new
+  def launch_training(player)
+    training = Training.new(player)
     training.play
   end
 

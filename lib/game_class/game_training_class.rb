@@ -6,8 +6,8 @@ class Training
 
   attr_reader :player, :teamates, :squires
 
-  def initialize
-    @player   = Warrior.create_hero
+  def initialize(player)
+    @player   = player
     @teamates = set_teamates
     @squires  = [] 
   end
