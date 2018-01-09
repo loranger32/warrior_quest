@@ -1,4 +1,6 @@
 class Training
+  SINGLE_TRAINING_ACTIONS = %w(1 2 h).freeze
+
   def play
     clear_screen
     titleize "Bienvenue à l'entrainement !"
@@ -55,9 +57,14 @@ class Training
     print_message(Textable::TrainingText.begin_solo_training)
     while player_is_not_stunt && squires_are_not_stunt
       prompt(Textable::TrainingText.ask_for_training_action_with(squires))
+      choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
+      case choice
+      when '1' then Fightable.describe_combat_between(player, squires.first)
+      when '2' then Fightable.describe_combat_between(player, squires.last)
+      when 'h' then Healable.describe_self_healing(player)
+      end
       break
     end
-    puts "Fini!"
   end
 
   def launch_single_player_training_intro
