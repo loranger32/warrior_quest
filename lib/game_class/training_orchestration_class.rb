@@ -55,7 +55,7 @@ class Training
       squires_turn
     end
     unless one_squire_died?
-      print_message("L'entrainement est terminé, les écuyers sont assomés.")
+      print_message(Textable::TrainingText.squires_are_all_stunt)
     end
   end
 
@@ -71,7 +71,7 @@ class Training
 
   def player_turn
     clear_screen_with_title(SOLO_TRAINING_TITLE)
-    prompt(Textable::TrainingText.ask_for_training_action_with(squires))
+    prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
     choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
     case choice
     when '1' then Fightable.describe_combat_between(player, squires.first)
