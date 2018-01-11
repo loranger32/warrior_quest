@@ -53,7 +53,11 @@ class Character
   end
 
   def stunt?
-    hp < 10
+    hp < 20
+  end
+
+  def dead?
+    hp <= 0
   end
 
   def defense_points

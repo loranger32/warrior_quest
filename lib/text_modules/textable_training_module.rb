@@ -30,6 +30,9 @@ module Textable
       Vous entrez dans la salle d'entrainement. Deux écuyers sont là pour vous\
  servir d'adversaire de combat. Allez-y doucement avec eux, ce sont des\
  étudiants !!!
+
+      Le combat s'arrêtera lorsque soit vous, soit les deux écuyers\
+ descenderont en dessous de 20 points de vie. Cela correspond à être bien sonné!
       PRESENT_SOLO_TRAINING
     end
 
@@ -46,6 +49,18 @@ module Textable
       - attaquer #{squires.last} (#{squires.last.hp} points de vie) - tapez '2'
       - vous soigner - tapez 'h'
       ASK_FOR_TRAINING_ACTION
+    end
+
+    def too_bad_a_squire_passe_out(squire)
+      <<~SQUIRE_PASSED_OUT
+      Oh non !!!! Vous avez tué un écuyer !!!!
+
+      Ce n'est pas sérieux çà, #{squire} était un écuyer tout neuf...\
+ Et puis il va falloir tout nettoyer maintenant, flûte !
+
+      Un peu penaud, vous rangez votre arme. L'écuyer restant, terrorisé,\
+ vous regarde vous en aller...
+      SQUIRE_PASSED_OUT
     end
   end
 end
