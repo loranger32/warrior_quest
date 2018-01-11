@@ -3,7 +3,7 @@ class Squire < Character
                weapon: :sword }.freeze
 
   def self.create(name)
-    new(name: name, hp: 110, strength: 11, spirit: 14, agility: 14)
+    new(name: name, hp: 85, strength: 11, spirit: 9, agility: 12)
   end
 
   private

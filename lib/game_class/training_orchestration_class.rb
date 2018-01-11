@@ -47,10 +47,16 @@ class Training
     print_message(Textable::TrainingText.begin_solo_training)
     while player_is_not_stunt && squires_are_not_stunt
       player_turn
+      if one_squire_died?
+        print_message(squire_passed_out(dead_squire))
+        break
+      end
       wait_until_ready_to_go_on
       squires_turn
     end
-    print_message("L'entrainement est terminé, un joueur est assomé.")
+    unless one_squire_died?
+      print_message("L'entrainement est terminé, les écuyers sont assomés.")
+    end
   end
 
   def launch_single_player_training_intro
@@ -72,15 +78,21 @@ class Training
     when '2' then Fightable.describe_combat_between(player, squires.last)
     when 'h' then Healable.describe_self_healing(player)
     end
-    print_message("Fin du tour, aux écuyers de jouer !")
+    print_message("Fin du tour, aux écuyers de jouer !") unless one_squire_died?
   end
 
   def squires_turn
-    squires.each do |squire| 
-      Fightable.describe_combat_between(squire, player)
+    squires.each do |squire|
+      if squire.stunt?
+        print_message("#{squire} est évanoui, il ne peut pas attaquer.")
+      else
+        Fightable.describe_combat_between(squire, player)
+      end
       wait_until_ready_to_go_on
     end
-    print_message("Fin du tour des écuyers, à vous !")
+    unless !squires_are_not_stunt
+      print_message("Fin du tour des écuyers, à vous !")
+    end
   end
 
   def wait_until_ready_to_go_on
@@ -93,6 +105,18 @@ class Training
   end
 
   def squires_are_not_stunt
-    squires.none? { |squire| squire.stunt? }
+    !squires.all? { |squire| squire.stunt? }
+  end
+
+  def squire_passed_out(squire)
+    print_message(Textable::TrainingText.too_bad_a_squire_passe_out(squire))
+  end
+
+  def one_squire_died?
+    squires.any? { |squire| squire.dead? }
+  end
+
+  def dead_squire
+    squires.find { |squire| squire.dead? }
   end
 end
