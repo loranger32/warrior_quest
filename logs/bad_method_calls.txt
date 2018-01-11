@@ -1,0 +1,10 @@
+7 On {Time.now}, method hello was called on #<Person:0x00007f85cc8f6ef8> with no arguments}.
+
+7 On {Time.now}, method hello was called on #<Person:0x00007fe82d8fb638> with no arguments}.
+
+On {Time.now}, method stop was called on #<Game:0x00007fc40ea83458> with no arguments}.
+
+On 2018-01-11 19:37:30 +0100, method stop was called on #<Game:0x00007f8b3524f3c0> with no arguments.
+
+On 2018-01-11 19:37:53 +0100, method :stop was called on #<Game:0x00007f84c0202f78> with no arguments.
+

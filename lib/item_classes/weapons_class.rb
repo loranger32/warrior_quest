@@ -1,5 +1,7 @@
 # Abstract Class - not designed for instantiation
 class Weapon
+  include Logging
+  
   attr_accessor :name, :attack_bonus, :defense_bonus, :durability
   attr_reader :max_durability
 

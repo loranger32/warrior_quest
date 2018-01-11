@@ -2,6 +2,8 @@ require_relative '../system_classes/errors_class'
 
 # Class for dies of all sorts
 class Die
+  include Logging
+  
   attr_reader :faces
 
   def initialize(faces = 6)
