@@ -43,7 +43,7 @@ module Validable
   end
 
   def self.not_empty?(choice)
-    !choice.empty? && choice.match?(/[a-zA-Z]/)
+    !choice.blank?
   end
 
   def self.has_no_numbers?(choice)

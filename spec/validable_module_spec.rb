@@ -1,3 +1,4 @@
+require 'active_support/core_ext/string'
 require_relative '../lib/game_class/game_class'
 
 RSpec.describe 'Validable' do
