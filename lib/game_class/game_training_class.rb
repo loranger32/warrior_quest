@@ -3,6 +3,7 @@ class Training
   include Textable
   include Displayable
   include Validable
+  include Logging
 
   TRAINING_TITLE = 'Entrainement'.freeze
   SOLO_TRAINING_TITLE = 'Entrainement Solo'.freeze

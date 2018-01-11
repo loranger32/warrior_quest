@@ -1,10 +1,11 @@
+require_relative '../system_classes/bad_method_call_logging'
+require_relative '../system_classes/errors_class'
 require_relative '../character_classes/character_class'
 require_relative '../character_classes/warrior_class'
 require_relative '../character_classes/dwarf_class'
 require_relative '../character_classes/elve_class'
 require_relative '../character_classes/wizard_class'
 require_relative '../character_classes/squire_class'
-require_relative '../system_classes/errors_class'
 require_relative '../item_classes/die_class'
 require_relative '../item_modules/rollable_module'
 require_relative '../item_classes/space_class'
@@ -24,6 +25,9 @@ class Game
   include Textable
   include Displayable
   include Validable
+  include Logging
+
+  GAME_TITLE = 'La Quête du Chevalier'.freeze
 
   attr_accessor :player, :teamates, :game_spaces, :current_space
 
@@ -36,24 +40,33 @@ class Game
 
   def play
     launch_intro
-    #choose_game_type
+    choose_game_type
+  end
+
+  def launch_intro
+    clear_screen
+    titleize(GAME_TITLE)
+    print_message(Textable::Introduction.welcome)
+    #sleep(2)
+    ask_player_name
+    clear_screen
+    titleize(GAME_TITLE)
+    print_message(Textable::Introduction.greet_and_explain(player.name))
+  end
+
+  def return_from_training
+    clear_screen_with_title(GAME_TITLE)
+    print_message("Vous êtes de retour de l'entrainement !")
+    choose_game_type
+  end
+
+  def choose_game_type
     game_choice = retrieve_player_choice_of_game
     case game_choice
     when 'n' then launch_game(player)
     when 'e' then launch_training(player, self)
     when 'l' then restore_game
     end
-  end
-
-  def launch_intro
-    clear_screen
-    titleize(Textable::Introduction::GAME_TITLE)
-    print_message(Textable::Introduction.welcome)
-    #sleep(2)
-    ask_player_name
-    clear_screen
-    titleize(Textable::Introduction::GAME_TITLE)
-    print_message(Textable::Introduction.greet_and_explain(player.name))
   end
 
   def launch_training(player, game)

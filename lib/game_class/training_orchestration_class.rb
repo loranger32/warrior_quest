@@ -13,7 +13,7 @@ class Training
         break
       end
     end
-    game.play
+    game.return_from_training
   end
 
   def play_single_or_multiplayer_training
@@ -134,7 +134,6 @@ class Training
   end
 
   def play_again?
-    wait_until_ready_to_go_on
     prompt("Souhaitez-vous refaire un combat d'entrainement ? ('o', 'n')")
     choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
     choice == 'o'

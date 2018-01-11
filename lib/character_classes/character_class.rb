@@ -6,6 +6,7 @@ require_relative '../character_modules/fightable_module'
 class Character
   include Rollable
   include Fightable
+  include Logging
 
   attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
                 :last_inflicted_damage

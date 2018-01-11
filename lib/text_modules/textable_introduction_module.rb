@@ -2,8 +2,6 @@
 module Textable
   # Introduction texts
   module Introduction
-    GAME_TITLE = 'La Quête du Chevalier'.freeze
-
     module_function
 
     def welcome
