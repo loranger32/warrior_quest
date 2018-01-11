@@ -4,6 +4,19 @@ class Training
   def play
     clear_screen_with_title(TRAINING_TITLE)
     present_training
+    loop do
+      play_single_or_multiplayer_training
+      if play_again?
+        clear_screen_with_title(TRAINING_TITLE)
+        print_message("C'est parti pour une nouvelle séance d'entrainement !")
+      else
+        break
+      end
+    end
+    game.play
+  end
+
+  def play_single_or_multiplayer_training
     training_type = ask_for_single_or_multiplayer_fight
     case training_type
     when 's' then single_player_fight
@@ -118,5 +131,12 @@ class Training
 
   def dead_squire
     squires.find { |squire| squire.dead? }
+  end
+
+  def play_again?
+    wait_until_ready_to_go_on
+    prompt("Souhaitez-vous refaire un combat d'entrainement ? ('o', 'n')")
+    choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
+    choice == 'o'
   end
 end
