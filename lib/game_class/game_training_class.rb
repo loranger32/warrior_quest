@@ -8,12 +8,13 @@ class Training
   SOLO_TRAINING_TITLE = 'Entrainement Solo'.freeze
   MULTI_TRAINING_TITLE = 'Entrainement en Equipe'.freeze
 
-  attr_reader :player, :teamates, :squires
+  attr_reader :player, :teamates, :squires, :game
 
-  def initialize(player)
+  def initialize(player, game)
     @player   = player
     @teamates = set_teamates
-    @squires  = [] 
+    @squires  = []
+    @game = game
   end
 
   private
