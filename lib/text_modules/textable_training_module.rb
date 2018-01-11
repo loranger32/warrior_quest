@@ -1,7 +1,7 @@
 module Textable
   module TrainingText
     module_function
-
+    
     def present_training
       <<~TRAINING_PRESENTATION
 
@@ -42,13 +42,23 @@ module Textable
       BEGIN_SOLO_TRAINING
     end
 
-    def ask_for_training_action_with(squires)
+    def ask_for_training_action_with(player, squires)
       <<~ASK_FOR_TRAINING_ACTION
       Que souhaitez-vous faire ?
       - attaquer #{squires.first} (#{squires.first.hp} points de vie) - tapez '1'
       - attaquer #{squires.last} (#{squires.last.hp} points de vie) - tapez '2'
-      - vous soigner - tapez 'h'
+      - vous soigner (#{player.hp} points de vie)- tapez 'h'
       ASK_FOR_TRAINING_ACTION
+    end
+
+    def squires_are_all_stunt
+      <<~SQUIRES_STUNT
+      Bravo !! Les deux écuyers sont évanouis, vous avez bien combattu !
+
+      Vous regardez les écuyers d'un air satisfait, et vous rangez vore arme.
+
+      Vos ennemis n'ont qu'à bien se tenir...
+      SQUIRES_STUNT
     end
 
     def too_bad_a_squire_passe_out(squire)
