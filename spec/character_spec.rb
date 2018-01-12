@@ -3,6 +3,7 @@ require_relative '../lib/character_classes/warrior_class'
 require_relative '../lib/character_classes/dwarf_class'
 require_relative '../lib/character_classes/elve_class'
 require_relative '../lib/character_classes/wizard_class'
+require_relative '../lib/character_classes/squire_class'
 require_relative '../lib/item_classes/weapons_class'
 require_relative '../lib/item_classes/die_class'
 
@@ -256,7 +257,9 @@ describe 'Elve' do
   include_examples "A Character object", Elve
 end
 
-
+describe 'Squire' do
+  include_examples "A Character object", Squire
+end
 
 
 #     before do

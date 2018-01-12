@@ -1,10 +1,132 @@
-7 On {Time.now}, method hello was called on #<Person:0x00007f85cc8f6ef8> with no arguments}.
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<BareHands:0x00007f82eb360478> with 20.
 
-7 On {Time.now}, method hello was called on #<Person:0x00007fe82d8fb638> with no arguments}.
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<Sword:0x00007f82eaa98fc0> with 20.
 
-On {Time.now}, method stop was called on #<Game:0x00007fc40ea83458> with no arguments}.
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<Axe:0x00007f82eb865b30> with 20.
 
-On 2018-01-11 19:37:30 +0100, method stop was called on #<Game:0x00007f8b3524f3c0> with no arguments.
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<Staff:0x00007f82ec04e6f8> with 20.
 
-On 2018-01-11 19:37:53 +0100, method :stop was called on #<Game:0x00007f84c0202f78> with no arguments.
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<Spear:0x00007f82eaa8b320> with 20.
+
+On 2018-01-12 16:25:45 +0100, method :max_durability= was called on #<ShortSword:0x00007f82ec036940> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<BareHands:0x00007f9609050360> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<Sword:0x00007f960798ce58> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<Axe:0x00007f96090419c8> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<Staff:0x00007f9608a1a630> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<Spear:0x00007f9609027258> with 20.
+
+On 2018-01-12 16:26:42 +0100, method :max_durability= was called on #<ShortSword:0x00007f960793e910> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<BareHands:0x00007fe1ff8d00c0> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<Sword:0x00007fe1ff08cbe8> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<Axe:0x00007fe1ff085758> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<Staff:0x00007fe1ff0663d0> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<Spear:0x00007fe1ff05efe0> with 20.
+
+On 2018-01-12 16:27:01 +0100, method :max_durability= was called on #<ShortSword:0x00007fe1ff046648> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<BareHands:0x00007fafd79199a0> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<Sword:0x00007fafd73a4ad8> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<Axe:0x00007fafd734b3c0> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<Staff:0x00007fafd7308110> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<Spear:0x00007fafd802ed58> with 20.
+
+On 2018-01-12 16:32:05 +0100, method :max_durability= was called on #<ShortSword:0x00007fafd7231070> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<BareHands:0x00007fe26f0c4690> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<Sword:0x00007fe26f0ad1e8> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<Axe:0x00007fe26f09dd88> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<Staff:0x00007fe26e90a940> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<Spear:0x00007fe26e9035a0> with 20.
+
+On 2018-01-12 16:32:57 +0100, method :max_durability= was called on #<ShortSword:0x00007fe26f076be8> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<BareHands:0x00007ff2f0aedf90> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<Sword:0x00007ff2f205e4b0> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<Axe:0x00007ff2f0ad70d8> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<Staff:0x00007ff2f0a119f0> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<Spear:0x00007ff2f1881210> with 20.
+
+On 2018-01-12 16:38:18 +0100, method :max_durability= was called on #<ShortSword:0x00007ff2f12e3a10> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<BareHands:0x00007f86ee8db388> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<Sword:0x00007f86ed96f020> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<Axe:0x00007f86ee34d8d0> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<Staff:0x00007f86ee35f260> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<Spear:0x00007f86ed92c3d8> with 20.
+
+On 2018-01-12 16:43:37 +0100, method :max_durability= was called on #<ShortSword:0x00007f86ed914648> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<BareHands:0x00007fbf643dd490> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<Sword:0x00007fbf6439cc38> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<Axe:0x00007fbf6437e9b8> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<Staff:0x00007fbf64353ee8> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<Spear:0x00007fbf64317290> with 20.
+
+On 2018-01-12 16:49:01 +0100, method :max_durability= was called on #<ShortSword:0x00007fbf642d5e58> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<BareHands:0x00007f827a874ed0> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<Sword:0x00007f8279879d28> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<Axe:0x00007f827a255248> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<Staff:0x00007f8279890550> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<Spear:0x00007f827a89d330> with 20.
+
+On 2018-01-12 16:49:52 +0100, method :max_durability= was called on #<ShortSword:0x00007f827a8a5058> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<BareHands:0x00007fd1f0a1b200> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<Sword:0x00007fd1f09f3c28> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<Axe:0x00007fd1f0308c10> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<Staff:0x00007fd1f02b7270> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<Spear:0x00007fd1f0284af0> with 20.
+
+On 2018-01-12 16:55:51 +0100, method :max_durability= was called on #<ShortSword:0x00007fd1f0267f40> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<BareHands:0x00007fdeffa83348> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<Sword:0x00007fdf000c7bf0> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<Axe:0x00007fdf0005ec68> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<Staff:0x00007fdf00adb650> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<Spear:0x00007fdf00ab1698> with 20.
+
+On 2018-01-12 16:58:10 +0100, method :max_durability= was called on #<ShortSword:0x00007fdf00a9e700> with 20.
 
