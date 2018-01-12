@@ -1,4 +1,5 @@
 require_relative '../system_classes/errors_class'
+require_relative '../system_classes/bad_method_call_logging'
 
 # Class for dies of all sorts
 class Die

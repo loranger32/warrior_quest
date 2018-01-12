@@ -1,5 +1,6 @@
 # Module for healing - to be included in relevant characters class
 module Healable
+  SIMPLE_HEAL = 30
   def self.describe_healing_of(healer, other_char)
     puts 'LE SORTILEGE DE SOINS DEBUTE: '
     puts "#{healer.name} soigne #{other_char.name} avec son sort de soins."
@@ -23,10 +24,10 @@ module Healable
   end
 
   def heal(other_person)
-    other_person.restore_hp_by(30)
+    other_person.restore_hp_by(SIMPLE_HEAL)
   end
 
   def heal_self
-    restore_hp_by(30)
+    restore_hp_by(SIMPLE_HEAL)
   end
 end
