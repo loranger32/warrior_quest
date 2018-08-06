@@ -1,4 +1,4 @@
-# Warrior's quest
+# A Knight's Quest
 
 This is an exercise text game about a warrior tasked to save a realm, fight a
 dragon, get a treasure back and rescue a princess.

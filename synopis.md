@@ -4,7 +4,7 @@ Le Roi Arthur règne sur un paisible royaume.
 
 Les récoltes sont bonnes, les gens sont heureux, le trésor est bien garni et il fait toujours beau.
 
-Il a une fille, la princesse Alice. Elle est jolie, douce, et tout le monde l'aime bien.
+Il a une fille, la princesse Alice. Elle est jolie, douce et tout le monde l'aime bien.
 
 Alice a un amoureux, vous, le chevalier et vous allez vous marrier.
 
@@ -22,7 +22,7 @@ Plusieurs aventuriers sont au château pour vous aider dans votre quête:
 
 - *Gandalf* le magicien (peut lancer des sorts puissants et aime bien lire)
 - *Grootha* le nain (très résistant, et susceptible)
-- *Kran* le barbare (très malin du biceps, pas trop du cerveau)
+- *Kran* le barbare (très malin du biceps, beaucoup moins du cerveau)
 - *Toodou* l'elfe (fragile, mais peut soigner les joueurs)
 
 Vous pouvez en choisir deux pour vous accompagner.
@@ -32,10 +32,10 @@ Vous pouvez en choisir deux pour vous accompagner.
 
 Chaque personnage dispose de caractéristiques qui définissent ses aptitudes au combat, à la magie et à l'aventure.
 
-- *Points de vie*: détermine le nombre de points de dégats qu'un personnage peut encaisser. Lorsque ce nombre tombe à 0, le personnage est mort. Les points de vie peuvent être restaurés par un sortilège ou en buvant une potion de vie, mais ils ne peuvent jamais dépasser le niveau initial.
+- *Points de vie*: déterminent le nombre de points de dégats qu'un personnage peut encaisser. Lorsque ce nombre tombe à 0, le personnage est mort. Les points de vie peuvent être restaurés par un sortilège ou en buvant une potion de vie, mais ils ne peuvent jamais dépasser le niveau initial.
 - *Force*: représente la force d'un personnage, les armes qu'il peut porter. Plus la force d'un personnage est élevée, plus les dégâts qu'il inflige dans une attaque au corps à corps sont élévés.
 - *Esprit*: représente la force magique d'un personnage. Les points d'esprit déterminent quels sorts un personnage peut lancer, et ses points de mana.  Plus un joueur a de points d'esprit, plus les sorts qu'il lance sont puissants et infligent de dégats.
-- *Mana*: représente l'énergie magique d'un personnage. Chaque sortilège coûte de l'énergie magique. Pour lancer un sort, il faut disposer du nombre de points de mana requis pour pouvoir le lancer. Lorsque les points de mana sont à zéro, un personnage ne peut plus lancer aucun sort. Les points de mana se reconstituent automatiquement à minuit. Ils peuvent également être augmentés en buvant une potion, sans jamais pouvoir dépasser le maximum autorisé par les points d'esprit du joueur.
+- *Mana*: représente l'énergie magique d'un personnage. Chaque sortilège coûte de l'énergie magique. Pour lancer un sort, il faut disposer du nombre de points de mana requis pour pouvoir le lancer. Lorsque les points de mana sont à zéro, un personnage ne peut plus lancer aucun sort. Les points de mana se reconstituent automatiquement d'un point par tour. Ils peuvent également être augmentés en buvant une potion, sans jamais pouvoir dépasser le maximum autorisé par les points d'esprit du joueur.
 - *Habileté*: représente l'habileté d'un personnage. Plus un personnage est habile, plus il pourra accomplir d'action de manière précise, comme effectuer un saut dangereux ou lancer un couteau. Le joueur le plus habile pourra aussi attaquer plus vite.
 
 

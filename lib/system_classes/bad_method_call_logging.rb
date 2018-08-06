@@ -24,7 +24,8 @@ module Logging
   def bad_method_call(method, *args)
     arguments = args.empty? ? 'no arguments' : args.join(', ') 
     <<~ERROR_LOG
-    On #{Time.now}, method :#{method} was called on #{self} with #{arguments}.
+    On #{Time.now}, method :#{method} was called on #{self} with the 
+    following arguments: #{arguments}.
 
     ERROR_LOG
   end
