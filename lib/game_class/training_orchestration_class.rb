@@ -7,8 +7,8 @@ class Training
     loop do
       play_single_or_multiplayer_training
       if play_again?
-        clear_screen_with_title(TRAINING_TITLE)
-        print_message("C'est parti pour une nouvelle séance d'entrainement !")
+        player.restore_max_hp
+        display_new_training
       else
         break
       end
@@ -27,6 +27,11 @@ class Training
   def present_training
     print_message(Textable::TrainingText.present_training)
     show_team
+  end
+
+  def display_new_training
+    clear_screen_with_title(TRAINING_TITLE)
+    print_message("C'est parti pour une nouvelle séance d'entrainement !")
   end
 
   def show_team
@@ -57,8 +62,8 @@ class Training
 
   def single_player_fight
     launch_single_player_training_intro
-    print_message(Textable::TrainingText.begin_solo_training)
-    while player_is_not_stunt && squires_are_not_stunt
+    
+    while player_is_not_stunt && !all_squires_are_stunt?
       player_turn
       if one_squire_died?
         print_message(squire_passed_out(dead_squire))
@@ -80,6 +85,7 @@ class Training
     show_squires_stats
     wait_until_ready_to_go_on
     clear_screen_with_title(SOLO_TRAINING_TITLE)
+    print_message(Textable::TrainingText.begin_solo_training)
   end
 
   def player_turn
@@ -103,22 +109,22 @@ class Training
       end
       wait_until_ready_to_go_on
     end
-    unless !squires_are_not_stunt
+    unless all_squires_are_stunt?
       print_message("Fin du tour des écuyers, à vous !")
     end
   end
 
   def wait_until_ready_to_go_on
-    prompt("Prêts ? (appuer sur une touche pour continuer)")
-    gets.chomp
+    prompt("Prêts ? (appuyer sur une touche pour continuer)")
+    gets
   end
 
   def player_is_not_stunt
     !player.stunt?
   end
 
-  def squires_are_not_stunt
-    !squires.all? { |squire| squire.stunt? }
+  def all_squires_are_stunt?
+    squires.all?(&:stunt?)
   end
 
   def squire_passed_out(squire)
@@ -126,11 +132,11 @@ class Training
   end
 
   def one_squire_died?
-    squires.any? { |squire| squire.dead? }
+    squires.any?(&:dead?)
   end
 
   def dead_squire
-    squires.find { |squire| squire.dead? }
+    squires.find(&:dead?)
   end
 
   def play_again?

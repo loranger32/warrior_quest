@@ -24,6 +24,7 @@ class Game
   include Rollable
   include Textable
   include Displayable
+  extend Displayable
   include Validable
   include Logging
 
@@ -47,7 +48,6 @@ class Game
     clear_screen
     titleize(GAME_TITLE)
     print_message(Textable::Introduction.welcome)
-    #sleep(2)
     ask_player_name
     clear_screen
     titleize(GAME_TITLE)
@@ -76,7 +76,6 @@ class Game
 
   def ask_player_name
     print_message(Textable::Introduction.ask_name)
-    prompt('Voulez-vous les voir ? (\'o\', \'n\')')
     show_or_skip_help
     player.name = Validable.obtain_a_valid_name
   end
@@ -94,6 +93,7 @@ class Game
   private
 
   def show_or_skip_help
+    prompt('Voulez-vous les voir ? (\'o\', \'n\')')
     choice = gets.chomp.downcase
     if choice == 'o'
       print_message(Textable::Introduction.name_rules)

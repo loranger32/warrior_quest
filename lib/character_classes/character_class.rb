@@ -53,6 +53,10 @@ class Character
     end
   end
 
+  def restore_max_hp
+    self.hp = max_hp
+  end
+
   def stunt?
     hp < 20
   end

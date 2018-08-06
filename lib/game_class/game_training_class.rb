@@ -2,6 +2,7 @@ class Training
   include Rollable
   include Textable
   include Displayable
+  extend Displayable
   include Validable
   include Logging
 
