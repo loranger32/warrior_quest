@@ -1,5 +1,10 @@
+require_relative 'displayable_module'
+
 # A module for all sort of input validation - only module level methods
 module Validable
+  include Displayable
+  extend Displayable
+
   VALID_GAME_CHOICES = %w(n e l).freeze
 
 # ========== Generic input validation mechanism ==========
@@ -7,10 +12,10 @@ module Validable
   def self.obtain_a_valid_input_from_list(valid_choices_list)
     choice = gets.chomp
     until valid_choice?(choice, valid_choices_list)
-      Displayable.print_error_message("Choix invalide !")
-      Displayable.print_error_message("Les choix valides sont:")
-      Displayable.print_error_message(valid_choices_list.join(', ') + '.')
-      Displayable.prompt("Quel est votre choix ?")
+      print_error_message("Choix invalide !")
+      print_error_message("Les choix valides sont:")
+      print_error_message(valid_choices_list.join(', ') + '.')
+      prompt("Quel est votre choix ?")
       choice = gets.chomp
     end
     choice
@@ -29,8 +34,8 @@ module Validable
   def self.obtain_a_valid_name
     choice = gets.chomp
     until valid_name?(choice)
-      Displayable.print_error_message('Nom invalide !')
-      Displayable.prompt("Essayez à nouveau:")
+      print_error_message('Nom invalide !')
+      prompt("Essayez à nouveau:")
       choice = gets.chomp
     end
     choice
@@ -67,10 +72,10 @@ module Validable
   def self.obtain_a_valid_game_choice
     choice = gets.chomp
     until valid_game_choice?(choice)
-      Displayable.print_error_message("Choix invalide !")
-      Displayable.print_error_message("Les choix valides sont:")
-      Displayable.print_error_message(VALID_GAME_CHOICES.join(', ') + '.')
-      Displayable.prompt(Textable::Introduction.ask_player_what_to_do)
+      print_error_message("Choix invalide !")
+      print_error_message("Les choix valides sont:")
+      print_error_message(VALID_GAME_CHOICES.join(', ') + '.')
+      prompt(Textable::Introduction.ask_player_what_to_do)
       choice = gets.chomp
     end
     choice

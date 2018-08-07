@@ -33,4 +33,9 @@ module Displayable
     clear_screen
     titleize(title)
   end
+
+  def wait_until_ready_to_go_on
+    prompt("Prêts ? (appuyer sur une touche pour continuer)")
+    gets
+  end
 end

@@ -48,7 +48,17 @@ module Textable
       - attaquer #{squires.first} (#{squires.first.hp} points de vie) - tapez '1'
       - attaquer #{squires.last} (#{squires.last.hp} points de vie) - tapez '2'
       - vous soigner (#{player.hp} points de vie)- tapez 'h'
+      - voir vos statistiques - tapez 's'
+      - voir les statistiques de #{squires.first} - tapez 's1'
+      - voir les statistiques de #{squires.last} - tapez 's2'
       ASK_FOR_TRAINING_ACTION
+    end
+
+    def player_is_stunt
+      <<~PLAYER_IS_STUNT
+      Si deux faibles écuyers peuvent vous battre, vous n'êtes vraiment pas à \
+ la hauteur... RETOURNEZ VOUS ENTRAINER !!!
+      PLAYER_IS_STUNT
     end
 
     def squires_are_all_stunt
@@ -59,6 +69,14 @@ module Textable
 
       Vos ennemis n'ont qu'à bien se tenir...
       SQUIRES_STUNT
+    end
+
+    def unexpected_training_ending
+      <<~UNEXPECTED_TRAING_ENDING
+      L'entrainement s'est terminé, mais il semble que ni vous ni les écuyers \
+ne soyez assommés. Il doit y avoir une erreur dans le programme, \
+adressez-vous à son créateur.
+      UNEXPECTED_TRAING_ENDING
     end
 
     def too_bad_a_squire_passe_out(squire)

@@ -1,5 +1,8 @@
 class Training
-  SINGLE_TRAINING_ACTIONS = %w(1 2 h).freeze
+  SINGLE_TRAINING_ACTIONS = %w[1 2 h s s1 s2].freeze
+  MULTIPLAYER_TRANING_ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h].freeze
+
+  ####### Common Methods To Both Single And Multiplayer Training ###############
 
   def play
     clear_screen_with_title(TRAINING_TITLE)
@@ -14,6 +17,10 @@ class Training
       end
     end
     game.return_from_training
+  end
+
+  def show_player_stats
+    puts player.stats_display
   end
 
   def play_single_or_multiplayer_training
@@ -34,14 +41,24 @@ class Training
     print_message("C'est parti pour une nouvelle séance d'entrainement !")
   end
 
-  def show_team
-    print_message("Votre équipe est composée de:")
-    teamates.each { |teamate| puts "- #{teamate}".blue }
-  end
-
   def show_squires
     print_message("Vos adversaires d'entrainement sont:")
     squires.each { |squire| puts "- #{squire}".blue }
+  end
+
+  def show_individual_squire_stats(squire_number)
+    squire = case squire_number
+             when 1 then squires[0]
+             when 2 then squires[1]
+             when 3 then squires[2]
+             when 4 then squires[3]
+             end
+
+    puts squire.stats_display
+  end
+
+  def show_second_squire_stats
+    puts squires.last.stats_display
   end
 
   def show_squires_stats
@@ -54,73 +71,12 @@ class Training
     Validable.obtain_a_valid_input_from_list(['s', 'm'])
   end
 
-  def multiplayer_fight
-    set_four_squires
-    clear_screen_with_title(MULTI_TRAINING_TITLE)
-    show_squires
-  end
-
-  def single_player_fight
-    launch_single_player_training_intro
-    
-    while player_is_not_stunt && !all_squires_are_stunt?
-      player_turn
-      if one_squire_died?
-        print_message(squire_passed_out(dead_squire))
-        break
-      end
-      wait_until_ready_to_go_on
-      squires_turn
-    end
-    unless one_squire_died?
-      print_message(Textable::TrainingText.squires_are_all_stunt)
-    end
-  end
-
-  def launch_single_player_training_intro
-    set_two_squires
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    print_message(Textable::TrainingText.present_solo_training)
-    show_squires
-    show_squires_stats
-    wait_until_ready_to_go_on
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    print_message(Textable::TrainingText.begin_solo_training)
-  end
-
-  def player_turn
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
-    choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
-    case choice
-    when '1' then Fightable.describe_combat_between(player, squires.first)
-    when '2' then Fightable.describe_combat_between(player, squires.last)
-    when 'h' then Healable.describe_self_healing(player)
-    end
-    print_message("Fin du tour, aux écuyers de jouer !") unless one_squire_died?
-  end
-
-  def squires_turn
-    squires.each do |squire|
-      if squire.stunt?
-        print_message("#{squire} est évanoui, il ne peut pas attaquer.")
-      else
-        Fightable.describe_combat_between(squire, player)
-      end
-      wait_until_ready_to_go_on
-    end
-    unless all_squires_are_stunt?
-      print_message("Fin du tour des écuyers, à vous !")
-    end
-  end
-
-  def wait_until_ready_to_go_on
-    prompt("Prêts ? (appuyer sur une touche pour continuer)")
-    gets
-  end
-
-  def player_is_not_stunt
+  def player_is_not_stunt?
     !player.stunt?
+  end
+
+  def player_is_stunt?
+    player.stunt?
   end
 
   def all_squires_are_stunt?
@@ -144,4 +100,99 @@ class Training
     choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
     choice == 'o'
   end
+
+  ####### Single Player Training Methods #######################################
+
+  def launch_single_player_training_intro
+    set_two_squires
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
+    print_message(Textable::TrainingText.present_solo_training)
+    show_squires
+    wait_until_ready_to_go_on
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
+    print_message(Textable::TrainingText.begin_solo_training)
+  end
+
+  def single_player_fight
+    launch_single_player_training_intro
+    
+    while player_is_not_stunt? && !all_squires_are_stunt?
+      single_player_turn
+      if one_squire_died?
+        print_message(squire_passed_out(dead_squire))
+        break
+      end
+      wait_until_ready_to_go_on
+      single_player_training_squires_turn
+    end
+    unless one_squire_died?
+      if player_is_stunt?
+        print_message(Textable::TrainingText.player_is_stunt)
+      elsif all_squires_are_stunt?
+        print_message(Textable::TrainingText.squires_are_all_stunt)
+      else
+        print_message(Textable::TrainingText.unexpected_training_ending)
+      end
+    end
+  end
+
+  def single_player_turn
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
+    prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
+
+    choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
+    process_player_choice(choice)
+
+    unless one_squire_died? || player_is_stunt? || all_squires_are_stunt?
+      print_message("Fin de votre action, aux écuyers de jouer !")
+    end
+  end
+
+  def single_player_training_squires_turn
+    squires.each do |squire|
+      if squire.stunt?
+        print_message("#{squire} est évanoui, il ne peut pas attaquer.")
+      else
+        Fightable.describe_combat_between(squire, player)
+      end
+      wait_until_ready_to_go_on
+    end
+    unless all_squires_are_stunt?
+      print_message("Fin du tour des écuyers, à vous !")
+      wait_until_ready_to_go_on
+    end
+  end
+
+  def process_player_choice(choice)
+    case choice
+      when '1'  then Fightable.describe_combat_between(player, squires.first)
+      when '2'  then Fightable.describe_combat_between(player, squires.last)
+      when 'h'  then Healable.describe_self_healing(player)
+      when 's'  then show_player_stats
+      when 's1' then show_individual_squire_stats(1)
+      when 's2' then show_individual_squire_stats(2)
+    end
+  end
+
+  ####### Multiplayer raining Methods ##########################################
+
+  def multiplayer_fight
+    clear_screen_with_title(MULTI_TRAINING_TITLE)
+    show_team
+    show_player_stats
+    show_teammates_stats
+    set_four_squires
+    show_squires
+    show_squires_stats
+  end
+
+  def show_team
+    print_message("Votre équipe est composée de:")
+    teamates.each { |teamate| puts "- #{teamate}".blue }
+  end
+
+  def show_teammates_stats
+    teamates.each { |teamate| puts teamate.stats_display }
+  end
+
 end
