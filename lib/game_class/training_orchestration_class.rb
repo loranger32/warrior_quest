@@ -9,6 +9,8 @@ class Training
     present_training
     loop do
       play_single_or_multiplayer_training
+      break if @playing == false
+
       if play_again?
         player.restore_max_hp
         display_new_training
@@ -16,10 +18,11 @@ class Training
         break
       end
     end
+
     game.return_from_training
   end
 
-  def show_player_stats
+  def display_player_stats
     puts player.stats_display
   end
 
@@ -28,6 +31,7 @@ class Training
     case training_type
     when 's' then single_player_fight
     when 'm' then multiplayer_fight
+    when 'q' then quit_training
     end
   end
 
@@ -68,7 +72,7 @@ class Training
 
   def ask_for_single_or_multiplayer_fight
     prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
-    Validable.obtain_a_valid_input_from_list(['s', 'm'])
+    Validable.obtain_a_valid_input_from_list(['s', 'm', 'q'])
   end
 
   def player_is_not_stunt?
@@ -178,7 +182,7 @@ class Training
       when '1'  then Fightable.describe_combat_between(player, squires.first)
       when '2'  then Fightable.describe_combat_between(player, squires.last)
       when 'h'  then Healable.describe_self_healing(player)
-      when 's'  then show_player_stats
+      when 's'  then display_player_stats
       when 's1' then show_individual_squire_stats(1)
       when 's2' then show_individual_squire_stats(2)
       when 'q'  then quit_training
@@ -190,7 +194,7 @@ class Training
   def multiplayer_fight
     clear_screen_with_title(MULTI_TRAINING_TITLE)
     show_team
-    show_player_stats
+    display_player_stats
     show_teammates_stats
     set_four_squires
     show_squires

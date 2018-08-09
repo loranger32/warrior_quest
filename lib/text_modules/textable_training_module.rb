@@ -19,9 +19,9 @@ module Textable
     def ask_single_or_multiplayer_training
       <<~TRAINING_TYPE
       Quel type d'entrainement souhaitez vous:
-      - solo ('s')
-      - en équipe ('m')
-
+      - solo - tapez 's'
+      - en équipe - tapez 'm'
+      - retour au menu principal - tapez 'q'
       TRAINING_TYPE
     end
 
@@ -75,7 +75,8 @@ module Textable
     def quit_solo_training
       <<~QUIT_SOLO_TRAINING
       Ce combat est décidément bien ennuyeux. Vous rangez votre arme et \
-retournez dans la salle du trône.
+retournez vous asseoir sur le banc. Vous vous demandez ce que vous allez faire \
+maintenant.
       QUIT_SOLO_TRAINING
     end
 
