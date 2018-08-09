@@ -17,6 +17,7 @@ class Training
     @teamates = set_teamates
     @squires  = []
     @game = game
+    @playing = true
   end
 
   private

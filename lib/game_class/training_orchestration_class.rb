@@ -1,6 +1,6 @@
 class Training
-  SINGLE_TRAINING_ACTIONS = %w[1 2 h s s1 s2].freeze
-  MULTIPLAYER_TRANING_ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h].freeze
+  SINGLE_TRAINING_ACTIONS = %w[1 2 h s s1 s2 q].freeze
+  MULTIPLAYER_TRANING_ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h q].freeze
 
   ####### Common Methods To Both Single And Multiplayer Training ###############
 
@@ -101,6 +101,10 @@ class Training
     choice == 'o'
   end
 
+  def quit_training
+    @playing = false
+  end
+
   ####### Single Player Training Methods #######################################
 
   def launch_single_player_training_intro
@@ -122,11 +126,16 @@ class Training
         print_message(squire_passed_out(dead_squire))
         break
       end
+
+      break if @playing == false
+
       wait_until_ready_to_go_on
       single_player_training_squires_turn
     end
     unless one_squire_died?
-      if player_is_stunt?
+      if @playing == false
+        print_message(Textable::TrainingText.quit_solo_training)
+      elsif player_is_stunt?
         print_message(Textable::TrainingText.player_is_stunt)
       elsif all_squires_are_stunt?
         print_message(Textable::TrainingText.squires_are_all_stunt)
@@ -143,7 +152,8 @@ class Training
     choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
     process_player_choice(choice)
 
-    unless one_squire_died? || player_is_stunt? || all_squires_are_stunt?
+    unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
+      @playing == false
       print_message("Fin de votre action, aux écuyers de jouer !")
     end
   end
@@ -171,6 +181,7 @@ class Training
       when 's'  then show_player_stats
       when 's1' then show_individual_squire_stats(1)
       when 's2' then show_individual_squire_stats(2)
+      when 'q'  then quit_training
     end
   end
 

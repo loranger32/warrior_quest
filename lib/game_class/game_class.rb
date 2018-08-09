@@ -39,11 +39,14 @@ class Game
     @teamates      = set_teamates
     @game_spaces   = Space.spaces
     @current_space = @game_spaces[0]
+    @playing = true
   end
 
   def play
-    launch_intro
-    choose_game_type
+    while @playing
+      launch_intro
+      choose_game_type
+    end
   end
 
   def launch_intro
@@ -68,6 +71,7 @@ class Game
     when 'n' then launch_game(player)
     when 'e' then launch_training(player, self)
     when 'l' then restore_game
+    when 'q' then quit_game
     end
   end
 
@@ -109,5 +113,9 @@ class Game
     team << Elve.create_toudou
     team << Wizard.create_hocus_pocus
     team
+  end
+
+  def quit_game
+    @playing = false
   end
 end

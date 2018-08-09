@@ -5,7 +5,7 @@ module Validable
   include Displayable
   extend Displayable
 
-  VALID_GAME_CHOICES = %w(n e l).freeze
+  VALID_GAME_CHOICES = %w[n e l q].freeze
 
 # ========== Generic input validation mechanism ==========
 

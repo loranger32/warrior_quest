@@ -70,6 +70,7 @@ module Textable
     - commencer une nouvelle partie ? ('n')
     - réaliser un combat d'entraînement ? ('e')
     - reprendre une partie sauvegardée ? ('l')
+    - quitter le jeu ? ('q')
       ASK
     end
   end

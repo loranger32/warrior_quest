@@ -51,6 +51,7 @@ module Textable
       - voir vos statistiques - tapez 's'
       - voir les statistiques de #{squires.first} - tapez 's1'
       - voir les statistiques de #{squires.last} - tapez 's2'
+      - quitter l'entrainement - tapez 'q'
       ASK_FOR_TRAINING_ACTION
     end
 
@@ -69,6 +70,13 @@ module Textable
 
       Vos ennemis n'ont qu'à bien se tenir...
       SQUIRES_STUNT
+    end
+
+    def quit_solo_training
+      <<~QUIT_SOLO_TRAINING
+      Ce combat est décidément bien ennuyeux. Vous rangez votre arme et \
+retournez dans la salle du trône.
+      QUIT_SOLO_TRAINING
     end
 
     def unexpected_training_ending
