@@ -1,11 +1,6 @@
 # List Of Todos
 ---
 
-## Make Show Stats Action Not Counting As Turn Action
-
-Seeing stats during training should not be considered as a turn action.
-
-
 ## Allow player to choose his weapon in training
 
 - Ask player which weapon to use at the start of the training ;
@@ -57,6 +52,12 @@ Allow player to exit training each time it is his turn. Should redirect player
 to main training menu.
 
 
-## Add An Exit Option In The Main Training Menu _==> DONE ON 7/8/2018_
+## Add An Exit Option In The Main Training Menu _==> DONE ON 9/8/2018_
 
 Allow player to go back to main menu from the training main menu.
+
+
+## Make Show Stats Action Not Counting As Turn Action _==> DONE ON 9/8/2018_ 
+
+Seeing stats during training should not be considered as a turn action.
+

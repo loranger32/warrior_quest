@@ -1,6 +1,8 @@
 class Training
   SINGLE_TRAINING_ACTIONS = %w[1 2 h s s1 s2 q].freeze
+  SINGLE_TRAINING_VIEWING_ACTIONS = %w[s s1 s2].freeze
   MULTIPLAYER_TRANING_ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h q].freeze
+  MULTIPLAYER_TRANING_VIEWING_ACTIONS = %w[s s1 s2 s3 s4].freeze
 
   ####### Common Methods To Both Single And Multiplayer Training ###############
 
@@ -150,15 +152,22 @@ class Training
   end
 
   def single_player_turn
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
+    while true
+      clear_screen_with_title(SOLO_TRAINING_TITLE)
+      prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
 
-    choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
-    process_player_choice(choice)
+      choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
+      process_player_choice(choice)
 
-    unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
-      @playing == false
-      print_message("Fin de votre action, aux écuyers de jouer !")
+      
+      next wait_until_ready_to_go_on if SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
+
+      unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
+        @playing == false
+        print_message("Fin de votre action, aux écuyers de jouer !")
+      end
+
+      break
     end
   end
 
@@ -178,7 +187,7 @@ class Training
   end
 
   def process_player_choice(choice)
-    case choice
+    case choice.downcase
       when '1'  then Fightable.describe_combat_between(player, squires.first)
       when '2'  then Fightable.describe_combat_between(player, squires.last)
       when 'h'  then Healable.describe_self_healing(player)
