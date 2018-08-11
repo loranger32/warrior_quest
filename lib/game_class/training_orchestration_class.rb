@@ -11,7 +11,7 @@ class Training
     present_training
     loop do
       play_single_or_multiplayer_training
-      break if @playing == false
+      break if @training == false
 
       if play_again?
         player.restore_max_hp
@@ -24,8 +24,8 @@ class Training
     game.return_from_training
   end
 
-  def display_player_stats
-    puts player.stats_display
+  def present_training
+    print_message(Textable::TrainingText.present_training)
   end
 
   def play_single_or_multiplayer_training
@@ -37,14 +37,28 @@ class Training
     end
   end
 
-  def present_training
-    print_message(Textable::TrainingText.present_training)
-    show_team
+  def play_again?
+    prompt("Souhaitez-vous refaire un combat d'entrainement ? ('o', 'n')")
+    choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
+    choice == 'o'
   end
 
   def display_new_training
     clear_screen_with_title(TRAINING_TITLE)
     print_message("C'est parti pour une nouvelle séance d'entrainement !")
+  end
+
+  def ask_for_single_or_multiplayer_fight
+    prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
+    Validable.obtain_a_valid_input_from_list(['s', 'm', 'q'])
+  end
+
+  def quit_training
+    @training = false
+  end
+
+  def quit_training_session
+    @playing = false
   end
 
   def show_squires
@@ -60,21 +74,12 @@ class Training
              when 4 then squires[3]
              end
 
-    puts squire.stats_display
-  end
-
-  def show_second_squire_stats
-    puts squires.last.stats_display
+    squire.print_stats
   end
 
   def show_squires_stats
     print_message("Leurs statistiques sont:")
     squires.each { |squire| print_message(squire.stats_display) }
-  end
-
-  def ask_for_single_or_multiplayer_fight
-    prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
-    Validable.obtain_a_valid_input_from_list(['s', 'm', 'q'])
   end
 
   def player_is_not_stunt?
@@ -101,14 +106,8 @@ class Training
     squires.find(&:dead?)
   end
 
-  def play_again?
-    prompt("Souhaitez-vous refaire un combat d'entrainement ? ('o', 'n')")
-    choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
-    choice == 'o'
-  end
-
-  def quit_training
-    @playing = false
+  def display_player_stats
+    player.print_stats
   end
 
   ####### Single Player Training Methods #######################################
@@ -158,8 +157,7 @@ class Training
 
       choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
       process_player_choice(choice)
-
-      
+  
       next wait_until_ready_to_go_on if SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
 
       unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
@@ -194,7 +192,7 @@ class Training
       when 's'  then display_player_stats
       when 's1' then show_individual_squire_stats(1)
       when 's2' then show_individual_squire_stats(2)
-      when 'q'  then quit_training
+      when 'q'  then quit_training_session
     end
   end
 
@@ -216,7 +214,6 @@ class Training
   end
 
   def show_teammates_stats
-    teamates.each { |teamate| puts teamate.stats_display }
+    teamates.each { |teamate| teamate.print_stats }
   end
-
 end

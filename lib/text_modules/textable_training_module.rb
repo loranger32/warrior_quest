@@ -12,7 +12,7 @@ module Textable
 
       Deux options sont disponibles: le combat solo ou le combat en équipe.
 
-      Si c'est votre première partie, commencez avec le combat singulier.
+      Si c'est votre première partie, commencez avec le combat solo.
       TRAINING_PRESENTATION
     end
 

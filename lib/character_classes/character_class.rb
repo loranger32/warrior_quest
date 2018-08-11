@@ -92,6 +92,10 @@ class Character
     STRING
   end
   # rubocop:enable Metrics/MethodLength
+  
+  def print_stats
+    puts stats_display
+  end
 
   # rubocop:disable Metrics/CyclomaticComplexity
   def assign_weapon(weapon)
