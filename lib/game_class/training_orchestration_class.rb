@@ -231,7 +231,7 @@ class Training
     wait_until_ready_to_go_on
 
     until team_is_stunt? || all_squires_are_stunt?
-      TeamTurn.new(player, teamates, squires).play
+      TeamTurn.new(player, teamates, squires, self).play
 
       if one_squire_died?
         print_message(squire_passed_out(dead_squire))
