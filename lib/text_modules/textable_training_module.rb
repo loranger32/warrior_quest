@@ -36,6 +36,18 @@ module Textable
       PRESENT_SOLO_TRAINING
     end
 
+    def present_multiplayer_training
+      <<~PRESENT_MULTIPLAYER_TRAINING
+      Vous entrez dans la salle d'entrainement. Quatre écuyers sont là pour vous\
+ servir d'adversaire de combat. Allez-y doucement avec eux, ce sont des\
+ étudiants !!!
+
+      Le combat s'arrêtera lorsque tous les membres d'une équipe\
+ descenderont en dessous de 20 points de vie. Cela correspond à être bien sonné!
+
+      PRESENT_MULTIPLAYER_TRAINING
+    end
+
     def ask_which_weapon_to_use
       <<~ASK_WHICH_WEAPON_TO_USE
       Une dernière chose : dans le combat solo, vous pouvez choisir votre arme.\
@@ -55,6 +67,15 @@ module Textable
       <<~BEGIN_SOLO_TRAINING
       Bien ! Les écuyers sont en place pour le combat.
       BEGIN_SOLO_TRAINING
+    end
+
+    def begin_multiplayer_training
+      <<~BEGIN_MULTIPLAYER_TRAINING
+      Bien ! Les écuyers sont en place pour le combat.
+
+      Les joueurs vont jouer chacun à leur tour en fonction de leur points
+      d'habileté. Plus ils sont habiles, plus ils joueront vite.
+      BEGIN_MULTIPLAYER_TRAINING
     end
 
     def ask_for_training_action_with(player, squires)
@@ -79,6 +100,18 @@ module Textable
       PLAYER_IS_STUNT
     end
 
+    def team_is_stunt
+      <<~TEAM_IS_STUNT
+      Incroyable, toute votre équipe est assomée, les écuyers ont gagné :-(
+
+      Vous êtes vraiment un belle bande de bras cassés... Si vous croyez que \
+c'est comme çà que vous allez vaincre le dragon, vous finirez en brochette\ 
+grillée.
+
+      RETOURNEZ VOUS ENTRAINER !!!
+      TEAM_IS_STUNT
+    end
+
     def squires_are_all_stunt
       <<~SQUIRES_STUNT
       Bravo !! Les deux écuyers sont évanouis, vous avez bien combattu !
@@ -95,6 +128,15 @@ module Textable
 retournez vous asseoir sur le banc. Vous vous demandez ce que vous allez faire \
 maintenant.
       QUIT_SOLO_TRAINING
+    end
+
+    def quit_multiplayer_training
+      <<~QUIT_MULTIPLAYER_TRAINING
+      Vous perdez votre temps dans ce combat bien trop facile ! 
+
+      Vous et vos équipiers abandonnez les écuyers et partez en quête de vrais\
+ combats.
+      QUIT_MULTIPLAYER_TRAINING
     end
 
     def unexpected_training_ending

@@ -224,24 +224,66 @@ class Training
     end
   end
 
-  ####### Multiplayer raining Methods ##########################################
+  ####### Multiplayer training Methods ##########################################
 
   def multiplayer_fight
+    lauch_multiplayer_training_intro
+    wait_until_ready_to_go_on
+
+    until team_is_stunt? || all_squires_are_stunt?
+      multiplayer_training_player_turn
+      if one_squire_died?
+        print_message(squire_passed_out(dead_squire))
+        break
+      end
+
+      break if @playing == false
+
+      wait_until_ready_to_go_on
+      multiplayer_training_squires_turn
+    end
+    unless one_squire_died?
+      if @playing == false
+        print_message(Textable::TrainingText.quit_multiplayer_training)
+      elsif team_is_stunt?
+        print_message(Textable::TrainingText.team_is_stunt)
+      elsif all_squires_are_stunt?
+        print_message(Textable::TrainingText.squires_are_all_stunt)
+      else
+        print_message(Textable::TrainingText.unexpected_training_ending)
+      end
+    end   
+  end
+
+  def lauch_multiplayer_training_intro
     clear_screen_with_title(MULTI_TRAINING_TITLE)
     show_team
-    display_player_stats
-    show_teammates_stats
+    print_message(Textable::TrainingText.present_multiplayer_training)
     set_four_squires
     show_squires
-    show_squires_stats
+    wait_until_ready_to_go_on
+    clear_screen_with_title(MULTI_TRAINING_TITLE)
+    print_message(Textable::TrainingText.begin_multiplayer_training)
   end
 
   def show_team
     print_message("Votre équipe est composée de:")
-    teamates.each { |teamate| puts "- #{teamate}".blue }
+    teamates.each { |teamate| puts "- #{teamate} - #{teamate.type.upcase}".blue }
   end
 
   def show_teammates_stats
     teamates.each { |teamate| teamate.print_stats }
+  end
+
+  def team_is_stunt?
+    teamates.all?(&:stunt?)
+  end
+
+  def multiplayer_training_player_turn
+    
+  end
+
+  def multiplayer_training_squires_turn
+    
   end
 end
