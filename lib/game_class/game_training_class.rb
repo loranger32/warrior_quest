@@ -21,6 +21,14 @@ class Training
     @playing = true
   end
 
+  def has_left_training?
+    @training == false
+  end
+
+  def has_stopped_playing?
+    @playing == false
+  end
+
   private
 
   def set_teamates

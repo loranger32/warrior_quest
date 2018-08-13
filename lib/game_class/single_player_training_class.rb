@@ -1,0 +1,2 @@
+class SinglePlayerTraining < Training
+end

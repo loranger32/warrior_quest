@@ -14,7 +14,7 @@ class Training
     present_training
     loop do
       play_single_or_multiplayer_training
-      break if @training == false
+      break if has_left_training?
 
       if play_again?
         player.restore_max_hp
@@ -60,7 +60,7 @@ class Training
     @training = false
   end
 
-  def quit_training_session
+  def quit_playing
     @playing = false
   end
 
@@ -127,13 +127,13 @@ class Training
         break
       end
 
-      break if @playing == false
+      break if has_stopped_playing?
 
       wait_until_ready_to_go_on
       single_player_training_squires_turn
     end
     unless one_squire_died?
-      if @playing == false
+      if has_stopped_playing?
         print_message(Textable::TrainingText.quit_solo_training)
       elsif player_is_stunt?
         print_message(Textable::TrainingText.player_is_stunt)
@@ -189,7 +189,7 @@ class Training
         SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
 
       unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
-        @playing == false
+        has_stopped_playing?
         print_message("Fin de votre action, aux écuyers de jouer !")
       end
 
@@ -220,7 +220,7 @@ class Training
       when 's'  then display_player_stats
       when 's1' then show_individual_squire_stats(1)
       when 's2' then show_individual_squire_stats(2)
-      when 'q'  then quit_training_session
+      when 'q'  then quit_playing
     end
   end
 
@@ -231,19 +231,20 @@ class Training
     wait_until_ready_to_go_on
 
     until team_is_stunt? || all_squires_are_stunt?
-      multiplayer_training_player_turn
+      TeamTurn.new(player, teamates, squires).play
+
       if one_squire_died?
         print_message(squire_passed_out(dead_squire))
         break
       end
 
-      break if @playing == false
+      break if has_stopped_playing?
 
       wait_until_ready_to_go_on
       multiplayer_training_squires_turn
     end
     unless one_squire_died?
-      if @playing == false
+      if has_stopped_playing?
         print_message(Textable::TrainingText.quit_multiplayer_training)
       elsif team_is_stunt?
         print_message(Textable::TrainingText.team_is_stunt)
@@ -280,7 +281,24 @@ class Training
   end
 
   def multiplayer_training_player_turn
-    
+    while true
+      clear_screen_with_title(MULTIPLAYER_TRAINING_TITLE)
+      prompt(Textable::TrainingText.ask_for_training_action_with(player,
+                                                                 squires))
+
+      choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
+      process_player_choice(choice)
+  
+      next wait_until_ready_to_go_on if \
+        SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
+
+      unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
+        has_stopped_playing?
+        print_message("Fin de votre action, aux écuyers de jouer !")
+      end
+
+      break
+    end
   end
 
   def multiplayer_training_squires_turn
