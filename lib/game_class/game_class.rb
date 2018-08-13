@@ -19,7 +19,9 @@ require_relative '../text_modules/validable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
 require_relative 'game_training_class'
-require_relative 'training_orchestration_class'
+require_relative 'training_session_class'
+require_relative 'multiplayer_training_class'
+require_relative 'single_player_training_class'
 
 # Main class of the game - sets up all the basic elements of the game
 class Game

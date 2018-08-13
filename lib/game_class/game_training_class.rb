@@ -7,47 +7,71 @@ class Training
   include Logging
 
   TRAINING_TITLE = 'Entrainement'.freeze
-  SOLO_TRAINING_TITLE = 'Entrainement Solo'.freeze
-  MULTI_TRAINING_TITLE = 'Entrainement en Equipe'.freeze
 
   attr_reader :player, :teamates, :squires, :game
 
   def initialize(player, game)
     @player   = player
-    @teamates = set_teamates
-    @squires  = []
     @game = game
     @training = true
-    @playing = true
+  end
+
+  def quit_training
+    @training = false
   end
 
   def has_left_training?
     @training == false
   end
 
-  def has_stopped_playing?
-    @playing == false
+  def play
+    clear_screen_with_title(TRAINING_TITLE)
+    present_training
+    loop do
+      play_single_or_multiplayer_training
+      break if has_left_training?
+
+      if play_again?
+        player.restore_max_hp
+        display_new_training
+      else
+        break
+      end
+    end
+
+    game.return_from_training
   end
 
-  private
-
-  def set_teamates
-    team = []
-    team << Dwarf.create_passipti
-    team << Elve.create_toudou
-    team << Wizard.create_hocus_pocus
-    team
+  def present_training
+    print_message(Textable::TrainingText.present_training)
   end
 
-  def set_two_squires
-    squires.clear
-    squires << Squire.create("Barnabé")
-    squires << Squire.create("Rahan")
+  def play_single_or_multiplayer_training
+    training_type = ask_for_single_or_multiplayer_training
+    case training_type
+    when 's' then SinglePlayerTraining.new(player, self).play
+    when 'm' then MultiplayerTraining.new(player, self).play
+    when 'q' then quit_training
+    end
   end
 
-  def set_four_squires
-    set_two_squires
-    squires << Squire.create("Virgile")
-    squires << Squire.create("Alphonse")
+  def play_again?
+    prompt("Souhaitez-vous refaire un combat d'entrainement ? ('o', 'n')")
+    choice = Validable.obtain_a_valid_input_from_list(['o', 'n'])
+    choice == 'o'
+  end
+
+  def display_new_training
+    clear_screen_with_title(TRAINING_TITLE)
+    print_message("C'est parti pour une nouvelle séance d'entrainement !")
+  end
+
+  def ask_for_single_or_multiplayer_training
+    prompt(Textable::TrainingText.ask_single_or_multiplayer_training)
+    Validable.obtain_a_valid_input_from_list(['s', 'm', 'q'])
+  end
+
+  def quit_training
+    @training = false
   end
 end
