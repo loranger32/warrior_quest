@@ -98,6 +98,7 @@ class Character
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
+  # Only for initialization process
   def assign_weapon(weapon)
     case weapon
     when :bare_hands  then BareHands.new
@@ -109,6 +110,11 @@ class Character
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  
+  # Only for in game equipement
+  def equip_weapon(weapon)
+    self.weapon = weapon
+  end
 
   private
 

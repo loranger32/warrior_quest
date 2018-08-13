@@ -1,6 +1,9 @@
 class Training
   SINGLE_TRAINING_ACTIONS = %w[1 2 h s s1 s2 q].freeze
   SINGLE_TRAINING_VIEWING_ACTIONS = %w[s s1 s2].freeze
+  SINGLE_TRAINING_WEAPONS = {barehands: 'm', sword: 'e', axe: 'h',
+                             shortsword: 'd', spear: 'l', staff: 'b'}.freeze
+
   MULTIPLAYER_TRANING_ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h q].freeze
   MULTIPLAYER_TRANING_VIEWING_ACTIONS = %w[s s1 s2 s3 s4].freeze
 
@@ -112,18 +115,10 @@ class Training
 
   ####### Single Player Training Methods #######################################
 
-  def launch_single_player_training_intro
-    set_two_squires
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    print_message(Textable::TrainingText.present_solo_training)
-    show_squires
-    wait_until_ready_to_go_on
-    clear_screen_with_title(SOLO_TRAINING_TITLE)
-    print_message(Textable::TrainingText.begin_solo_training)
-  end
-
   def single_player_fight
     launch_single_player_training_intro
+    player_chooses_weapon
+    wait_until_ready_to_go_on
     
     while player_is_not_stunt? && !all_squires_are_stunt?
       single_player_turn
@@ -150,15 +145,48 @@ class Training
     end
   end
 
+  def launch_single_player_training_intro
+    set_two_squires
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
+    print_message(Textable::TrainingText.present_solo_training)
+    show_squires
+    wait_until_ready_to_go_on
+    clear_screen_with_title(SOLO_TRAINING_TITLE)
+    print_message(Textable::TrainingText.begin_solo_training)
+  end
+
+  def player_chooses_weapon
+    print_message(Textable::TrainingText.ask_which_weapon_to_use)
+    weapon_choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_WEAPONS.values)
+    weapon = equip_player_with_weapon(player, weapon_choice)
+    print_message("Ok, vous combatterez avec : #{weapon.name}")
+  end
+
+  def equip_player_with_weapon(player, weapon_choice)
+    weapon = case weapon_choice
+             when SINGLE_TRAINING_WEAPONS[:barehands]  then BareHands.new
+             when SINGLE_TRAINING_WEAPONS[:sword]      then Sword.new
+             when SINGLE_TRAINING_WEAPONS[:axe]        then Axe.new
+             when SINGLE_TRAINING_WEAPONS[:shortsword] then ShortSword.new
+             when SINGLE_TRAINING_WEAPONS[:spear]      then Spear.new
+             when SINGLE_TRAINING_WEAPONS[:staff]      then Staff.new
+             end
+
+    player.equip_weapon(weapon)
+    weapon
+  end
+
   def single_player_turn
     while true
       clear_screen_with_title(SOLO_TRAINING_TITLE)
-      prompt(Textable::TrainingText.ask_for_training_action_with(player, squires))
+      prompt(Textable::TrainingText.ask_for_training_action_with(player,
+                                                                 squires))
 
       choice = Validable.obtain_a_valid_input_from_list(SINGLE_TRAINING_ACTIONS)
       process_player_choice(choice)
   
-      next wait_until_ready_to_go_on if SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
+      next wait_until_ready_to_go_on if \
+        SINGLE_TRAINING_VIEWING_ACTIONS.include?(choice.downcase)
 
       unless one_squire_died? || player_is_stunt? || all_squires_are_stunt? ||
         @playing == false

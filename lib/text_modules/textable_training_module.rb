@@ -36,6 +36,21 @@ module Textable
       PRESENT_SOLO_TRAINING
     end
 
+    def ask_which_weapon_to_use
+      <<~ASK_WHICH_WEAPON_TO_USE
+      Une dernière chose : dans le combat solo, vous pouvez choisir votre arme.\
+ Cela vous permet de les essayer toutes.
+      Quelle arme souhaitez-vous utiliser :
+      - mains nues - 'm'
+      - épée - 'e'
+      - hache à deux mains - 'h'
+      - lance - 'l'
+      - dague - 'd'
+      - baton - 'b'
+
+      ASK_WHICH_WEAPON_TO_USE
+    end
+
     def begin_solo_training
       <<~BEGIN_SOLO_TRAINING
       Bien ! Les écuyers sont en place pour le combat.
@@ -57,6 +72,8 @@ module Textable
 
     def player_is_stunt
       <<~PLAYER_IS_STUNT
+      Vous êtes assomés, les écuyers ont gagné :-(
+
       Si deux faibles écuyers peuvent vous battre, vous n'êtes vraiment pas à \
  la hauteur... RETOURNEZ VOUS ENTRAINER !!!
       PLAYER_IS_STUNT

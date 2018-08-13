@@ -4,14 +4,19 @@ require_relative '../lib/item_classes/weapons_class'
 RSpec.describe "A object of the Weapon Class" do
   context 'when attributes are given' do
     before do 
-      @weapon = Weapon.new(name: "une arme", 
-                            attack_bonus: 10,
-                            defense_bonus: 10,
-                            durability: 20)
+      @weapon = Weapon.new(name: "une arme",
+                           display_name: 'son arme',
+                           attack_bonus: 10,
+                           defense_bonus: 10,
+                           durability: 20)
     end
 
     it 'respond to :set_default_name' do
       expect(@weapon).to respond_to(:set_default_name)
+    end
+
+    it 'respond to :set_default_display_name' do
+      expect(@weapon).to respond_to(:set_default_display_name)
     end
 
     it 'respond to :set_default_attack_bonus' do

@@ -17,7 +17,7 @@ module Fightable
 
   def self.describe_and_perform_attack(char1, char2)
     puts 'L\'ATTAQUE DEBUTE: '
-    puts "#{char1.name} attaque #{char2.name} avec son #{char1.weapon.name}."
+    puts "#{char1.name} attaque #{char2.name} avec #{char1.weapon.display_name}."
     char1.attack(char2)
   end
 
@@ -26,7 +26,7 @@ module Fightable
       puts "Il lui inflige #{char1.last_inflicted_damage} points de vie de\
  dégats.\n"
     else
-      puts 'Il rate son coup, et ne lui inflige aucun point de dégat.\n'
+      puts "Il rate son coup, et ne lui inflige aucun point de dégat.\n"
     end
     puts 'RESULTAT:'
     puts "#{char2.name} a #{char2.hp} points de vie.\n"
