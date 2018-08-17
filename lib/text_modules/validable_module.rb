@@ -10,7 +10,7 @@ module Validable
 # ========== Generic input validation mechanism ==========
 
   def self.obtain_a_valid_input_from_list(valid_choices_list)
-    choice = gets.chomp
+    choice = gets.chomp.downcase
     until valid_choice?(choice, valid_choices_list)
       print_error_message("Choix invalide !")
       print_error_message("Les choix valides sont:")

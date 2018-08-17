@@ -22,6 +22,12 @@ require_relative 'game_training_class'
 require_relative 'training_session_class'
 require_relative 'multiplayer_training_class'
 require_relative 'single_player_training_class'
+require_relative 'turn_class'
+require_relative 'solo_player_turn_class'
+require_relative 'solo_opponents_turn_class'
+require_relative 'multi_team_turn_class'
+require_relative 'multi_opponents_turn_class'
+require_relative 'play_order_class'
 
 # Main class of the game - sets up all the basic elements of the game
 class Game

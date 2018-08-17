@@ -1,6 +1,12 @@
 module Textable
   module TrainingText
     module_function
+
+    def solo_training_title
+      <<~SOLO_TRAINING_TITLE
+      Entrainement Solo
+      SOLO_TRAINING_TITLE
+    end
     
     def present_training
       <<~TRAINING_PRESENTATION
@@ -78,7 +84,7 @@ module Textable
       BEGIN_MULTIPLAYER_TRAINING
     end
 
-    def ask_for_training_action_with(player, squires)
+    def ask_for_action_with(player, squires)
       <<~ASK_FOR_TRAINING_ACTION
       Que souhaitez-vous faire ?
       - attaquer #{squires.first} (#{squires.first.hp} points de vie) - tapez '1'
@@ -89,6 +95,23 @@ module Textable
       - voir les statistiques de #{squires.last} - tapez 's2'
       - quitter l'entrainement - tapez 'q'
       ASK_FOR_TRAINING_ACTION
+    end
+
+    def ask_for_team_action_with(player, teamates, squires)
+      <<~TEAM_ACTIONS
+      Que souhaitez-vous faire ?
+      - attaquer #{squires[0]} (#{squires[0].hp} points de vie) - tapez '1'
+      - attaquer #{squires[1]} (#{squires[1].hp} points de vie) - tapez '2'
+      - attaquer #{squires[2]} (#{squires[2].hp} points de vie) - tapez '3'
+      - attaquer #{squires[3]} (#{squires[3].hp} points de vie) - tapez '4'
+      - vous soigner (#{player.hp} points de vie)- tapez 'h'
+      - voir vos statistiques - tapez 's' 
+      - voir les statistiques de #{squires[0]} - tapez 's1'
+      - voir les statistiques de #{squires[1]} - tapez 's2'
+      - voir les statistiques de #{squires[2]} - tapez 's3'
+      - voir les statistiques de #{squires[3]} - tapez 's4'
+      - quitter l'entrainement - tapez 'q'
+      TEAM_ACTIONS
     end
 
     def player_is_stunt

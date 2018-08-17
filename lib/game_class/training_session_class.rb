@@ -12,12 +12,28 @@ class TrainingSession
   def initialize(player, training, options = {})
     @player = player
     @training = training
-    post_initialize(options)
     @playing = true
+    post_initialize(options)
   end
 
   def post_initialize(_options)
     nil
+  end
+
+  def title
+    self.class::TITLE
+  end
+
+  def actions
+    self.class::ACTIONS
+  end
+
+  def viewing_actions
+    self.class::VIEWING_ACTIONS
+  end
+
+  def text
+    Textable::TrainingText
   end
 
   def quit_playing

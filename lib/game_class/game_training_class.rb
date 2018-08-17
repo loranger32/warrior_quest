@@ -12,7 +12,7 @@ class Training
 
   def initialize(player, game)
     @player   = player
-    @game = game
+    @game     = game
     @training = true
   end
 
