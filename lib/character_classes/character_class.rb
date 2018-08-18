@@ -8,9 +8,9 @@ class Character
   include Fightable
   include Logging
 
-  attr_accessor :hp, :spirit, :agility, :strength, :weapon, :name, :mana,
+  attr_accessor :name, :hp, :strength, :spirit, :agility, :mana, :weapon,
                 :last_inflicted_damage
-  attr_reader   :max_hp, :type
+  attr_reader   :type, :max_hp
 
   @number_of_pnj = 0
 
@@ -124,7 +124,7 @@ class Character
 
   def serialized_pnj_name
     Character.number_of_pnj += 1
-    @name = "pnj_#{@number_of_pnj}"
+    @name = "pnj_#{Character.number_of_pnj}"
   end
 
   def default_hp
