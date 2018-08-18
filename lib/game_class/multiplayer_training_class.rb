@@ -15,7 +15,8 @@ class MultiplayerTraining < TrainingSession
     lauch_multiplayer_training_intro
     wait_until_ready_to_go_on
 
-    until team_is_stunt? || all_squires_are_stunt? || one_squire_died?
+    until team_is_stunt? || all_squires_are_stunt? || one_squire_died? || 
+      has_stopped_playing?
       successive_characters = PlayOrder.new(player, teamates, squires)
       successive_characters.order!
 
@@ -63,7 +64,6 @@ class MultiplayerTraining < TrainingSession
 
   def play_turns(successive_characters)
     successive_characters.each do |character|
-      ### Need to add an expression to break statements to exit the each loop
       break if has_stopped_playing?
       break print_message(squire_passed_out(dead_squire)) if one_squire_died?
 

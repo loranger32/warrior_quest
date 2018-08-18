@@ -18,11 +18,11 @@ class MultiTeamTurn < Turn
       clear_screen_with_title(game.title)
       print_message("Au tour de #{current_character} de jouer.")
       game.display_summarized_team_hp
-      process_action
+      action = process_action
   
-      wait_until_ready_to_go_on
+      wait_until_ready_to_go_on unless game.has_stopped_playing?
       
-      next if game.viewing_actions.include?(choice.downcase)
+      next if game.viewing_actions.include?(action.downcase)
 
       print_message("Fin du tour de #{current_character}, au suivant!") unless\
         game.end_condition?
@@ -37,5 +37,6 @@ class MultiTeamTurn < Turn
     prompt(text.ask_for_team_action_with(player, teamates, opponents))
     choice = Validable.obtain_a_valid_input_from_list(game.actions)
     game.process_player_choice(choice, current_character)
+    choice
   end
 end
