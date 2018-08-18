@@ -91,6 +91,16 @@ class TrainingSession
     player.print_stats
   end
 
+  def player_and_team
+    (teamates + [player]).flatten
+  end
+
+  def display_summarized_team_hp
+    player_and_team.each do |player|
+      puts "- #{player.name}: #{(player.hp.to_s).red}/#{(player.max_hp.to_s).green}\n"
+    end
+  end
+
   def set_two_squires
     squires = []
     squires << Squire.create("Barnabé")

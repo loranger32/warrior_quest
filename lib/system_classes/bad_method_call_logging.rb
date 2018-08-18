@@ -1,5 +1,9 @@
 module Logging
   def method_missing(method, *args)
+    ### DISABLE LOGGING IN DEVELOPMENT ###
+    super
+    return
+    ### DISABLE LOGGING IN DEVELOPMENT ###
     path = define_path_to_logging
     if path
       Dir.chdir(path) do

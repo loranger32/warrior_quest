@@ -8,7 +8,7 @@ class MultiOpponentsTurn < Turn
 
   def play
     if current_character.stunt?
-      print_message("#{opponent} est évanoui, il ne peut pas jouer.")
+      print_message("#{current_character} est évanoui, il ne peut pas jouer.")
     else
       opponent = choose_opponent
       Fightable.describe_combat_between(current_character, opponent)
@@ -25,6 +25,9 @@ class MultiOpponentsTurn < Turn
   private
 
   def choose_opponent
-    teamates.sample
+    while true
+      opponent = (teamates + [player]).flatten.sample
+      break opponent unless opponent.stunt?
+    end
   end
 end

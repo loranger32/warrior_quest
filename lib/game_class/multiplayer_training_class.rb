@@ -1,8 +1,8 @@
 class MultiplayerTraining < TrainingSession
 
   TITLE = 'Entrainement en Equipe'.freeze
-  ACTIONS = %w[1 2 3 4 s s1 s2 s3 s4 h q].freeze
-  VIEWING_ACTIONS = %w[s s1 s2 s3 s4].freeze
+  ACTIONS = %w[1 2 3 4 s st s1 s2 s3 s4 h q].freeze
+  VIEWING_ACTIONS = %w[s st s1 s2 s3 s4].freeze
 
   attr_reader :squires, :teamates
 
@@ -15,7 +15,7 @@ class MultiplayerTraining < TrainingSession
     lauch_multiplayer_training_intro
     wait_until_ready_to_go_on
 
-    until team_is_stunt? || all_squires_are_stunt?
+    until team_is_stunt? || all_squires_are_stunt? || one_squire_died?
       successive_characters = PlayOrder.new(player, teamates, squires)
       successive_characters.order!
 
@@ -63,6 +63,7 @@ class MultiplayerTraining < TrainingSession
 
   def play_turns(successive_characters)
     successive_characters.each do |character|
+      ### Need to add an expression to break statements to exit the each loop
       break if has_stopped_playing?
       break print_message(squire_passed_out(dead_squire)) if one_squire_died?
 
@@ -87,12 +88,17 @@ class MultiplayerTraining < TrainingSession
       when '4'  then Fightable.describe_combat_between(character, squires[3])
       when 'h'  then Healable.describe_self_healing(player)
       when 's'  then display_player_stats
+      when 'st' then display_team_stats
       when 's1' then show_individual_squire_stats(1)
       when 's2' then show_individual_squire_stats(2)
       when 's3' then show_individual_squire_stats(3)
       when 's4' then show_individual_squire_stats(4)
       when 'q'  then quit_playing
     end
+  end
+
+  def display_team_stats
+    teamates.each(&:print_stats)
   end
 
   def end_condition?
