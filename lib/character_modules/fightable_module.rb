@@ -35,4 +35,9 @@ module Fightable
   def damage_points
     strength + throw_die_of_8_times(2) + weapon.attack_bonus
   end
+
+  
+  def defense_points
+    agility + throw_die_of_4_times(1) + weapon.defense_bonus
+  end
 end

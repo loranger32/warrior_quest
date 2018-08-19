@@ -18,7 +18,7 @@ class Warrior < Character
   end
 
   def dance
-    puts 'Vous effectuez quelque pas de danse plein de grâce et de légerté.\
+    puts 'Vous effectuez quelque pas de danse remplis de grâce et de légerté.\
  Vos mouvements sont un enchantement pour le regard, et une démonstration\
  d\'équilibre maîtrisé.'
     sleep(5)

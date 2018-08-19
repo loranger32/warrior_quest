@@ -264,23 +264,23 @@ RSpec.shared_examples "A Character object" do |character_class|
   end
 end
 
-describe 'Warrior' do
+RSpec.describe 'Warrior' do
   include_examples "A Character object", Warrior
 end
 
-describe 'Wizard' do
+RSpec.describe 'Wizard' do
   include_examples "A Character object", Wizard
 end
 
-describe 'Dwarf' do
+RSpec.describe 'Dwarf' do
   include_examples "A Character object", Dwarf
 end
 
-describe 'Elve' do
+RSpec.describe 'Elve' do
   include_examples "A Character object", Elve
 end
 
-describe 'Squire' do
+RSpec.describe 'Squire' do
   include_examples "A Character object", Squire
 end
 

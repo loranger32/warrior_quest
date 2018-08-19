@@ -145,26 +145,26 @@ RSpec.shared_examples "weapons" do |weapon_class|
   end
 end
 
-describe 'Bare hands' do
+RSpec.describe 'Bare hands' do
   include_examples "weapons", BareHands
 end
 
-describe 'A sword' do
+RSpec.describe 'A sword' do
   include_examples "weapons", Sword
 end
 
-describe 'A two-hands axe' do
+RSpec.describe 'A two-hands axe' do
   include_examples "weapons", Axe
 end
 
-describe 'A staff' do
+RSpec.describe 'A staff' do
   include_examples "weapons", Staff
 end
 
-describe 'A spear' do
+RSpec.describe 'A spear' do
   include_examples "weapons", Spear
 end
 
-describe 'A short sword' do
+RSpec.describe 'A short sword' do
   include_examples "weapons", ShortSword 
 end

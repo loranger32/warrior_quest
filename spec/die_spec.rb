@@ -22,7 +22,7 @@ RSpec.shared_examples "dies" do |number_of_faces|
     end
 end
 
-describe 'A die' do
+RSpec.describe 'A die' do
   
   context 'when initialized with no argument' do
 
