@@ -56,32 +56,25 @@ RSpec.shared_examples "Fightable attack method" do |character_class|
   let(:attacker) { character_class.new }
   let(:defender) { Squire.create('defender') }
 
-  context 'with bare hands' do
-    before { attacker.weapon = BareHands.new }
+  it 'inflicts damages to defender if defense points < damage points' do
+    allow(attacker).to receive(:damage_points).and_return(19)
+    allow(defender).to receive(:defense_points).and_return(18)
+    attacker.attack(defender)
+    expect(defender.hp).to be < defender.max_hp
+  end
 
-    it 'inflicts damages to defender if defense points < damage points' do
-      expect(attacker.weapon).to be_instance_of(BareHands)
-      allow(attacker).to receive(:damage_points).and_return(19)
-      allow(defender).to receive(:defense_points).and_return(18)
-      attacker.attack(defender)
-      expect(defender.hp).to be < defender.max_hp
-    end
+  it 'do not inflicts damages if defense points >= damage points' do
+    allow(attacker).to receive(:damage_points).and_return(18)
+    allow(defender).to receive(:defense_points).and_return(19)
+    attacker.attack(defender)
+    expect(defender.hp).to eq(defender.max_hp)
+  end
 
-    it 'do not inflicts damages if defense points >= damage points' do
-      expect(attacker.weapon).to be_instance_of(BareHands)
-      allow(attacker).to receive(:damage_points).and_return(18)
-      allow(defender).to receive(:defense_points).and_return(19)
-      attacker.attack(defender)
-      expect(defender.hp).to eq(defender.max_hp)
-    end
-
-    it 'inflicts the correct amount of damages' do
-      expect(attacker.weapon).to be_instance_of(BareHands)
-      allow(attacker).to receive(:damage_points).and_return(29)
-      allow(defender).to receive(:defense_points).and_return(19)
-      attacker.attack(defender)
-      expect(defender.hp).to eq(defender.max_hp - 10)
-    end
+  it 'inflicts the correct amount of damages' do
+    allow(attacker).to receive(:damage_points).and_return(29)
+    allow(defender).to receive(:defense_points).and_return(19)
+    attacker.attack(defender)
+    expect(defender.hp).to eq(defender.max_hp - 10)
   end
 end
 
