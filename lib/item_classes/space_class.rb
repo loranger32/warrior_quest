@@ -1,6 +1,6 @@
 # Class for creating all sorts of spaces
 class Space
-  include Logging
+  
   
   attr_reader :name, :description, :group
 

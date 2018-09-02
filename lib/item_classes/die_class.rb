@@ -3,7 +3,7 @@ require_relative '../system_classes/bad_method_call_logging'
 
 # Class for dies of all sorts
 class Die
-  include Logging
+  
   
   attr_reader :faces
 

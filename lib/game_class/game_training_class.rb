@@ -7,7 +7,7 @@ class Training
 =======
 >>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   include Validable
-  include Logging
+  
 
   TRAINING_TITLE = 'Entrainement'.freeze
 <<<<<<< HEAD

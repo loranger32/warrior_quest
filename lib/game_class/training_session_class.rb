@@ -5,7 +5,7 @@ class TrainingSession
   include Displayable
   extend Displayable
   include Validable
-  include Logging
+  
 
   attr_reader :player, :training
 
