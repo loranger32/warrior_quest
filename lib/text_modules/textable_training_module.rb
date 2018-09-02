@@ -1,15 +1,12 @@
 module Textable
   module TrainingText
     module_function
-<<<<<<< HEAD
 
     def solo_training_title
       <<~SOLO_TRAINING_TITLE
       Entrainement Solo
       SOLO_TRAINING_TITLE
     end
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
     
     def present_training
       <<~TRAINING_PRESENTATION
@@ -21,26 +18,16 @@ module Textable
 
       Deux options sont disponibles: le combat solo ou le combat en équipe.
 
-<<<<<<< HEAD
       Si c'est votre première partie, commencez avec le combat solo.
-=======
-      Si c'est votre première partie, commencez avec le combat singulier.
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
       TRAINING_PRESENTATION
     end
 
     def ask_single_or_multiplayer_training
       <<~TRAINING_TYPE
       Quel type d'entrainement souhaitez vous:
-<<<<<<< HEAD
       - solo - tapez 's'
       - en équipe - tapez 'm'
       - retour au menu principal - tapez 'q'
-=======
-      - solo ('s')
-      - en équipe ('m')
-
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
       TRAINING_TYPE
     end
 
@@ -55,7 +42,6 @@ module Textable
       PRESENT_SOLO_TRAINING
     end
 
-<<<<<<< HEAD
     def present_multiplayer_training
       <<~PRESENT_MULTIPLAYER_TRAINING
       Vous entrez dans la salle d'entrainement. Quatre écuyers sont là pour vous\
@@ -83,15 +69,12 @@ module Textable
       ASK_WHICH_WEAPON_TO_USE
     end
 
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
     def begin_solo_training
       <<~BEGIN_SOLO_TRAINING
       Bien ! Les écuyers sont en place pour le combat.
       BEGIN_SOLO_TRAINING
     end
 
-<<<<<<< HEAD
     def begin_multiplayer_training
       <<~BEGIN_MULTIPLAYER_TRAINING
       Bien ! Les écuyers sont en place pour le combat.
@@ -102,15 +85,11 @@ module Textable
     end
 
     def ask_for_action_with(player, squires)
-=======
-    def ask_for_training_action_with(player, squires)
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
       <<~ASK_FOR_TRAINING_ACTION
       Que souhaitez-vous faire ?
       - attaquer #{squires.first} (#{squires.first.hp} points de vie) - tapez '1'
       - attaquer #{squires.last} (#{squires.last.hp} points de vie) - tapez '2'
       - vous soigner (#{player.hp} points de vie)- tapez 'h'
-<<<<<<< HEAD
       - voir vos statistiques - tapez 's'
       - voir les statistiques de #{squires.first} - tapez 's1'
       - voir les statistiques de #{squires.last} - tapez 's2'
@@ -157,11 +136,6 @@ grillée.
       TEAM_IS_STUNT
     end
 
-=======
-      ASK_FOR_TRAINING_ACTION
-    end
-
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
     def squires_are_all_stunt
       <<~SQUIRES_STUNT
       Bravo !! Les deux écuyers sont évanouis, vous avez bien combattu !
@@ -172,7 +146,6 @@ grillée.
       SQUIRES_STUNT
     end
 
-<<<<<<< HEAD
     def quit_solo_training
       <<~QUIT_SOLO_TRAINING
       Ce combat est décidément bien ennuyeux. Vous rangez votre arme et \
@@ -198,8 +171,6 @@ adressez-vous à son créateur.
       UNEXPECTED_TRAING_ENDING
     end
 
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
     def too_bad_a_squire_passe_out(squire)
       <<~SQUIRE_PASSED_OUT
       Oh non !!!! Vous avez tué un écuyer !!!!

@@ -280,52 +280,9 @@ RSpec.describe 'Elve' do
   include_examples "A Character object", Elve
 end
 
-<<<<<<< HEAD
 RSpec.describe 'Squire' do
   include_examples "A Character object", Squire
 end
-=======
-describe 'Squire' do
-  include_examples "A Character object", Squire
-end
-
-
-#     before do
-#       $stdout = StringIO.new
-#       @character1 = Character.new
-#       @character2 = Character.new
-#       @character3 = Character.new
-#       @character4 = Character.new
-#     end
-
-#     it 'has a serialized name and print it capitalzed' do
-#       expect(@character1.name).to eq('pnj_1')
-#       expect(@character2.name).to eq('pnj_2')
-#       expect(@character3.name).to eq('pnj_3')
-#       expect(@character4.name).to eq('pnj_4')
-#       expect { puts @character1 }.to output("Pnj_1\n").to_stdout
-#       expect { puts @character2 }.to output("Pnj_2\n").to_stdout
-#       expect { puts @character3 }.to output("Pnj_3\n").to_stdout
-#       expect { puts @character4 }.to output("Pnj_4\n").to_stdout
-#     end
-#   end
-
-  
-
-#   context 'when attacking with bare hands' do
-    
-#     before do
-#       @attacker = Character.new(name: 'attacker')
-#       @defender = Character.new(name: 'defender')
-#     end
-
-#     it 'reduces hp points of the defender accordingly' do
-#       expect(@defender.hp).to eq(100)
-#       @attacker.attack(@defender)
-#       expect(@defender.hp).to be_between(76, 90)
-#     end
-#   end
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
 
 #   context 'when attacking with a sword' do
 

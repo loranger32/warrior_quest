@@ -1,7 +1,6 @@
 # Class for creating all sorts of spaces
 class Space
   
-  
   attr_reader :name, :description, :group
 
   @spaces = []

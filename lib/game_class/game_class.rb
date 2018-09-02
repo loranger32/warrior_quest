@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 require 'pry'
-
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
-require_relative '../system_classes/bad_method_call_logging'
 require_relative '../system_classes/errors_class'
 require_relative '../character_classes/character_class'
 require_relative '../character_classes/warrior_class'
@@ -22,7 +17,6 @@ require_relative '../text_modules/validable_module'
 require_relative '../character_modules/fightable_module'
 require_relative '../character_modules/healable_module'
 require_relative 'game_training_class'
-<<<<<<< HEAD
 require_relative 'training_session_class'
 require_relative 'multiplayer_training_class'
 require_relative 'single_player_training_class'
@@ -32,19 +26,13 @@ require_relative 'solo_opponents_turn_class'
 require_relative 'multi_team_turn_class'
 require_relative 'multi_opponents_turn_class'
 require_relative 'play_order_class'
-=======
-require_relative 'training_orchestration_class'
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
 
 # Main class of the game - sets up all the basic elements of the game
 class Game
   include Rollable
   include Textable
   include Displayable
-<<<<<<< HEAD
   extend Displayable
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   include Validable
   
 
@@ -61,7 +49,6 @@ class Game
   end
 
   def play
-<<<<<<< HEAD
     while @playing
       launch_intro
       choose_game_type
@@ -78,23 +65,6 @@ class Game
     print_message(Textable::Introduction.greet_and_explain(player.name))
   end
 
-=======
-    launch_intro
-    choose_game_type
-  end
-
-  def launch_intro
-    clear_screen
-    titleize(GAME_TITLE)
-    print_message(Textable::Introduction.welcome)
-    #sleep(2)
-    ask_player_name
-    clear_screen
-    titleize(GAME_TITLE)
-    print_message(Textable::Introduction.greet_and_explain(player.name))
-  end
-
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   def return_from_training
     clear_screen_with_title(GAME_TITLE)
     print_message("Vous êtes de retour de l'entrainement !")
@@ -107,10 +77,7 @@ class Game
     when 'n' then launch_game(player)
     when 'e' then launch_training(player, self)
     when 'l' then restore_game
-<<<<<<< HEAD
     when 'q' then quit_game
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
     end
   end
 
@@ -121,10 +88,8 @@ class Game
 
   def ask_player_name
     print_message(Textable::Introduction.ask_name)
-<<<<<<< HEAD
-=======
     prompt('Voulez-vous les voir ? (\'o\', \'n\')')
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
+
     show_or_skip_help
     player.name = Validable.obtain_a_valid_name
   end
@@ -142,10 +107,8 @@ class Game
   private
 
   def show_or_skip_help
-<<<<<<< HEAD
     prompt('Voulez-vous les voir ? (\'o\', \'n\')')
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
+
     choice = gets.chomp.downcase
     if choice == 'o'
       print_message(Textable::Introduction.name_rules)

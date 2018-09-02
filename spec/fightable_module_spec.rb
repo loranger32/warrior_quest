@@ -1,6 +1,5 @@
 require_relative '../lib/game_class/game_class'
 
-<<<<<<< HEAD
 RSpec.shared_examples 'Fightable damage points method' do |character_class|
   let(:attacker) { character_class.new(name: 'attacker') }
 
@@ -107,8 +106,4 @@ RSpec.describe 'Squire Fighting Module' do
   include_examples "Fightable damage points method", Squire
   include_examples "Fightable defense points method", Squire
   include_examples "Fightable attack method", Squire
-=======
-RSpec.describe "Fightable" do
-
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
 end

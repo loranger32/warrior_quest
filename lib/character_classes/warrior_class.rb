@@ -10,11 +10,7 @@ class Warrior < Character
 
   def self.create_hero
     new(name: 'Leo', hp: 160, strength: 16, spirit: 12, agility: 10,
-<<<<<<< HEAD
         weapon: :barehands, mana: 35)
-=======
-        weapon: :axe, mana: 35)
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   end
 
   def look_around(space)

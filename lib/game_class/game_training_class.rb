@@ -2,25 +2,16 @@ class Training
   include Rollable
   include Textable
   include Displayable
-<<<<<<< HEAD
   extend Displayable
-=======
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   include Validable
   
 
   TRAINING_TITLE = 'Entrainement'.freeze
-<<<<<<< HEAD
-=======
-  SOLO_TRAINING_TITLE = 'Entrainement Solo'.freeze
-  MULTI_TRAINING_TITLE = 'Entrainement en Equipe'.freeze
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
 
   attr_reader :player, :teamates, :squires, :game
 
   def initialize(player, game)
     @player   = player
-<<<<<<< HEAD
     @game     = game
     @training = true
   end
@@ -82,32 +73,5 @@ class Training
 
   def quit_training
     @training = false
-=======
-    @teamates = set_teamates
-    @squires  = []
-    @game = game
-  end
-
-  private
-
-  def set_teamates
-    team = []
-    team << Dwarf.create_passipti
-    team << Elve.create_toudou
-    team << Wizard.create_hocus_pocus
-    team
-  end
-
-  def set_two_squires
-    squires.clear
-    squires << Squire.create("Barnabé")
-    squires << Squire.create("Rahan")
-  end
-
-  def set_four_squires
-    set_two_squires
-    squires << Squire.create("Virgile")
-    squires << Squire.create("Alphonse")
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   end
 end

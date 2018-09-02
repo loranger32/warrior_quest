@@ -1,12 +1,7 @@
 # Abstract Class - not designed for instantiation
 class Weapon
   
-  
-<<<<<<< HEAD
   attr_accessor :name, :display_name, :attack_bonus, :defense_bonus, :durability 
-=======
-  attr_accessor :name, :attack_bonus, :defense_bonus, :durability
->>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   attr_reader :max_durability
 
   def initialize(options = {})
