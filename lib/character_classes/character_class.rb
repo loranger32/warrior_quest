@@ -53,16 +53,26 @@ class Character
     end
   end
 
+<<<<<<< HEAD
   def restore_max_hp
     self.hp = max_hp
   end
 
+=======
+>>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   def stunt?
     hp < 20
   end
 
   def dead?
     hp <= 0
+<<<<<<< HEAD
+=======
+  end
+
+  def defense_points
+    agility + throw_die_of_4_times(1) + weapon.defense_bonus
+>>>>>>> eb983d1f4972346e689c445763aaec345f794b16
   end
 
   def fire_ball_defense_points
