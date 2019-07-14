@@ -65,3 +65,4 @@ to be called with 20 as argument. Log message is the following:
 
 `:max_durability= was called on #<ShortSword:0x00007fad322a32d0> with the following arguments: 20.`
 
+Test
