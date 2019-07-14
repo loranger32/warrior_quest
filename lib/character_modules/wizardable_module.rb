@@ -34,6 +34,6 @@ module Wizardable
   end
 
   def fire_ball_damage_points
-    spirit + throw_die_of_8_times(2)
+    spirit + throw_dice_of_8_times(2)
   end
 end

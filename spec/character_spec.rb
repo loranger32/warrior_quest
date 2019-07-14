@@ -5,7 +5,7 @@ require_relative '../lib/character_classes/elve_class'
 require_relative '../lib/character_classes/wizard_class'
 require_relative '../lib/character_classes/squire_class'
 require_relative '../lib/item_classes/weapons_class'
-require_relative '../lib/item_classes/die_class'
+require_relative '../lib/item_classes/dice_class'
 
 RSpec.shared_examples "A Character object" do |character_class|
   context "can respond to accessor methods like" do
@@ -170,72 +170,72 @@ RSpec.shared_examples "A Character object" do |character_class|
     
     before do
       @character = character_class.new
-      @die_4 = Die.new(4)
-      @die_6 = Die.new
-      @die_8 = Die.new(8)
-      @die_10 = Die.new(10)
-      @die_12 = Die.new(12)
-      @die_20 = Die.new(20)
-      @die_100 = Die.new(100)
+      @dice_4 = Dice.new(4)
+      @dice_6 = Dice.new
+      @dice_8 = Dice.new(8)
+      @dice_10 = Dice.new(10)
+      @dice_12 = Dice.new(12)
+      @dice_20 = Dice.new(20)
+      @dice_100 = Dice.new(100)
     end
 
-    it 'can roll multiple times a die of 4' do
-      expect(@character.throw_die_of_4_times(3)).to be_between(3, 12).inclusive
+    it 'can roll multiple times a dice of 4' do
+      expect(@character.throw_dice_of_4_times(3)).to be_between(3, 12).inclusive
     end
 
-    it 'can roll multiple times a die of 6' do
-      expect(@character.throw_die_of_6_times(3)).to be_between(3, 18).inclusive
+    it 'can roll multiple times a dice of 6' do
+      expect(@character.throw_dice_of_6_times(3)).to be_between(3, 18).inclusive
     end
 
-    it 'can roll multiple times a die of 8' do
-      expect(@character.throw_die_of_8_times(3)).to be_between(3, 24).inclusive
+    it 'can roll multiple times a dice of 8' do
+      expect(@character.throw_dice_of_8_times(3)).to be_between(3, 24).inclusive
     end
 
-    it 'can roll multiple times a die of 12' do
-      expect(@character.throw_die_of_12_times(3)).to be_between(3, 36).inclusive
+    it 'can roll multiple times a dice of 12' do
+      expect(@character.throw_dice_of_12_times(3)).to be_between(3, 36).inclusive
     end
 
-    it 'can roll multiple times a die of 20' do
-      expect(@character.throw_die_of_20_times(3)).to be_between(3, 60).inclusive
+    it 'can roll multiple times a dice of 20' do
+      expect(@character.throw_dice_of_20_times(3)).to be_between(3, 60).inclusive
     end
 
-    it 'can roll multiple times a die of 100' do
-      expect(@character.throw_die_of_100_times(3))
+    it 'can roll multiple times a dice of 100' do
+      expect(@character.throw_dice_of_100_times(3))
         .to be_between(3, 300).inclusive
     end
 
-    it 'throws an error when trying to roll dies of 4 zero times' do
-      expect { @character.throw_die_of_4_times(0) }
+    it 'throws an error when trying to roll dices of 4 zero times' do
+      expect { @character.throw_dice_of_4_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
 
-    it 'throws an error when trying to roll dies of 6 zero times' do
-      expect { @character.throw_die_of_6_times(0) }
+    it 'throws an error when trying to roll dices of 6 zero times' do
+      expect { @character.throw_dice_of_6_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
     
-    it 'throws an error when trying to roll dies of 8 zero times' do
-      expect { @character.throw_die_of_8_times(0) }
+    it 'throws an error when trying to roll dices of 8 zero times' do
+      expect { @character.throw_dice_of_8_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
     
-    it 'throws an error when trying to roll dies of 10 zero times' do
-      expect { @character.throw_die_of_10_times(0) }
+    it 'throws an error when trying to roll dices of 10 zero times' do
+      expect { @character.throw_dice_of_10_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
     
-    it 'throws an error when trying to roll dies of 12 zero times' do
-      expect { @character.throw_die_of_12_times(0) }
+    it 'throws an error when trying to roll dices of 12 zero times' do
+      expect { @character.throw_dice_of_12_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
     
-    it 'throws an error when trying to roll dies of 20 zero times' do
-      expect { @character.throw_die_of_20_times(0) }
+    it 'throws an error when trying to roll dices of 20 zero times' do
+      expect { @character.throw_dice_of_20_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
     
-    it 'throws an error when trying to roll dies of 100 zero times' do
-      expect { @character.throw_die_of_100_times(0) }
+    it 'throws an error when trying to roll dices of 100 zero times' do
+      expect { @character.throw_dice_of_100_times(0) }
         .to raise_error(CannotHaveZeroRollsError)
     end
   end
